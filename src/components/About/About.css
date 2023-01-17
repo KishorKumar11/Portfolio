@@ -1,0 +1,49 @@
+.about {
+    display: grid;
+    text-align: center;
+    align-items: center;
+    font-weight: 500;
+}
+
+.about-text {
+  color: aliceblue;
+  letter-spacing: 1px;
+  font-size: large;
+}
+
+.about-text p {
+  color: aliceblue;
+  justify-content: center;
+  padding-left: 10%;
+  padding-right: 10%;
+  letter-spacing: 0.5px;
+}
+
+.about__container {
+  grid-template-columns: repeat(2,1fr);
+  align-items: center;
+  column-gap: 4rem;
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+.section__title {
+  margin-top: 8%;
+  margin-bottom: 5%;
+}
+
+.about__img {
+  border-radius: 1.5rem;
+  justify-self: center;
+}
+
+.bgimg {
+    width: 100%;
+}
+
+.about__info {
+  grid-template-columns: repeat(3, 140px);
+  gap: 0.5rem;
+  margin-bottom: 10%;
+}
+

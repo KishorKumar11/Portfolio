@@ -1,0 +1,22 @@
+.footer-box {
+    box-sizing: border-box;
+    box-shadow: 10%;
+    background-color: antiquewhite;
+    padding: 8%;
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.footer-detail {
+    justify-content: center;
+}
+
+.copyright {
+    margin-top: 5%;
+}
+
+.copyright:hover {
+    text-decoration: underline;
+}

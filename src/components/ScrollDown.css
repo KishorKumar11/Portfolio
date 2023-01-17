@@ -1,0 +1,16 @@
+.home__scroll-name {
+    color: blue;
+    z-index: 1;
+}
+
+.home__scroll-mouse {
+    z-index: 1;
+}
+
+.wheel {
+    z-index: 1;
+}
+
+.home__scroll-arrow {
+    z-index: 1;
+}

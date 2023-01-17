@@ -1,0 +1,23 @@
+
+.skills-box {
+    box-sizing: border-box;
+    box-shadow: 10%;
+    background-color: rgb(0, 0, 0);
+    padding: 8%;
+}
+
+.skills-content {
+    display: grid;
+    color: aliceblue;
+    text-align: center;
+    grid-template-columns: repeat(5, minmax(100px, auto));
+    grid-gap: 5rem;
+}
+
+.skills-detail {
+    justify-content: center;
+}
+
+.carousel-wrapper {
+    width: 100%;
+}

@@ -1,0 +1,68 @@
+.projects {
+    margin-bottom: 120px;
+}
+
+.portfolio-content {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, minmax(300px, auto));
+    grid-gap: 2rem;
+    align-items: center;
+    margin-top: 5rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.col {
+    position: relative;
+}
+
+.col img {
+    max-width: 100%;
+    width: 320px;
+    height: 420px;
+    object-fit: cover;
+    border-radius: 12px;
+    opacity: 85%;
+}
+
+.layer {
+    background: linear-gradient(rgba(0,0,0,0,0.5) 0%, #191919);
+
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 12px;
+    transition: all .40s;
+}
+
+.layer:hover {
+    background: linear-gradient(rgba(0,0,0,0,0.5) 0%, #191919);
+}
+
+.layer h3 {
+    width: 100%;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.layer h3:hover {
+    bottom: 52%;
+    opacity: 1;
+}
+
+.layer h5 {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+}
+
+.layer h5:hover {
+    bottom: 48%;
+    opacity: 1;
+}
