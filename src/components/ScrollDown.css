@@ -1,16 +1,37 @@
 .home__scroll-name {
     color: blue;
-    z-index: 1;
-}
-
-.home__scroll-mouse {
-    z-index: 1;
 }
 
 .wheel {
-    z-index: 1;
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
 }
 
 .home__scroll-arrow {
-    z-index: 1;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
 }
+
+.bounce-1 {
+    animation-name: bounce-1;
+    animation-timing-function: ease;
+}
+
+.bounce-2 {
+    animation-name: bounce-2;
+    animation-timing-function: ease;
+}
+
+@keyframes bounce-1 {
+    0%   { transform: translateY(0); }
+    30%  { transform: translateY(-10px); }
+    50%  { transform: translateY(0); }
+    100% { transform: translateY(0); }
+} 
+
+@keyframes bounce-2 {
+    0%   { transform: translateY(0); }
+    30%  { transform: translateY(-20px); }
+    50%  { transform: translateY(0); }
+    100% { transform: translateY(0); }
+} 

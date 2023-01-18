@@ -7,13 +7,23 @@ import ScrollDown from '../ScrollDown';
 import { Fade } from 'react-reveal';
 import './Home.css';
 
-const Home = () => {
+const Home = ({setActiveNav}) => {
+
+  // const section = document.querySelector('section');
+  // window.addEventListener('scroll', () => {
+    
+  //   const sectionTop = section.offsetTop;
+  //   if(window.scrollY >= sectionTop) {
+  //     setActiveNav = "#home";
+  //   }
+  // })
+
   return (
     <section class='home' id='home'>
       <video src={loginVid} autoPlay loop muted className='back-video' />
         <div class="intro">
-          <Fade delay={500}>
-          <h1>Hey I'm <span>Kishor Kumar </span></h1>
+          <Fade delay={350}>
+          <h1>Hey I'm <span><b>Kishor Kumar</b></span></h1>
           <p>Your friendly neighbourhood citizen from Singapore <br></br>
            passionate about frontend engineering and data science
           </p>
@@ -58,7 +68,7 @@ const Home = () => {
           </div>
           
 
-          <div className='scroll-icon'>
+          <div className='scroll-icon bounce'>
             <ScrollDown />
           </div>
           

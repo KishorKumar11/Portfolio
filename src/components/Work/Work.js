@@ -1,12 +1,21 @@
 import React, {useState} from 'react';
 import './Work.css';
 
-const Work = () => {
+const Work = ({setActiveNav}) => {
   const [toggleState, setToggleState] = useState(1);
 
   const toggleTab = (index) => {
     setToggleState(index);
   }
+
+  // const section = document.querySelector('section');
+  // window.addEventListener('scroll', () => {
+    
+  //   const sectionTop = section.offsetTop;
+  //   if(window.scrollY >= sectionTop) {
+  //     setActiveNav = "#work";
+  //   }
+  // })
 
   return (
     <section className='work' id="work">

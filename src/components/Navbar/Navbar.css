@@ -22,19 +22,19 @@
     letter-spacing: 8px;
   }
   
-  header ul {
+  .header ul {
     display: flex;
     justify-content: center;
     align-items: center;
     padding-right: 90px;
   }
   
-  header ul li {
+  .header ul li {
     list-style: none;
     margin-left: 30px;
   }
   
-  header ul li a {
+  .header ul li a {
     text-decoration: none;
     padding: 6px 15px;
     color: #fff;

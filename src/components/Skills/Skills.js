@@ -12,7 +12,16 @@ import css3 from '../../images/css-3.png';
 import nodejs from '../../images/nodejs.png';
 import Carousel from 'react-elastic-carousel';
 
-const Skills = () => {
+const Skills = ({setActiveNav}) => {
+
+  // const section = document.querySelector('section');
+  // window.addEventListener('scroll', () => {
+    
+  //   const sectionTop = section.offsetTop;
+  //   if(window.scrollY >= sectionTop) {
+  //     setActiveNav = "#skills";
+  //   }
+  // })
 
   return (
     <section className='skills' id="skills">

@@ -22,7 +22,7 @@ const ScrollDown = () => {
                 }}
               >
                 <path
-                  class="wheel"
+                  class="wheel bounce-2"
                   d="M123.359,79.775l0,72.843"
                   style={{
                     fill: "none",
@@ -41,7 +41,7 @@ const ScrollDown = () => {
                 ></path>
           </svg>
           <span className='home__scroll-name'>Scroll Down</span>
-          <i class="uil uil-arrow-down home__scroll-arrow"></i>
+          <i class="uil uil-arrow-down home__scroll-arrow bounce-1"></i>
         </a>
     </div>
   )

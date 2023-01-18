@@ -4,7 +4,7 @@
 }
 
 .intro {
-    padding-left: 10%;
+    padding-left: 15%;
     padding-top: 20%;
     color:#fff;
     font-weight: 500;
@@ -39,11 +39,21 @@
     width: 3%;
     margin-top: 20px;
   }
+
+  .icon1:hover {
+    transition: 0.3s;
+    transform: scale(1.2);
+  }
   
   .icon2 {
     width: 3%;
     margin-top: 20px;
     padding-left: 1%;
+  }
+
+  .icon2:hover {
+    transition: 0.3s;
+    transform: scale(1.2);
   }
   
   .images {
@@ -89,14 +99,18 @@
   .home__scroll-arrow {
     font-size: 1.5rem;
     color: #fff;
+    animation-name: bounce;
+    
   }
 
   .scroll-icon {
     color:#fff;
     margin-top: 5%;
     text-align: left;
+
   }
 
   .button__icon {
     z-index:1;
   }
+

@@ -1,5 +1,6 @@
 .work {
     position: relative;
+    margin-top: 10%;
 }
 
 .qualification__container {
@@ -51,6 +52,21 @@
     display: grid;
     grid-template-columns: 1fr max-content 1fr;
     column-gap: 1.5rem;
+    transition: 1s;
+}
+
+.qualification__data:hover {
+    transition: 0.3s;
+    color: var(--title-color-dark);
+}
+
+.qualification__data h3 {
+    transition: 1s;
+}
+
+.qualification__data h3:hover {
+    transition: 0.3s;
+    color: var(--title-color-dark);
 }
 
 .qualification__title {

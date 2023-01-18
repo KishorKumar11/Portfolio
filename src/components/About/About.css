@@ -1,8 +1,8 @@
 .about {
-    display: grid;
-    text-align: center;
-    align-items: center;
-    font-weight: 500;
+  display: grid;
+  text-align: center;
+  align-items: center;
+  font-weight: 500;
 }
 
 .about-text {
@@ -34,11 +34,27 @@
 
 .about__img {
   border-radius: 1.5rem;
+  transition: 0.5s;
   justify-self: center;
 }
 
+.about__img:hover {
+  transition: 1s;
+  border-radius: 12rem;
+  transform:rotate3d(1, 1, 1, 10deg);
+}
+
+.about__box {
+  transition: 0.3s;
+}
+
+.about__box:hover {
+  transition: 0.3s;
+  transform: scale(0.9);
+}
+
 .bgimg {
-    width: 100%;
+  width: 100%;
 }
 
 .about__info {

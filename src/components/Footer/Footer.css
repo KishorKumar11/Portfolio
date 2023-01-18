@@ -1,16 +1,26 @@
 .footer-box {
     box-sizing: border-box;
     box-shadow: 10%;
-    background-color: antiquewhite;
+    background-color: rgb(2, 40, 50);
     padding: 8%;
 }
 
 .footer-content {
     text-align: center;
+    transition: 0.3s;
+}
+
+.footer-content a img:hover {
+    transition: 0.3s;
+    transform: scale(1.2);
 }
 
 .footer-detail {
     justify-content: center;
+}
+
+.footer-detail:hover {
+    color:aliceblue
 }
 
 .copyright {
