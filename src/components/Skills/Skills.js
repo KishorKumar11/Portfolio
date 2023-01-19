@@ -30,18 +30,18 @@ const Skills = ({setActiveNav}) => {
       <div className='carousel-wrapper'>
      
           <div className='skills-content'>
-            <div><img src={Cplusplus} width={60} /><br></br>C++</div>
-            <div><img src={js} width={60} /><br></br>Javascript</div>
-            <div><img src={figma} width={60} /><br></br>Figma</div>
-            <div><img src={react} width={60} /><br></br>React</div>
-            <div><img src={java} width={60} /><br></br>Java</div>
+            <div><img src={Cplusplus} width={60} alt="" /><br></br>C++</div>
+            <div><img src={js} width={60} alt=""/><br></br>Javascript</div>
+            <div><img src={figma} width={60} alt=""/><br></br>Figma</div>
+            <div><img src={react} width={60} alt=""/><br></br>React</div>
+            <div><img src={java} width={60} alt=""/><br></br>Java</div>
           </div>
             <div className='skills-content'>
-            <div><img src={html5} width={70} /><br></br>HTML5</div>
-            <div><img src={tailwindcss} width={70} /><br></br>Tailwindcss</div>
-            <div><img src={nodejs} width={70} /><br></br>Nodejs</div>
-            <div><img src={git} width={70} /><br></br>Git</div>
-            <div><img src={css3} width={70} /><br></br>CSS3</div>
+            <div><img src={html5} width={70} alt="" /><br></br>HTML5</div>
+            <div><img src={tailwindcss} width={70} alt=""/><br></br>Tailwindcss</div>
+            <div><img src={nodejs} width={70} alt=""/><br></br>Nodejs</div>
+            <div><img src={git} width={70} alt=""/><br></br>Git</div>
+            <div><img src={css3} width={70} alt=""/><br></br>CSS3</div>
           </div>
        
       </div>

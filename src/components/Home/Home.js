@@ -20,7 +20,7 @@ const Home = ({setActiveNav}) => {
 
   return (
     <section class='home' id='home'>
-      <video src={loginVid} autoPlay loop muted className='back-video' />
+      <video src={loginVid} autoPlay loop muted className='back-video' alt=""/>
         <div class="intro">
           <Fade delay={350}>
           <h1>Hey I'm <span><b>Kishor Kumar</b></span></h1>
@@ -29,7 +29,7 @@ const Home = ({setActiveNav}) => {
           </p>
           </Fade>
         
-          <a href='#' className='cv'>DOWNLOAD CV <svg
+          <a href='/#' className='cv' alt="">DOWNLOAD CV <svg
                 class="button__icon"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -56,15 +56,15 @@ const Home = ({setActiveNav}) => {
               </svg></a>
               
           <a href="https://www.linkedin.com/in/kishorkumar11/" >
-            <img src={LinkedInIcon} className='icon1' />
+            <img src={LinkedInIcon} className='icon1' alt=""/>
           </a>
           <a href="https://github.com/KishorKumar11">
-            <img src={GithubIcon} className='icon2' />
+            <img src={GithubIcon} className='icon2' alt=""/>
           </a>
           
           
           <div class="images">
-              <img src={me} class="me" />
+              <img src={me} class="me" alt=""/>
           </div>
           
 

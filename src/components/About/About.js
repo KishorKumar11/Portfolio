@@ -18,7 +18,7 @@ const About = ({setActiveNav}) => {
     <section class='about' id='about'>
       <h2 className='section__title'>About Me</h2>
       <div className='about__container containter grid'>
-        <img src={myPic} class='about__img' width={400}/>
+        <img src={myPic} class='about__img' width={400} alt=""/>
 
         <div className='about__data'>
           <Info />

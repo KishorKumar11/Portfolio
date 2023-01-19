@@ -17,12 +17,12 @@ const Navbar = ({activeNav}) => {
     <header className="header">
       <a href='#home' className="logo">kishor</a>
       <ul>
-        <li><a href='#home' onClick={() => setActiveNav1('#home')} className={activeNav === '#home' ? "nav__link active-link" : "nav__link"}>Home</a></li>
-        <li><a href='#about' onClick={() => setActiveNav1('#about')} className={activeNav === '#about' ? "nav__link active-link" : "nav__link"}>About</a></li>
-        <li><a href='#work' onClick={() => setActiveNav1('#work')} className={activeNav === '#work' ? "nav__link active-link" : "nav__link"}>Qualifications</a></li>
-        <li><a href='#skills' onClick={() => setActiveNav1('#skills')} className={activeNav === '#skills' ? "nav__link active-link" : "nav__link"}>Skills</a></li>
-        <li><a href='#projects' onClick={() => setActiveNav1('#projects')} className={activeNav === '#projects' ? "nav__link active-link" : "nav__link"}>Projects</a></li>
-        <li><a href='#contact' onClick={() => setActiveNav1('#contact')} className={activeNav === '#contact' ? "nav__link active-link" : "nav__link"}>Contact</a></li>
+        <li><a href='#home' alt="" onClick={() => setActiveNav1('#home')} className={activeNav === '#home' ? "nav__link active-link" : "nav__link"}>Home</a></li>
+        <li><a href='#about' alt="" onClick={() => setActiveNav1('#about')} className={activeNav === '#about' ? "nav__link active-link" : "nav__link"}>About</a></li>
+        <li><a href='#work' alt="" onClick={() => setActiveNav1('#work')} className={activeNav === '#work' ? "nav__link active-link" : "nav__link"}>Qualifications</a></li>
+        <li><a href='#skills' alt="" onClick={() => setActiveNav1('#skills')} className={activeNav === '#skills' ? "nav__link active-link" : "nav__link"}>Skills</a></li>
+        <li><a href='#projects' alt="" onClick={() => setActiveNav1('#projects')} className={activeNav === '#projects' ? "nav__link active-link" : "nav__link"}>Projects</a></li>
+        <li><a href='#contact' alt="" onClick={() => setActiveNav1('#contact')} className={activeNav === '#contact' ? "nav__link active-link" : "nav__link"}>Contact</a></li>
       </ul>
   </header>
  

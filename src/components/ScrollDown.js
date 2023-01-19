@@ -4,7 +4,7 @@ import './ScrollDown.css';
 const ScrollDown = () => {
   return (
     <div className='home__scroll'>
-        <a href='#about' className='home__scroll-button button--flex'>
+        <a href='#about' className='home__scroll-button button--flex' alt="">
         <svg
                 width="32px"
                 height="32px"

@@ -26,55 +26,55 @@ const Projects = ({setActiveNav}) => {
       <div className="portfolio-content">
         <div className="col">
         <div className="layer">
-            <img src={mBotPic} />
+            <img src={mBotPic} alt=""/>
            
                 <h3>mBot</h3>
-                <h5><a href="https://docs.google.com/document/d/1R1OqPS06sV9wHk_WkpTq40PquCBtBhXgDHLtROBaKuY/edit"></a>Click to view documentation</h5>
+                <h5><a href="https://docs.google.com/document/d/1R1OqPS06sV9wHk_WkpTq40PquCBtBhXgDHLtROBaKuY/view" alt="Loading..."> </a>Click to view documentation</h5>
             </div>
         </div>
 
         <div className="col">
             <div className="layer">
-            <img src={AlexPic} />
+            <img src={AlexPic} alt=""/>
             
                 <h3>Alex</h3>
-                <h5><a href="https://github.com/woodenclock/CG1112-B03-4A"></a>Click to view documentation</h5>
+                <h5><a href="https://github.com/woodenclock/CG1112-B03-4A" alt="Loading..."> </a>Click to view documentation</h5>
             </div>
         </div>
 
         <div className="col">
             <div className="layer">
-            <img src={FPGAPic} />
+            <img src={FPGAPic} alt=""/>
             
                 <h3>FPGA Design</h3>
-                <h5><a href="https://docs.google.com/document/d/1BSP30bwGhRQ4jp_2Q4IT_XzKoD5q-iRPJ9UoeIqqqRM/edit"></a>Click to view documentation</h5>
+                <h5><a href="https://docs.google.com/document/d/1BSP30bwGhRQ4jp_2Q4IT_XzKoD5q-iRPJ9UoeIqqqRM/edit" alt="Loading..."> </a>Click to view documentation</h5>
             </div>
         </div>
 
         <div className="col">
         <div className="layer">
-            <img src={KuramaPic} />
+            <img src={KuramaPic} alt="Loading..."/>
             
                 <h3>RTOS</h3>
-                <h5><a href=""></a>Click to view documentation</h5>
+                <h5><a href="/#"> </a>Click to view documentation</h5>
             </div>
         </div>
 
         <div className="col">
         <div className="layer">
-            <img src={KingsGambitPic} />
+            <img src={KingsGambitPic} alt="Loading..."/>
             
                 <h3>King's Gambit</h3>
-                <h5><a href="https://docs.google.com/document/d/1beOyvtbNEGYNWUt3eZeQQ41H9DH2tvUeTfTCP20eYVg/edit#heading=h.5dp1ylp2cjtt"></a>Click to view documentation</h5>
+                <h5><a href="https://docs.google.com/document/d/1beOyvtbNEGYNWUt3eZeQQ41H9DH2tvUeTfTCP20eYVg/edit#heading=h.5dp1ylp2cjtt" alt="Loading..."> </a>Click to view documentation</h5>
             </div>
         </div>
 
         <div class="col">
         <div class="layer">
-            <img src={GetJackDPic} />
+            <img src={GetJackDPic} alt="Loading..."/>
             
                 <h3>Get Jack'D</h3>
-                <h5><a href=""></a>Click to view documentation</h5>
+                <h5><a href="/#"> </a>Click to view documentation</h5>
             </div>
         </div>
 
@@ -83,13 +83,13 @@ const Projects = ({setActiveNav}) => {
             <img src={MIOPic} alt="Coming soon" />
             
                 <h3>Mall in One</h3>
-                <h5><a href="https://www.figma.com/file/lGEQ2NaUq4o9Um7a1xbISz/CS3240-Group-13-Mall-In-One-team-library?node-id=0%3A1"></a>Click to view documentation</h5>
+                <h5><a href="https://www.figma.com/file/lGEQ2NaUq4o9Um7a1xbISz/CS3240-Group-13-Mall-In-One-team-library?node-id=0%3A1" alt="Loading..."> </a>Click to view documentation</h5>
             </div>
         </div>
 
         {/* <div class="col">
             <img src={""} alt="Coming soon" />
-            <div class="layer">
+            <div class="layer">w
                 <h3>Capstone Project</h3>
                 <h5>Popup</h5>
             </div>
