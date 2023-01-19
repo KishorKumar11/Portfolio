@@ -20,6 +20,12 @@
     font-size: 2em;
     text-transform: uppercase;
     letter-spacing: 8px;
+    transition: 0.3s;
+  }
+
+  .logo:hover {
+    transition: 0.3s;
+    transform:rotateX(45deg);
   }
   
   .header ul {
