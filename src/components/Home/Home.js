@@ -29,7 +29,7 @@ const Home = ({setActiveNav}) => {
           </p>
           </Fade>
         
-          <a href='/#' className='cv' alt="">DOWNLOAD CV <svg
+          <a href="https://drive.google.com/file/d/1mcjb0gBjEVfNG4gQA2SZZzyocu3DG2FG/view?usp=share_link" download className='cv' alt="">DOWNLOAD RESUME <svg
                 class="button__icon"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

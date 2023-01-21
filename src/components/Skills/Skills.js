@@ -10,6 +10,7 @@ import java from '../../images/java.png';
 import html5 from '../../images/html-5.png';
 import css3 from '../../images/css-3.png';
 import nodejs from '../../images/nodejs.png';
+import Carousel from 'react-elastic-carousel';
 
 const Skills = ({setActiveNav}) => {
 
@@ -25,10 +26,11 @@ const Skills = ({setActiveNav}) => {
   return (
     <section className='skills' id="skills">
       <h2 className='section__title'>Skills</h2>
-    
+  
     <div className='skills-box'>
+   
       <div className='carousel-wrapper'>
-     
+      <Carousel>
           <div className='skills-content'>
             <div><img src={Cplusplus} width={60} alt="" /><br></br>C++</div>
             <div><img src={js} width={60} alt=""/><br></br>Javascript</div>
@@ -43,9 +45,11 @@ const Skills = ({setActiveNav}) => {
             <div><img src={git} width={70} alt=""/><br></br>Git</div>
             <div><img src={css3} width={70} alt=""/><br></br>CSS3</div>
           </div>
-       
+          </Carousel>
       </div>
+     
     </div>
+    
 
     </section>
   )

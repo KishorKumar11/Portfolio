@@ -65,6 +65,14 @@
     z-index:5;
 }
 
+.layer h5 a{
+    width: 100%;
+    position: relative;
+    bottom: 45%;
+    color:aliceblue;
+    z-index:5;
+}
+
 .layer h5:hover {
     position: relative;
     z-index: 1;
