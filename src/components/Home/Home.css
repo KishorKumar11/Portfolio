@@ -27,7 +27,8 @@
     color: #2b1055;
     background: #fff;
     display: flex;
-    width: 18%;  
+    width: 19%; 
+    box-shadow: 0 12px 12px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
   
   .cv:hover {
@@ -114,3 +115,7 @@
     z-index:1;
   }
 
+.bx {
+  padding-left: 5%;
+  font-size: larger;
+}
