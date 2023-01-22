@@ -7,49 +7,52 @@
     display: grid;
     justify-content: center;
     text-align: center;
-    grid-template-columns: repeat(3, minmax(320px, auto));
+    grid-template-columns: repeat(3, minmax(360px, auto));
     grid-gap: 2rem;
-    margin-top: 5rem;
     cursor: pointer;
+    flex-wrap: wrap;
 }
 
 .col img {
-    max-width: 100%;
     width: 320px;
     height: 420px;
     object-fit: cover;
     border-radius: 12px;
     opacity: 85%;
+    transition: 0.3s;
+}
+
+.col img:hover {
+    opacity: 100%;
+    transform: scale(1.1);
+    transition: 0.3s;
+    margin-bottom: 5%;
 }
 
 .layer {
     height: 88%;
-    width: 100%;
     text-align: center;
     border-radius: 12px;
     transition: 0.4s;
 }
-.layer img {
-    opacity: 70%;
-}
 
-.layer img:hover {
+.img:hover {
     opacity: 30%;
     z-index: -1;
 }
 
-.layer:hover {
+.col .hover {
     background-color: rgb(39, 45, 45);
     transition: 0.4s;
     transform: scale(1.1);
     z-index: 1;
 }
 
-.layer h3 {
-    width: 100%;
+.h3 {
     bottom: 50%;
     position: relative;
-    color:aliceblue;
+    color:aliceblue;    
+    text-align: center;
 }
 
 .layer h3:hover {
@@ -57,23 +60,12 @@
     z-index: 1;
 }
 
-.layer h5 {
-    width: 100%;
-    position: relative;
-    bottom: 45%;
-    color:aliceblue;
+.col h5 {
+    text-align: center;
+    color:rgb(73, 102, 126);
     z-index:5;
-}
-
-.layer h5 a{
-    width: 100%;
-    position: relative;
-    bottom: 45%;
-    color:aliceblue;
-    z-index:5;
-}
-
-.layer h5:hover {
-    position: relative;
-    z-index: 1;
+    margin-top: 5px;
+    padding-left: 10%;
+    padding-right: 10%;
+    max-width: 300px;
 }
