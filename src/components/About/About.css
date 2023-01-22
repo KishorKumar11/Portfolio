@@ -12,6 +12,10 @@
   
 }
 
+.about__description b {
+  color: rgb(83, 145, 199);
+}
+
 .about-text p {
   color: aliceblue;
   justify-content: center;

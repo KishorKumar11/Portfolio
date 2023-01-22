@@ -7,6 +7,7 @@ import KuramaPic from '../../images/KuramaPic.png';
 import KingsGambitPic from '../../images/KingsGambitPic.jpg';
 import GetJackDPic from '../../images/GetJackDPic.png';
 import MIOPic from '../../images/MIOPic.jpg';
+import DesignPic from '../../images/DesignPic.jpg';
 
 const Projects = ({setActiveNav}) => {
     
@@ -79,6 +80,14 @@ const Projects = ({setActiveNav}) => {
             <a href="https://www.figma.com/file/lGEQ2NaUq4o9Um7a1xbISz/CS3240-Group-13-Mall-In-One-team-library?node-id=0%3A1" alt="Loading..."> <img src={MIOPic} alt="Coming soon" /> </a>
             
                 <h3>Mall in One <h4><i class='bx bx-link-external'></i></h4> </h3>
+            </div>
+        </div>
+
+        <div class="col">
+        <div class="layer">
+            <a href="https://docs.google.com/presentation/d/15jbXckEWw3xQA_B75ksqmbDKp5004nnsGsfRyTYxd2c/edit?usp=share_link" alt="Loading..."> <img src={DesignPic} alt="Coming soon" /> </a>
+            
+                <h3>Interaction Design <h4><i class='bx bx-link-external'></i></h4> </h3>
             </div>
         </div>
 
