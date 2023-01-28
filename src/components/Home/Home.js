@@ -29,7 +29,7 @@ const Home = ({setActiveNav}) => {
           </p>
           </Fade>
         
-          <a href="https://drive.google.com/file/d/1rZZeUMUI99GN4AJCN-2p_JYLlhFB4h0j/view?usp=share_link" download className='cv' alt="">DOWNLOAD RESUME <i class='bx bxs-download'></i></a>
+          <a href="https://drive.google.com/file/d/1RwMQJsn8RgLPBPAMP7xe8x3yuNbHnR1X/view?usp=sharing" download className='cv' alt="">DOWNLOAD RESUME <i class='bx bxs-download'></i></a>
               
           <a href="https://www.linkedin.com/in/kishorkumar11/" >
             <img src={LinkedInIcon} className='icon1' alt=""/>
