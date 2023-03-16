@@ -93,11 +93,27 @@ const Work = ({setActiveNav}) => {
 
           <div className={toggleState === 2 ? 'qualification__content qualification__content-active' : 'qualification__content' }>
             <div className='qualification__data'>
+              <div></div>
+
+              <div>
+                <span className='qualification__rounder'></span>
+                <span className='qualification__line'></span>
+              </div>
+              <div>
+                <h3 className='qualification__title'>Project Intern</h3>
+                <span className='qualification__subtitle'>Land Transport Authority, Singapore</span>
+                <span className='qualification__calendar'><br></br>
+                  <i className='uil uil-calendar-alt'></i> May 2023 - Jun 2023
+                </span>
+              </div>
+            </div>
+            
+            <div className='qualification__data'>
               <div>
                 <h3 className='qualification__title'>Software Engineer</h3>
-                <span className='qualification__subtitle'>Tranquilio</span>
+                <span className='qualification__subtitle'>Tranquilio, Singapore</span>
                 <div className='qualification__calendar'>
-                  <i className='uil uil-calendar-alt'></i> Apr 2022 - Present
+                  <i className='uil uil-calendar-alt'></i> Apr 2022 - Jan 2023
                 </div>
               </div>
 
@@ -116,7 +132,7 @@ const Work = ({setActiveNav}) => {
               </div>
               <div>
                 <h3 className='qualification__title'>Cyber Security Analyst</h3>
-                <span className='qualification__subtitle'>Pragma</span>
+                <span className='qualification__subtitle'>Pragma, Singapore</span>
                 <span className='qualification__calendar'><br></br>
                   <i className='uil uil-calendar-alt'></i> May 2021 - Jul 2021
                 </span>
