@@ -25,7 +25,7 @@ const Home = ({setActiveNav}) => {
           <Fade delay={350}>
           <h1>Hey I'm <span><b>Kishor Kumar</b></span></h1>
           <p>Your friendly neighbourhood citizen from Singapore <br></br>
-           passionate about frontend engineering and data science
+           passionate about frontend engineering and product management
           </p>
           </Fade>
         

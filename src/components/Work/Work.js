@@ -100,7 +100,7 @@ const Work = ({setActiveNav}) => {
                 <span className='qualification__line'></span>
               </div>
               <div>
-                <h3 className='qualification__title'>Project Intern</h3>
+                <h3 className='qualification__title'>Software Engineer Intern</h3>
                 <span className='qualification__subtitle'>Land Transport Authority, Singapore</span>
                 <span className='qualification__calendar'><br></br>
                   <i className='uil uil-calendar-alt'></i> May 2023 - Jun 2023
@@ -131,7 +131,7 @@ const Work = ({setActiveNav}) => {
                 <span className='qualification__line'></span>
               </div>
               <div>
-                <h3 className='qualification__title'>Cyber Security Analyst</h3>
+                <h3 className='qualification__title'>Cyber Security Analyst Intern</h3>
                 <span className='qualification__subtitle'>Pragma, Singapore</span>
                 <span className='qualification__calendar'><br></br>
                   <i className='uil uil-calendar-alt'></i> May 2021 - Jul 2021
