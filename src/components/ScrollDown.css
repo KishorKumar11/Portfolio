@@ -23,15 +23,31 @@
 }
 
 @keyframes bounce-1 {
-    0%   { transform: translateY(0); }
-    30%  { transform: translateY(-10px); }
-    50%  { transform: translateY(0); }
-    100% { transform: translateY(0); }
-} 
+    0% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-10px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
 
 @keyframes bounce-2 {
-    0%   { transform: translateY(0); }
-    30%  { transform: translateY(-20px); }
-    50%  { transform: translateY(0); }
-    100% { transform: translateY(0); }
-} 
+    0% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-20px);
+    }
+    50% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}

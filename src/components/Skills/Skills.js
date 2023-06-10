@@ -12,47 +12,72 @@ import css3 from '../../images/css-3.png';
 import nodejs from '../../images/nodejs.png';
 import Carousel from 'react-elastic-carousel';
 
-const Skills = ({setActiveNav}) => {
+const Skills = ({ setActiveNav }) => {
+    // const section = document.querySelector('section');
+    // window.addEventListener('scroll', () => {
 
-  // const section = document.querySelector('section');
-  // window.addEventListener('scroll', () => {
-    
-  //   const sectionTop = section.offsetTop;
-  //   if(window.scrollY >= sectionTop) {
-  //     setActiveNav = "#skills";
-  //   }
-  // })
+    //   const sectionTop = section.offsetTop;
+    //   if(window.scrollY >= sectionTop) {
+    //     setActiveNav = "#skills";
+    //   }
+    // })
 
-  return (
-    <section className='skills' id="skills">
-      <h2 className='section__title'>Skills</h2>
-  
-    <div className='skills-box'>
-   
-      <div className='carousel-wrapper'>
-      <Carousel>
-          <div className='skills-content'>
-            <div><img src={Cplusplus} width={60} alt="" /><br></br>C++</div>
-            <div><img src={js} width={60} alt=""/><br></br>Javascript</div>
-            <div><img src={figma} width={60} alt=""/><br></br>Figma</div>
-            <div><img src={react} width={60} alt=""/><br></br>React</div>
-            <div><img src={java} width={60} alt=""/><br></br>Java</div>
-          </div>
-            <div className='skills-content'>
-            <div><img src={html5} width={70} alt="" /><br></br>HTML5</div>
-            <div><img src={tailwindcss} width={70} alt=""/><br></br>Tailwindcss</div>
-            <div><img src={nodejs} width={70} alt=""/><br></br>Nodejs</div>
-            <div><img src={git} width={70} alt=""/><br></br>Git</div>
-            <div><img src={css3} width={70} alt=""/><br></br>CSS3</div>
-          </div>
-          </Carousel>
-      </div>
-     
-    </div>
-    
+    return (
+        <section className="skills" id="skills">
+            <h2 className="section__title">Skills</h2>
 
-    </section>
-  )
-}
+            <div className="skills-box">
+                <div className="carousel-wrapper">
+                    <Carousel>
+                        <div className="skills-content">
+                            <div>
+                                <img src={Cplusplus} width={60} alt="" />
+                                <br></br>C++
+                            </div>
+                            <div>
+                                <img src={js} width={60} alt="" />
+                                <br></br>Javascript
+                            </div>
+                            <div>
+                                <img src={figma} width={60} alt="" />
+                                <br></br>Figma
+                            </div>
+                            <div>
+                                <img src={react} width={60} alt="" />
+                                <br></br>React
+                            </div>
+                            <div>
+                                <img src={java} width={60} alt="" />
+                                <br></br>Java
+                            </div>
+                        </div>
+                        <div className="skills-content">
+                            <div>
+                                <img src={html5} width={70} alt="" />
+                                <br></br>HTML5
+                            </div>
+                            <div>
+                                <img src={tailwindcss} width={70} alt="" />
+                                <br></br>Tailwindcss
+                            </div>
+                            <div>
+                                <img src={nodejs} width={70} alt="" />
+                                <br></br>Nodejs
+                            </div>
+                            <div>
+                                <img src={git} width={70} alt="" />
+                                <br></br>Git
+                            </div>
+                            <div>
+                                <img src={css3} width={70} alt="" />
+                                <br></br>CSS3
+                            </div>
+                        </div>
+                    </Carousel>
+                </div>
+            </div>
+        </section>
+    );
+};
 
-export default Skills
+export default Skills;

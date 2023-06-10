@@ -6,116 +6,432 @@
 .intro {
     padding-left: 15%;
     padding-top: 20%;
-    color:#fff;
+    color: #fff;
     font-weight: 500;
     letter-spacing: 1px;
     font-size: large;
-  }
-  
-  .intro span {
+}
+
+.intro span {
     color: #b1bbf7;
-  }
-  
-  .intro p {
+}
+
+.intro p {
     align-items: left;
     margin-bottom: 30px;
-  }
-  
-  .cv {
+}
+
+.cv {
     padding: 6px 15px;
     border-radius: 5px;
     color: #2b1055;
     background: #fff;
     display: flex;
-    width: 19%; 
+    width: auto;
     box-shadow: 0 12px 12px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  }
-  
-  .cv:hover {
+}
+
+.cv:hover {
     color: #fff;
     background: #7597de;
-  }
-  
-  .icon1 {
+}
+
+.icon1 {
     width: 3%;
     margin-top: 20px;
-  }
+}
 
-  .icon1:hover {
+.icon1:hover {
     transition: 0.3s;
     transform: scale(1.2);
-  }
-  
-  .icon2 {
+}
+
+.icon2 {
     width: 3%;
     margin-top: 20px;
     padding-left: 1%;
-  }
+}
 
-  .icon2:hover {
+.icon2:hover {
     transition: 0.3s;
     transform: scale(1.2);
-  }
-  
-  .images {
+}
+
+.images {
     width: 45%;
     height: 90%;
     position: absolute;
     bottom: 0;
     right: 100px;
-  }
-  
-  .images .me {
+}
+
+.images .me {
     height: 90%;
-  }
-  
-  .images .shape {
+}
+
+.images .shape {
     height: 0%;
-  }
-  
-  .images img{
+}
+
+.images img {
     position: absolute;
     left: 50%;
     bottom: 0;
     transform: translate(-50%);
     transition: bottom 2s, left 2s;
-  }
-  
-  .images:hover .shape{
+}
+
+.images:hover .shape {
     bottom: 20px;
-  }
-  
-  .images:hover .me{
+}
+
+.images:hover .me {
     left: 45%;
-  }
-  
-  .back-video {
+}
+
+.back-video {
     position: absolute;
     z-index: -1;
     width: 100%;
     right: 0;
     bottom: 0;
-  }
+}
 
-  .home__scroll-arrow {
+.home__scroll-arrow {
     font-size: 1.5rem;
     color: #fff;
     animation-name: bounce;
-    
-  }
+}
 
-  .scroll-icon {
-    color:#fff;
+.scroll-icon {
+    color: #fff;
     margin-top: 5%;
     text-align: left;
+}
 
-  }
-
-  .button__icon {
-    z-index:1;
-  }
+.button__icon {
+    z-index: 1;
+}
 
 .bx {
-  padding-left: 5%;
-  font-size: larger;
+    padding-left: 5%;
+    font-size: larger;
+}
+
+/*=============== BREAKPOINTS ===============*/
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .intro {
+        padding-left: 5%;
+        padding-top: 10%;
+        font-size: medium;
+    }
+
+    .cv {
+        width: 19%;
+    }
+
+    .icon1,
+    .icon2 {
+        width: 6%;
+    }
+
+    .images {
+        width: 100%;
+        position: static;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 601px and up) */
+@media only screen and (min-width: 601px) {
+    .intro {
+        padding-left: 10%;
+        padding-top: 15%;
+        font-size: medium;
+    }
+
+    .cv {
+        padding: 10px 20px; 
+        font-size: 0.8rem;
+        width: 19%;
+    }
+
+    .icon1,
+    .icon2 {
+        width: 5%;
+    }
+
+    .images {
+        width: 70%;
+        position: static;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .intro {
+        padding-left: 15%;
+        padding-top: 20%;
+        font-size: large;
+    }
+
+    .cv {
+        width: 19%;
+    }
+
+    .icon1,
+    .icon2 {
+        width: 4%;
+    }
+
+    .images {
+        width: 55%;
+        position: static;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .home {
+        height: 100vh;
+        width: 100%;
+    }
+
+    .intro {
+        padding-left: 15%;
+        padding-top: 20%;
+        color: #fff;
+        font-weight: 500;
+        letter-spacing: 1px;
+        font-size: large;
+    }
+
+    .intro span {
+        color: #b1bbf7;
+    }
+
+    .intro p {
+        align-items: left;
+        margin-bottom: 30px;
+    }
+
+    .cv {
+        padding: 6px 15px;
+        border-radius: 5px;
+        color: #2b1055;
+        background: #fff;
+        display: flex;
+        width: 19%;
+        box-shadow: 0 12px 12px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .cv:hover {
+        color: #fff;
+        background: #7597de;
+    }
+
+    .icon1 {
+        width: 3%;
+        margin-top: 20px;
+    }
+
+    .icon1:hover {
+        transition: 0.3s;
+        transform: scale(1.2);
+    }
+
+    .icon2 {
+        width: 3%;
+        margin-top: 20px;
+        padding-left: 1%;
+    }
+
+    .icon2:hover {
+        transition: 0.3s;
+        transform: scale(1.2);
+    }
+
+    .images {
+        width: 45%;
+        height: 90%;
+        position: absolute;
+        bottom: 0;
+        right: 100px;
+    }
+
+    .images .me {
+        height: 90%;
+    }
+
+    .images .shape {
+        height: 0%;
+    }
+
+    .images img {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translate(-50%);
+        transition: bottom 2s, left 2s;
+    }
+
+    .images:hover .shape {
+        bottom: 20px;
+    }
+
+    .images:hover .me {
+        left: 45%;
+    }
+
+    .back-video {
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        right: 0;
+        bottom: 0;
+    }
+
+    .home__scroll-arrow {
+        font-size: 1.5rem;
+        color: #fff;
+        animation-name: bounce;
+    }
+
+    .scroll-icon {
+        color: #fff;
+        margin-top: 5%;
+        text-align: left;
+    }
+
+    .button__icon {
+        z-index: 1;
+    }
+
+    .bx {
+        padding-left: 5%;
+        font-size: larger;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .home {
+        height: 100vh;
+        width: 100%;
+    }
+
+    .intro {
+        padding-left: 15%;
+        padding-top: 20%;
+        color: #fff;
+        font-weight: 500;
+        letter-spacing: 1px;
+        font-size: large;
+    }
+
+    .intro span {
+        color: #b1bbf7;
+    }
+
+    .intro p {
+        align-items: left;
+        margin-bottom: 30px;
+    }
+
+    .cv {
+        padding: 6px 15px;
+        border-radius: 5px;
+        color: #2b1055;
+        background: #fff;
+        display: flex;
+        width: 19%;
+        box-shadow: 0 12px 12px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+
+    .cv:hover {
+        color: #fff;
+        background: #7597de;
+    }
+
+    .icon1 {
+        width: 3%;
+        margin-top: 20px;
+    }
+
+    .icon1:hover {
+        transition: 0.3s;
+        transform: scale(1.2);
+    }
+
+    .icon2 {
+        width: 3%;
+        margin-top: 20px;
+        padding-left: 1%;
+    }
+
+    .icon2:hover {
+        transition: 0.3s;
+        transform: scale(1.2);
+    }
+
+    .images {
+        width: 45%;
+        height: 90%;
+        position: absolute;
+        bottom: 0;
+        right: 100px;
+    }
+
+    .images .me {
+        height: 90%;
+    }
+
+    .images .shape {
+        height: 0%;
+    }
+
+    .images img {
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translate(-50%);
+        transition: bottom 2s, left 2s;
+    }
+
+    .images:hover .shape {
+        bottom: 20px;
+    }
+
+    .images:hover .me {
+        left: 45%;
+    }
+
+    .back-video {
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        right: 0;
+        bottom: 0;
+    }
+
+    .home__scroll-arrow {
+        font-size: 1.5rem;
+        color: #fff;
+        animation-name: bounce;
+    }
+
+    .scroll-icon {
+        color: #fff;
+        margin-top: 5%;
+        text-align: left;
+    }
+
+    .button__icon {
+        z-index: 1;
+    }
+
+    .bx {
+        padding-left: 5%;
+        font-size: larger;
+    }
 }
