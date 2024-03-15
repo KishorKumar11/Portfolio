@@ -1,4 +1,12 @@
 import React, { useState } from 'react';
+import NUSLogo from '../../images/NUSLogo.png';
+import TUMLogo from '../../images/TUMLogo.png';
+import UMLogo from '../../images/UMLogo.png';
+import GIISLogo from '../../images/GIISLogo.jpeg';
+import AveliosLogo from '../../images/AveliosLogo.jpeg';
+import LTALogo from '../../images/LTALogo.jpg';
+import PragmaLogo from '../../images/PragmaLogo.jpeg';
+import TranquilioLogo from '../../images/TranquilioLogo.jpeg';
 import './Work.css';
 
 const Work = ({ setActiveNav }) => {
@@ -37,10 +45,12 @@ const Work = ({ setActiveNav }) => {
                 <div className="qualification__sections">
                     <div className={toggleState === 1 ? 'qualification__content qualification__content-active' : 'qualification__content'}>
                         <div className="qualification__data">
-                            <div></div>
+                        <div></div>
 
                             <div>
-                                <span className="qualification__rounder"></span>
+                                <span className="qualification__rounder">
+                                    <img src={NUSLogo} alt="NUS Logo" className="qualification__logo"/>
+                                </span>
                                 <span className="qualification__line"></span>
                             </div>
                             <div>
@@ -62,16 +72,22 @@ const Work = ({ setActiveNav }) => {
                             </div>
 
                             <div>
-                                <span className="qualification__rounder"></span>
+                                <span className="qualification__rounder">
+                                    <img src={TUMLogo} alt="NUS Logo" className="qualification__logo"/>
+                                </span>
                                 <span className="qualification__line"></span>
                             </div>
+
+                            <div></div>
                         </div>
 
                         <div className="qualification__data">
                             <div></div>
 
                             <div>
-                                <span className="qualification__rounder"></span>
+                                <span className="qualification__rounder">
+                                    <img src={UMLogo} alt="NUS Logo" className="qualification__logo"/>
+                                </span>
                                 <span className="qualification__line"></span>
                             </div>
                             <div>
@@ -93,7 +109,9 @@ const Work = ({ setActiveNav }) => {
                             </div>
 
                             <div>
-                                <span className="qualification__rounder"></span>
+                                <span className="qualification__rounder">
+                                    <img src={GIISLogo} alt="NUS Logo" className="qualification__logo"/>
+                                </span>
                                 <span className="qualification__line"></span>
                             </div>
 
@@ -112,7 +130,9 @@ const Work = ({ setActiveNav }) => {
                             </div>
 
                             <div>
-                                <span className="qualification__rounder"></span>
+                                <span className="qualification__rounder">
+                                    <img src={AveliosLogo} alt="NUS Logo" className="qualification__logo"/>
+                                </span>
                                 <span className="qualification__line"></span>
                             </div>
                         </div>
@@ -121,7 +141,9 @@ const Work = ({ setActiveNav }) => {
                             <div></div>
 
                             <div>
-                                <span className="qualification__rounder"></span>
+                                <span className="qualification__rounder">
+                                    <img src={LTALogo} alt="NUS Logo" className="qualification__logo"/>
+                                </span>
                                 <span className="qualification__line"></span>
                             </div>
                             <div>
@@ -144,7 +166,9 @@ const Work = ({ setActiveNav }) => {
                             </div>
 
                             <div>
-                                <span className="qualification__rounder"></span>
+                                <span className="qualification__rounder">
+                                    <img src={TranquilioLogo} alt="NUS Logo" className="qualification__logo"/>
+                                </span>
                                 <span className="qualification__line"></span>
                             </div>
                         </div>
@@ -153,7 +177,9 @@ const Work = ({ setActiveNav }) => {
                             <div></div>
 
                             <div>
-                                <span className="qualification__rounder"></span>
+                                <span className="qualification__rounder">
+                                    <img src={PragmaLogo} alt="NUS Logo" className="qualification__logo"/>
+                                </span>
                                 <span className="qualification__line"></span>
                             </div>
                             <div>
