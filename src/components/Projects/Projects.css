@@ -1,6 +1,6 @@
 .projects {
-    margin-bottom: 120px;
-    margin-top: 10%;
+    padding-top: var(--header-height); /* Use the variable for header height */
+    scroll-margin-top: calc(var(--header-height)); /* Add a little extra space for the smooth scroll to account for the fixed navbar */
 }
 
 .portfolio-content {

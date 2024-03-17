@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import NUSLogo from '../../images/NUSLogo.png';
 import TUMLogo from '../../images/TUMLogo.png';
 import UMLogo from '../../images/UMLogo.png';

@@ -75,6 +75,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height); /* Use the variable for header height */
 }
 
 body,
@@ -118,8 +119,13 @@ img {
 
 /*=============== REUSABLE CSS CLASSES ===============*/
 .section {
-    padding: 6rem 0 2rem;
+    min-height: 100vh;
+    padding: 6rem 0 2rem; /* You might want to adjust the padding as well */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* This centers the content vertically */
 }
+
 
 .section__title {
     font-size: var(--h1-font-size);
