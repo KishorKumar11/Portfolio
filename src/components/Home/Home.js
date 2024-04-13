@@ -36,7 +36,7 @@ const Home = ({ setActiveNav }) => {
                     </Fade>
 
                     <a href="https://drive.google.com/file/d/1RwMQJsn8RgLPBPAMP7xe8x3yuNbHnR1X/view?usp=sharing" download className="cv" alt="">
-                        DOWNLOAD RESUME <i class="bx bxs-download"></i>
+                        DOWNLOAD RESUME 
                     </a>
 
                     <a href="https://www.linkedin.com/in/kishorkumar11/">

@@ -23,6 +23,7 @@
 
 .cv {
     padding: 6px 15px;
+    justify-content: center;
     border-radius: 5px;
     color: #2b1055;
     background: #fff;
