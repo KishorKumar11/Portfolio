@@ -30,6 +30,7 @@
     background: #fff;
     display: flex;
     width: auto;
+    z-index: 10000;
     box-shadow: 0 12px 12px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -135,11 +136,16 @@
 
     .icon1,
     .icon2 {
-        width: 6%;
+        width: 10%;
+    }
+
+    .icon2 {
+        padding-left: 3%;
     }
 
     .images {
         opacity: 0;
+        z-index: -2;
     }
 
     .back-video {
