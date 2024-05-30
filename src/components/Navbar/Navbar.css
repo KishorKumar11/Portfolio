@@ -61,7 +61,6 @@ header ul li a:hover {
 
 .menu-icon {
     display: none;
-    cursor: pointer; /* add this to show the icon is clickable */
     padding-right: 20px; /* add some padding to place the icon better */
     font-size: 2em; /* make the icon bigger */
 }
@@ -69,43 +68,63 @@ header ul li a:hover {
 /* Small devices (phones, less than 768px) */
 @media only screen and (max-width: 768px) {
     .header {
-        flex-direction: column;
-        align-items: flex-start; /* align items to the start */
-        padding: 10px; /* add some padding */
+        justify-content: center; /* Adjust content spacing */
+        padding-top: 20px;
     }
 
     .logo {
-        padding: 0; /* remove padding */
-        font-size: 1.2em;
+        width: 100%;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8em;
+        padding: 0;
+        margin-left: 50px;
     }
 
     .header ul {
         flex-direction: column;
         width: 100%; /* take the full width */
+        width: auto;
     }
 
     .header ul li {
-        margin: 10px 0; /* add some margin to the top and bottom */
+        margin: 5px 0; /* add some margin to the top and bottom */
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
     }
 
     .header ul li a {
         font-size: 1em; /* make the font size bigger */
-        padding: 10px; /* add some padding */
+        width: 100%;
     }
 
     .menu-icon {
+        cursor: pointer;
+        margin-left: 2%;
+        margin-top: -10%;
+        font-size: 2em; /* make the icon bigger */
         display: block;
     }
 
     .nav-menu {
         display: none;
-        transition: transform 0.3s ease-in-out; /* add a transition */
-        transform: translateY(-100%); /* initially, hide the menu above */
+        opacity: 0;
+        background-color: #333; /* Dark background for the menu */
     }
-
+    
     .nav-menu.active {
-        display: flex; /* display as flex to align the items in a column */
-        transform: translateY(0); /* when active, show the menu */
+        opacity: 100;
+        width: auto;
+        display: flex;
+        flex-direction: column; 
+        text-align: center;
+        align-items: center;
+        transform: translateY(0);
+        padding: 0;
+        transition: transform 0.3s ease-in-out;
     }
 }
 

@@ -37,6 +37,9 @@ const Navbar = ({ activeNav }) => {
         setShowNav(false); // Close mobile menu if open
     };
 
+    const toggleNav = () => {
+        setShowNav(!showNav);
+    };
 
     return (
         <header className="header">
@@ -44,7 +47,7 @@ const Navbar = ({ activeNav }) => {
                 kishor
             </a>
 
-            <div className="menu-icon" onClick={() => setShowNav(!showNav)}>
+            <div className="menu-icon" onClick={toggleNav}>
                 {showNav ? <FaTimes /> : <FaBars />}
             </div>
 

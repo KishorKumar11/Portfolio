@@ -1,5 +1,5 @@
 import React from 'react';
-import me from '../../images/me.png';
+import me from '../../images/me2.png';
 import loginVid from '../../images/mainVid.mp4';
 import LinkedInIcon from '../../images/linkedin.png';
 import GithubIcon from '../../images/github.png';
@@ -8,15 +8,6 @@ import { Fade } from 'react-reveal';
 import './Home.css';
 
 const Home = ({ setActiveNav }) => {
-    // const section = document.querySelector('section');
-    // window.addEventListener('scroll', () => {
-
-    //   const sectionTop = section.offsetTop;
-    //   if(window.scrollY >= sectionTop) {
-    //     setActiveNav = "#home";
-    //   }
-    // })
-
     return (
         <div>
             <section class="home" id="home">

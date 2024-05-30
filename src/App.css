@@ -1,5 +1,6 @@
 .App {
     z-index: -2;
+    background-color: rgb(0, 0, 0);
 }
 
 /*=============== GOOGLE FONTS ===============*/
@@ -129,7 +130,7 @@ img {
 
 .section__title {
     font-size: var(--h1-font-size);
-    color: var(--title-color);
+    color: white;
 }
 
 .section__subtitle {

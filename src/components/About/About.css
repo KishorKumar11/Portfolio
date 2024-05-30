@@ -3,12 +3,17 @@
     text-align: center;
     align-items: center;
     font-weight: 500;
+    background-color: black;
 }
 
 .about-text {
-    color: aliceblue;
+    color: white;
     letter-spacing: 1px;
     font-size: large;
+}
+
+.about__description {
+    color: white;
 }
 
 .about__description b {
@@ -16,7 +21,7 @@
 }
 
 .about-text p {
-    color: aliceblue;
+    color: white;
     justify-content: center;
     padding-left: 10%;
     padding-right: 10%;
@@ -48,7 +53,12 @@
     transform: rotate3d(1, 1, 1, 10deg);
 }
 
+.about__title {
+    color: white;
+}
+
 .about__box {
+    color: white;
     transition: 0.3s;
 }
 
@@ -113,7 +123,7 @@
     }
 
     .about-text {
-        color: aliceblue;
+        color: rgb(255, 255, 255);
         letter-spacing: 1px;
         font-size: large;
     }
@@ -123,7 +133,7 @@
     }
 
     .about-text p {
-        color: aliceblue;
+        color: rgb(255, 255, 255);
         justify-content: center;
         padding-left: 10%;
         padding-right: 10%;

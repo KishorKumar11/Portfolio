@@ -10,15 +10,6 @@ import MIOPic from '../../images/MIOPic.jpg';
 import DesignPic from '../../images/DesignPic.jpg';
 
 const Projects = ({ setActiveNav }) => {
-    // const section = document.querySelector('section');
-    // window.addEventListener('scroll', () => {
-
-    //   const sectionTop = section.offsetTop;
-    //   if(window.scrollY >= sectionTop) {
-    //     setActiveNav = "#projects";
-    //   }
-    // })
-
     return (
         <section className="projects" id="projects">
             <h2 className="section__title">Projects</h2>
@@ -75,7 +66,7 @@ const Projects = ({ setActiveNav }) => {
                 </div>
 
                 <div className="col">
-                    <a href="https://docs.google.com/document/d/1beOyvtbNEGYNWUt3eZeQQ41H9DH2tvUeTfTCP20eYVg/edit#heading=h.5dp1ylp2cjtt" alt="Loading...">
+                    <a href="https://www.youtube.com/watch?v=172zasHyvFQ" alt="Loading...">
                         {' '}
                         <img src={KingsGambitPic} alt="Loading..." />{' '}
                     </a>
@@ -97,22 +88,6 @@ const Projects = ({ setActiveNav }) => {
                     </h3>
 
                     <h5>A CLI application that offers workout routine and a todo list for users to modify and follow</h5>
-                </div>
-
-                <div class="col">
-                    <a href="https://www.figma.com/file/lGEQ2NaUq4o9Um7a1xbISz/CS3240-Group-13-Mall-In-One-team-library?node-id=0%3A1" alt="Loading...">
-                        {' '}
-                        <img src={MIOPic} alt="Coming soon" />{' '}
-                    </a>
-
-                    <h3>
-                        Mall in One <h4></h4>{' '}
-                    </h3>
-
-                    <h5>
-                        An UI/UX project-based web application built using Figma and Balsamiq that allows shoppers to plan ahead before visiting shopping malls by being able to access information such
-                        as item availability and address
-                    </h5>
                 </div>
 
                 <div class="col">

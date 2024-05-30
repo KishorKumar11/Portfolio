@@ -16,15 +16,6 @@ const Work = ({ setActiveNav }) => {
         setToggleState(index);
     };
 
-    // const section = document.querySelector('section');
-    // window.addEventListener('scroll', () => {
-
-    //   const sectionTop = section.offsetTop;
-    //   if(window.scrollY >= sectionTop) {
-    //     setActiveNav = "#work";
-    //   }
-    // })
-
     return (
         <section className="work" id="work">
             <h2 className="section__title">Qualifications</h2>
@@ -57,7 +48,7 @@ const Work = ({ setActiveNav }) => {
                                 <h3 className="qualification__title">Undergraduate</h3>
                                 <span className="qualification__subtitle">National University of Singapore</span>
                                 <span className="qualification__calendar">
-                                    <i className="uil uil-calendar-alt"></i> Aug 2020 - Present
+                                    <i className="uil uil-calendar-alt"></i> Aug 2020 - May 2024
                                 </span>
                             </div>
                         </div>
