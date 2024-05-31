@@ -4,10 +4,11 @@ import AlexPic from '../../images/AlexPic.png';
 import mBotPic from '../../images/mBotPic.png';
 import FPGAPic from '../../images/FPGAPic.png';
 import KuramaPic from '../../images/KuramaPic.png';
-import KingsGambitPic from '../../images/KingsGambitPic.jpg';
+import KingsGambitPic from '../../images/KingGambitPic.png';
 import GetJackDPic from '../../images/GetJackDPic.png';
-import MIOPic from '../../images/MIOPic.jpg';
 import DesignPic from '../../images/DesignPic.jpg';
+import VRPic from '../../images/VRPic.png';
+import ARLaserTagPic from '../../images/ARLaserTagPic.png';
 
 const Projects = ({ setActiveNav }) => {
     return (
@@ -15,54 +16,31 @@ const Projects = ({ setActiveNav }) => {
             <h2 className="section__title">Projects</h2>
 
             <div className="portfolio-content">
-                <div className="col">
-                    <a href="https://docs.google.com/document/d/1R1OqPS06sV9wHk_WkpTq40PquCBtBhXgDHLtROBaKuY/view" alt="Loading...">
-                        <img src={mBotPic} alt="" />
-                    </a>
 
-                    <h3>
-                        mBot<h4></h4>
-                    </h3>
-
-                    <h5>A maze detection robot relying on color detection, IR sensors and ultrasound</h5>
-                </div>
-
-                <div className="col">
-                    <a href="https://github.com/woodenclock/CG1112-B03-4A" alt="Loading...">
-                        <img src={AlexPic} alt="" />
-                    </a>
-
-                    <h3>
-                        Alex <h4></h4>{' '}
-                    </h3>
-
-                    <h5>A search and rescue robot that was built using LiDAR, arduino, raspberry pi 3, color sensor, buzzer, and wheel encoders</h5>
-                </div>
-
-                <div className="col">
-                    <a href="https://docs.google.com/document/d/1BSP30bwGhRQ4jp_2Q4IT_XzKoD5q-iRPJ9UoeIqqqRM/edit" alt="Loading...">
+                <div class="col">
+                    <a href="https://github.com/KishorKumar11/Murphy-s-Misadventure" alt="Loading...">
                         {' '}
-                        <img src={FPGAPic} alt="" />{' '}
+                        <img src={VRPic} alt="Loading..." />{' '}
                     </a>
 
                     <h3>
-                        FPGA Design <h4></h4>{' '}
+                        Murphy's Misadventures <h4></h4>{' '}
                     </h3>
 
-                    <h5>Used an FPGA to create an entertaining game coded in verilog using Vivado</h5>
+                    <h5>An educational VR game that focuses on home safety awareness</h5>
                 </div>
 
-                <div className="col">
-                    <a href="https://github.com/KishorKumar11/RTOS" alt="">
+                <div class="col">
+                    <a href="https://docs.google.com/document/d/1qpUl3MwWoYBzuiRY5YaiYElIDhKeKfOO/edit?rtpof=true&sd=true" alt="Loading...">
                         {' '}
-                        <img src={KuramaPic} alt="Loading..." />{' '}
+                        <img src={ARLaserTagPic} alt="Loading..." />{' '}
                     </a>
 
                     <h3>
-                        RTOS <h4></h4>{' '}
+                        AR Laser Tag <h4></h4>{' '}
                     </h3>
 
-                    <h5>A remote controlled robot car</h5>
+                    <h5>A Capstone project that turns real life actions into AR gameplay</h5>
                 </div>
 
                 <div className="col">
@@ -78,8 +56,58 @@ const Projects = ({ setActiveNav }) => {
                     <h5>A 3D chess trainer made using Unreal Engine 4</h5>
                 </div>
 
+                <div className="col">
+                    <a href="https://docs.google.com/document/d/1R1OqPS06sV9wHk_WkpTq40PquCBtBhXgDHLtROBaKuY/view" alt="Loading...">
+                        <img src={mBotPic} alt="Loading..." />
+                    </a>
+
+                    <h3>
+                        mBot<h4></h4>
+                    </h3>
+
+                    <h5>A maze detection robot relying on color detection, IR sensors and ultrasound</h5>
+                </div>
+
+                <div className="col">
+                    <a href="https://github.com/woodenclock/CG1112-B03-4A" alt="Loading...">
+                        <img src={AlexPic} alt="Loading..." />
+                    </a>
+
+                    <h3>
+                        Alex <h4></h4>{' '}
+                    </h3>
+
+                    <h5>A search and rescue robot that was built using LiDAR, arduino, raspberry pi 3, color sensor, buzzer, and wheel encoders</h5>
+                </div>
+
+                <div className="col">
+                    <a href="https://github.com/KishorKumar11/RTOS" alt="Loading...">
+                        {' '}
+                        <img src={KuramaPic} alt="Loading..." />{' '}
+                    </a>
+
+                    <h3>
+                        RTOS <h4></h4>{' '}
+                    </h3>
+
+                    <h5>A remote controlled robot car</h5>
+                </div>
+
+                <div className="col">
+                    <a href="https://docs.google.com/document/d/1BSP30bwGhRQ4jp_2Q4IT_XzKoD5q-iRPJ9UoeIqqqRM/edit" alt="Loading...">
+                        {' '}
+                        <img src={FPGAPic} alt="Loading..." />{' '}
+                    </a>
+
+                    <h3>
+                        FPGA Design <h4></h4>{' '}
+                    </h3>
+
+                    <h5>Used an FPGA to create an entertaining game coded in verilog using Vivado</h5>
+                </div>
+
                 <div class="col">
-                    <a href="" alt="">
+                    <a href="https://github.com/KishorKumar11/tp/tree/master/docs" alt="Loading...">
                         <img src={GetJackDPic} alt="Loading..." />{' '}
                     </a>
 
@@ -93,7 +121,7 @@ const Projects = ({ setActiveNav }) => {
                 <div class="col">
                     <a href="https://docs.google.com/presentation/d/15jbXckEWw3xQA_B75ksqmbDKp5004nnsGsfRyTYxd2c/edit?usp=share_link" alt="Loading...">
                         {' '}
-                        <img src={DesignPic} alt="Coming soon" />{' '}
+                        <img src={DesignPic} alt="Loading..." />{' '}
                     </a>
 
                     <h3>
