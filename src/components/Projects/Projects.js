@@ -9,128 +9,139 @@ import GetJackDPic from '../../images/GetJackDPic.png';
 import DesignPic from '../../images/DesignPic.jpg';
 import VRPic from '../../images/VRPic.png';
 import ARLaserTagPic from '../../images/ARLaserTagPic.png';
+import { motion } from 'framer-motion';
+import { Tilt } from 'react-tilt';
 
 const Projects = ({ setActiveNav }) => {
+    const projectData = [
+        {
+            title: "Murphy's Misadventures",
+            description: 'An educational VR game that focuses on home safety awareness',
+            image: VRPic,
+            link: 'https://github.com/KishorKumar11/Murphy-s-Misadventure',
+            tags: ['VR', 'Unity', 'Education', 'Game Development']
+        },
+        {
+            title: 'AR Laser Tag',
+            description: 'A Capstone project that turns real life actions into AR gameplay',
+            image: ARLaserTagPic,
+            link: 'https://docs.google.com/document/d/1qpUl3MwWoYBzuiRY5YaiYElIDhKeKfOO/edit?rtpof=true&sd=true',
+            tags: ['AR', 'Mobile Development', 'Gaming', 'Capstone']
+        },
+        {
+            title: "King's Gambit",
+            description: 'A 3D chess trainer made using Unreal Engine 4',
+            image: KingsGambitPic,
+            link: 'https://www.youtube.com/watch?v=172zasHyvFQ',
+            tags: ['Unreal Engine', '3D', 'Gaming', 'AI']
+        },
+        {
+            title: 'mBot',
+            description: 'A maze detection robot relying on color detection, IR sensors and ultrasound',
+            image: mBotPic,
+            link: 'https://docs.google.com/document/d/1R1OqPS06sV9wHk_WkpTq40PquCBtBhXgDHLtROBaKuY/view',
+            tags: ['Robotics', 'Arduino', 'Sensors', 'AI']
+        },
+        {
+            title: 'Alex',
+            description: 'A search and rescue robot that was built using LiDAR, arduino, raspberry pi 3, color sensor, buzzer, and wheel encoders',
+            image: AlexPic,
+            link: 'https://github.com/woodenclock/CG1112-B03-4A',
+            tags: ['Robotics', 'Raspberry Pi', 'LiDAR', 'Rescue']
+        },
+        {
+            title: 'RTOS',
+            description: 'A remote controlled robot car',
+            image: KuramaPic,
+            link: 'https://github.com/KishorKumar11/RTOS',
+            tags: ['RTOS', 'Embedded Systems', 'Remote Control']
+        },
+        {
+            title: 'FPGA Design',
+            description: 'Used an FPGA to create an entertaining game coded in verilog using Vivado',
+            image: FPGAPic,
+            link: 'https://docs.google.com/document/d/1BSP30bwGhRQ4jp_2Q4IT_XzKoD5q-iRPJ9UoeIqqqRM/edit',
+            tags: ['FPGA', 'Verilog', 'Hardware', 'Gaming']
+        },
+        {
+            title: "Get Jack'D",
+            description: 'A CLI application that offers workout routine and a todo list for users to modify and follow',
+            image: GetJackDPic,
+            link: 'https://github.com/KishorKumar11/tp/tree/master/docs',
+            tags: ['CLI', 'Java', 'Fitness', 'Productivity']
+        },
+        {
+            title: 'Tracken',
+            description: 'A Social Media Tracker App design done on Figma',
+            image: DesignPic,
+            link: 'https://docs.google.com/presentation/d/15jbXckEWw3xQA_B75ksqmbDKp5004nnsGsfRyTYxd2c/edit?usp=share_link',
+            tags: ['UI/UX', 'Figma', 'Mobile Design', 'Social Media']
+        }
+    ];
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { y: 50, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1,
+            transition: { duration: 0.6, ease: 'easeOut' }
+        }
+    };
     return (
-        <section className="projects" id="projects">
-            <h2 className="section__title">Projects</h2>
+        <section className="projects section" id="projects">
+            <motion.h2 className="section__title" initial={{ opacity: 0, y: -50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
+                Projects
+            </motion.h2>
 
-            <div className="portfolio-content">
+            <motion.div className="portfolio-content container" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}>
+                {projectData.map((project, index) => (
+                    <motion.div
+                        key={index}
+                        className="project-card"
+                        variants={itemVariants}
+                        whileHover={{
+                            y: -10,
+                            transition: { duration: 0.3 }
+                        }}
+                    >
+                        <Tilt options={{ max: 15, scale: 1.05, speed: 300 }}>
+                            <div className="project-card-inner">
+                                <div className="project-image-container">
+                                    <img src={project.image} alt={project.title} className="project-image" />
+                                    <div className="project-overlay">
+                                        <motion.a href={project.link} className="project-link" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }} target="_blank" rel="noopener noreferrer">
+                                            View Project
+                                        </motion.a>
+                                    </div>
+                                </div>
 
-                <div class="col">
-                    <a href="https://github.com/KishorKumar11/Murphy-s-Misadventure" alt="Loading...">
-                        {' '}
-                        <img src={VRPic} alt="Loading..." />{' '}
-                    </a>
+                                <div className="project-content">
+                                    <h3 className="project-title">{project.title}</h3>
+                                    <p className="project-description">{project.description}</p>
 
-                    <h3>
-                        Murphy's Misadventures <h4></h4>{' '}
-                    </h3>
-
-                    <h5>An educational VR game that focuses on home safety awareness</h5>
-                </div>
-
-                <div class="col">
-                    <a href="https://docs.google.com/document/d/1qpUl3MwWoYBzuiRY5YaiYElIDhKeKfOO/edit?rtpof=true&sd=true" alt="Loading...">
-                        {' '}
-                        <img src={ARLaserTagPic} alt="Loading..." />{' '}
-                    </a>
-
-                    <h3>
-                        AR Laser Tag <h4></h4>{' '}
-                    </h3>
-
-                    <h5>A Capstone project that turns real life actions into AR gameplay</h5>
-                </div>
-
-                <div className="col">
-                    <a href="https://www.youtube.com/watch?v=172zasHyvFQ" alt="Loading...">
-                        {' '}
-                        <img src={KingsGambitPic} alt="Loading..." />{' '}
-                    </a>
-
-                    <h3>
-                        King's Gambit <h4></h4>{' '}
-                    </h3>
-
-                    <h5>A 3D chess trainer made using Unreal Engine 4</h5>
-                </div>
-
-                <div className="col">
-                    <a href="https://docs.google.com/document/d/1R1OqPS06sV9wHk_WkpTq40PquCBtBhXgDHLtROBaKuY/view" alt="Loading...">
-                        <img src={mBotPic} alt="Loading..." />
-                    </a>
-
-                    <h3>
-                        mBot<h4></h4>
-                    </h3>
-
-                    <h5>A maze detection robot relying on color detection, IR sensors and ultrasound</h5>
-                </div>
-
-                <div className="col">
-                    <a href="https://github.com/woodenclock/CG1112-B03-4A" alt="Loading...">
-                        <img src={AlexPic} alt="Loading..." />
-                    </a>
-
-                    <h3>
-                        Alex <h4></h4>{' '}
-                    </h3>
-
-                    <h5>A search and rescue robot that was built using LiDAR, arduino, raspberry pi 3, color sensor, buzzer, and wheel encoders</h5>
-                </div>
-
-                <div className="col">
-                    <a href="https://github.com/KishorKumar11/RTOS" alt="Loading...">
-                        {' '}
-                        <img src={KuramaPic} alt="Loading..." />{' '}
-                    </a>
-
-                    <h3>
-                        RTOS <h4></h4>{' '}
-                    </h3>
-
-                    <h5>A remote controlled robot car</h5>
-                </div>
-
-                <div className="col">
-                    <a href="https://docs.google.com/document/d/1BSP30bwGhRQ4jp_2Q4IT_XzKoD5q-iRPJ9UoeIqqqRM/edit" alt="Loading...">
-                        {' '}
-                        <img src={FPGAPic} alt="Loading..." />{' '}
-                    </a>
-
-                    <h3>
-                        FPGA Design <h4></h4>{' '}
-                    </h3>
-
-                    <h5>Used an FPGA to create an entertaining game coded in verilog using Vivado</h5>
-                </div>
-
-                <div class="col">
-                    <a href="https://github.com/KishorKumar11/tp/tree/master/docs" alt="Loading...">
-                        <img src={GetJackDPic} alt="Loading..." />{' '}
-                    </a>
-
-                    <h3>
-                        Get Jack'D <h4></h4>{' '}
-                    </h3>
-
-                    <h5>A CLI application that offers workout routine and a todo list for users to modify and follow</h5>
-                </div>
-
-                <div class="col">
-                    <a href="https://docs.google.com/presentation/d/15jbXckEWw3xQA_B75ksqmbDKp5004nnsGsfRyTYxd2c/edit?usp=share_link" alt="Loading...">
-                        {' '}
-                        <img src={DesignPic} alt="Loading..." />{' '}
-                    </a>
-
-                    <h3>
-                        Tracken <h4></h4>{' '}
-                    </h3>
-
-                    <h5>A Social Media Tracker App design done on Figma</h5>
-                </div>
-            </div>
+                                    <div className="project-tags">
+                                        {project.tags.map((tag, tagIndex) => (
+                                            <motion.span key={tagIndex} className="project-tag" whileHover={{ scale: 1.1 }}>
+                                                {tag}
+                                            </motion.span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </Tilt>
+                    </motion.div>
+                ))}
+            </motion.div>
         </section>
     );
 };

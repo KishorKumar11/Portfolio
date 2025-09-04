@@ -1,80 +1,147 @@
 import React from 'react';
 import './Skills.css';
-import Cplusplus from '../../images/c-.png';
-import js from '../../images/js.png';
-import git from '../../images/git.png';
-import figma from '../../images/figma.png';
-import react from '../../images/react.png';
-import tailwindcss from '../../images/tailwindcss.png';
-import java from '../../images/java.png';
-import html5 from '../../images/html-5.png';
-import css3 from '../../images/css-3.png';
-import nodejs from '../../images/nodejs.png';
-import Carousel from 'react-elastic-carousel';
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 
 const Skills = ({ setActiveNav }) => {
-    // const section = document.querySelector('section');
-    // window.addEventListener('scroll', () => {
+    const [ref, inView] = useInView({
+        triggerOnce: true,
+        threshold: 0.1
+    });
 
-    //   const sectionTop = section.offsetTop;
-    //   if(window.scrollY >= sectionTop) {
-    //     setActiveNav = "#skills";
-    //   }
-    // })
+    const skills = [
+        { name: 'React', icon: '⚛️', category: 'Frontend' },
+        { name: 'JavaScript', icon: '🟨', category: 'Programming' },
+        { name: 'TypeScript', icon: '🔷', category: 'Programming' },
+        { name: 'Python', icon: '🐍', category: 'Programming' },
+        { name: 'Java', icon: '☕', category: 'Programming' },
+        { name: 'C++', icon: '💻', category: 'Programming' },
+        { name: 'Node.js', icon: '🟢', category: 'Backend' },
+        { name: 'SpringBoot', icon: '🍃', category: 'Backend' },
+        { name: 'SQL', icon: '💾', category: 'Database' },
+        { name: 'MongoDB', icon: '🍃', category: 'Database' },
+        { name: 'AWS', icon: '☁️', category: 'Cloud' },
+        { name: 'GCP', icon: '🌐', category: 'Cloud' },
+        { name: 'Git', icon: '📚', category: 'Tools' },
+        { name: 'CSS', icon: '🎨', category: 'Frontend' },
+        { name: 'HTML', icon: '🌐', category: 'Frontend' },
+        { name: 'Tailwind CSS', icon: '💨', category: 'Frontend' },
+        { name: 'Unity', icon: '🎮', category: 'Game Dev' },
+        { name: 'Unreal Engine', icon: '🎯', category: 'Game Dev' },
+        { name: 'Figma', icon: '🎨', category: 'Design' }
+    ];
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.2
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { y: 50, opacity: 0, scale: 0.8 },
+        visible: {
+            y: 0,
+            opacity: 1,
+            scale: 1,
+            transition: {
+                type: 'spring',
+                stiffness: 100,
+                damping: 12
+            }
+        }
+    };
 
     return (
-        <section className="skills" id="skills">
-            <h2 className="section__title">Skills</h2>
+        <section className="skills section" id="skills" ref={ref}>
+            <motion.h2 className="section__title" initial={{ opacity: 0, y: -50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
+                Skills & Technologies
+            </motion.h2>
 
-            <div className="skills-box">
-                <div className="carousel-wrapper">
-                    <Carousel>
-                        <div className="skills-content">
-                            <div>
-                                <img src={Cplusplus} width={60} alt="" />
-                                <br></br>C++
+            <motion.div className="skills-container container" variants={containerVariants} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
+                {skills.map((skill, index) => (
+                    <motion.div
+                        key={skill.name}
+                        className="skill-item"
+                        variants={itemVariants}
+                        whileHover={{
+                            scale: 1.05,
+                            y: -10,
+                            transition: { duration: 0.3 }
+                        }}
+                    >
+                        <div className="skill-card">
+                            <div className="skill-icon-container">
+                                <motion.div
+                                    className="skill-icon"
+                                    whileHover={{
+                                        rotate: [0, -10, 10, 0],
+                                        scale: 1.1
+                                    }}
+                                    transition={{ duration: 0.5 }}
+                                >
+                                    {skill.icon}
+                                </motion.div>
                             </div>
-                            <div>
-                                <img src={js} width={60} alt="" />
-                                <br></br>Javascript
-                            </div>
-                            <div>
-                                <img src={figma} width={60} alt="" />
-                                <br></br>Figma
-                            </div>
-                            <div>
-                                <img src={react} width={60} alt="" />
-                                <br></br>React
-                            </div>
-                            <div>
-                                <img src={java} width={60} alt="" />
-                                <br></br>Java
-                            </div>
+
+                            <h3 className="skill-name">{skill.name}</h3>
+                            <span className="skill-category">{skill.category}</span>
                         </div>
-                        <div className="skills-content">
-                            <div>
-                                <img src={html5} width={70} alt="" />
-                                <br></br>HTML5
-                            </div>
-                            <div>
-                                <img src={tailwindcss} width={70} alt="" />
-                                <br></br>Tailwindcss
-                            </div>
-                            <div>
-                                <img src={nodejs} width={70} alt="" />
-                                <br></br>Nodejs
-                            </div>
-                            <div>
-                                <img src={git} width={70} alt="" />
-                                <br></br>Git
-                            </div>
-                            <div>
-                                <img src={css3} width={70} alt="" />
-                                <br></br>CSS3
-                            </div>
+
+                        {/* Floating particles effect */}
+                        <div className="skill-particles">
+                            {[...Array(5)].map((_, i) => (
+                                <motion.div
+                                    key={i}
+                                    className="particle"
+                                    animate={{
+                                        y: [0, -20, 0],
+                                        opacity: [0.7, 0.3, 0.7],
+                                        scale: [1, 1.2, 1]
+                                    }}
+                                    transition={{
+                                        duration: 2 + i * 0.5,
+                                        repeat: Infinity,
+                                        delay: i * 0.3,
+                                        ease: 'easeInOut'
+                                    }}
+                                />
+                            ))}
                         </div>
-                    </Carousel>
-                </div>
+                    </motion.div>
+                ))}
+            </motion.div>
+
+            {/* Background decorative elements */}
+            <div className="skills-bg-decoration">
+                <motion.div
+                    className="floating-shape shape-1"
+                    animate={{
+                        y: [0, -20, 0],
+                        rotate: [0, 180, 360]
+                    }}
+                    transition={{
+                        duration: 10,
+                        repeat: Infinity,
+                        ease: 'linear'
+                    }}
+                />
+                <motion.div
+                    className="floating-shape shape-2"
+                    animate={{
+                        y: [0, 20, 0],
+                        rotate: [0, -180, -360]
+                    }}
+                    transition={{
+                        duration: 12,
+                        repeat: Infinity,
+                        ease: 'linear'
+                    }}
+                />
             </div>
         </section>
     );

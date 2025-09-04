@@ -1,40 +1,73 @@
 import React, { useState, useEffect } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
 import './Navbar.css';
 
 const Navbar = ({ activeNav }) => {
+    const [showNav, setShowNav] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+
     useEffect(() => {
         const scrollHandler = function () {
             const header = document.querySelector('.header');
+            const isScrolled = window.scrollY >= 80;
 
-            if (this.scrollY >= 80) header.classList.add('scroll-header');
-            else header.classList.remove('scroll-header');
+            if (isScrolled) {
+                header?.classList.add('scroll-header');
+                setScrolled(true);
+            } else {
+                header?.classList.remove('scroll-header');
+                setScrolled(false);
+            }
         };
 
         window.addEventListener('scroll', scrollHandler);
-        // Cleanup on unmount
         return () => window.removeEventListener('scroll', scrollHandler);
     }, []);
 
-    const [activeNav1, setActiveNav1] = useState('home');
-    const [showNav, setShowNav] = useState(false);
+    const navItems = [
+        { href: '#home', label: 'Home' },
+        { href: '#about', label: 'About' },
+        { href: '#work', label: 'Qualifications' },
+        { href: '#skills', label: 'Skills' },
+        { href: '#projects', label: 'Projects' },
+        { href: '#contact', label: 'Contact' }
+    ];
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { y: -20, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1,
+            transition: { duration: 0.3 }
+        }
+    };
 
     const handleClick = (e, anchorId) => {
-        e.preventDefault(); // Prevent default anchor click behavior
+        e.preventDefault();
         const anchorElement = document.querySelector(anchorId);
-    
+
         if (anchorElement) {
             const navbarHeight = document.querySelector('.header').offsetHeight;
             const scrollTarget = anchorElement.offsetTop - navbarHeight;
-    
+
             window.scrollTo({
                 top: scrollTarget,
-                behavior: 'smooth' // Smooth scroll
+                behavior: 'smooth'
             });
         }
-    
-        setActiveNav1(anchorId);
-        setShowNav(false); // Close mobile menu if open
+
+        setShowNav(false);
     };
 
     const toggleNav = () => {
@@ -42,48 +75,55 @@ const Navbar = ({ activeNav }) => {
     };
 
     return (
-        <header className="header">
-            <a href="#home" className="logo">
+        <motion.header className={`header ${scrolled ? 'scrolled' : ''}`} initial={{ y: -100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6, ease: 'easeOut' }}>
+            <motion.a
+                href="#home"
+                className="logo"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                animate={{
+                    color: scrolled ? '#5389c7' : '#fff'
+                }}
+            >
+                <span className="logo-bracket">&lt;</span>
                 kishor
-            </a>
+                <span className="logo-bracket">/&gt;</span>
+            </motion.a>
 
-            <div className="menu-icon" onClick={toggleNav}>
-                {showNav ? <FaTimes /> : <FaBars />}
-            </div>
+            <motion.div className="menu-icon" onClick={toggleNav} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                <AnimatePresence mode="wait">
+                    <motion.div key={showNav} initial={{ rotate: 0 }} animate={{ rotate: showNav ? 180 : 0 }} exit={{ rotate: 0 }} transition={{ duration: 0.3 }}>
+                        {showNav ? <FaTimes /> : <FaBars />}
+                    </motion.div>
+                </AnimatePresence>
+            </motion.div>
 
-            <ul className={showNav ? 'nav-menu active' : 'nav-menu'}>
-                <li>
-                    <a href="#home" onClick={() => activeNav1('#home')} className={activeNav === '#home' ? 'nav__link active-link' : 'nav__link'}>
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a href="#about" alt="" onClick={() => activeNav1('#about')} className={activeNav === '#about' ? 'nav__link active-link' : 'nav__link'}>
-                        About
-                    </a>
-                </li>
-                <li>
-                    <a href="#work" alt="" onClick={() => activeNav1('#work')} className={activeNav === '#work' ? 'nav__link active-link' : 'nav__link'}>
-                        Qualifications
-                    </a>
-                </li>
-                <li>
-                    <a href="#skills" alt="" onClick={() => activeNav1('#skills')} className={activeNav === '#skills' ? 'nav__link active-link' : 'nav__link'}>
-                        Skills
-                    </a>
-                </li>
-                <li>
-                    <a href="#projects" alt="" onClick={() => activeNav1('#projects')} className={activeNav === '#projects' ? 'nav__link active-link' : 'nav__link'}>
-                        Projects
-                    </a>
-                </li>
-                <li>
-                    <a href="#contact" alt="" onClick={() => setActiveNav1('#contact')} className={activeNav === '#contact' ? 'nav__link active-link' : 'nav__link'}>
-                        Contact
-                    </a>
-                </li>
-            </ul>
-        </header>
+            <AnimatePresence>
+                <motion.ul className={showNav ? 'nav-menu active' : 'nav-menu'} variants={containerVariants} initial="hidden" animate="visible">
+                    {navItems.map((item, index) => (
+                        <motion.li key={item.href} variants={itemVariants} whileHover={{ y: -2 }}>
+                            <motion.a
+                                href={item.href}
+                                onClick={(e) => handleClick(e, item.href)}
+                                className={activeNav === item.href ? 'nav__link active-link' : 'nav__link'}
+                                whileHover={{ scale: 1.05 }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                {item.label}
+                                <motion.span
+                                    className="nav-indicator"
+                                    layoutId="nav-indicator"
+                                    animate={{
+                                        opacity: activeNav === item.href ? 1 : 0,
+                                        scale: activeNav === item.href ? 1 : 0
+                                    }}
+                                />
+                            </motion.a>
+                        </motion.li>
+                    ))}
+                </motion.ul>
+            </AnimatePresence>
+        </motion.header>
     );
 };
 

@@ -1,197 +1,214 @@
 .projects {
-    padding-top: var(--header-height); /* Use the variable for header height */
-    scroll-margin-top: calc(var(--header-height)); /* Add a little extra space for the smooth scroll to account for the fixed navbar */
-    background-color: black;
+    padding: 100px 0;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.projects::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.02"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.02"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    pointer-events: none;
+}
+
+.section__title {
+    font-size: 3rem;
+    background: linear-gradient(45deg, #5389c7, #7597de, #ffffff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    margin-bottom: 4rem;
+    font-weight: 700;
+    position: relative;
+}
+
+.section__title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(45deg, #5389c7, #7597de);
+    border-radius: 2px;
 }
 
 .portfolio-content {
     display: grid;
-    justify-content: center;
-    text-align: center;
-    grid-template-columns: repeat(3, minmax(360px, auto));
-    grid-gap: 2rem;
-    cursor: pointer;
-    flex-wrap: wrap;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.col img {
-    width: 320px;
-    height: 420px;
-    object-fit: cover;
-    border-radius: 12px;
-    opacity: 85%;
-    transition: 0.3s;
+.project-card {
+    perspective: 1000px;
 }
 
-.col img:hover {
-    opacity: 100%;
-    transform: scale(1.1);
-    transition: 0.3s;
-    margin-bottom: 5%;
-}
-
-.layer {
-    height: 88%;
-    text-align: center;
-    border-radius: 12px;
-    transition: 0.4s;
-}
-
-.img:hover {
-    opacity: 30%;
-    z-index: -1;
-}
-
-.col .hover {
-    background-color: rgb(39, 45, 45);
-    transition: 0.4s;
-    transform: scale(1.1);
-    z-index: 1;
-}
-
-.col h3 {
-    color: white;
-}
-
-.h3 {
-    bottom: 50%;
+.project-card-inner {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    transition: all 0.3s ease;
     position: relative;
-    color: rgb(255, 255, 255);
-    text-align: center;
+    height: 100%;
 }
 
-.layer h3:hover {
-    transition: 1s;
-    z-index: 1;
+.project-card:hover .project-card-inner {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(83, 137, 199, 0.3);
+    box-shadow: 0 20px 60px rgba(83, 137, 199, 0.2);
 }
 
-.col h5 {
-    text-align: center;
-    color: rgb(73, 102, 126);
-    z-index: 5;
-    margin-top: 5px;
-    padding-left: 10%;
-    padding-right: 10%;
-    max-width: 300px;
+.project-image-container {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
 }
 
-/* Small devices (phones, less than 768px) */
-@media only screen and (max-width: 768px) {
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease;
+    filter: brightness(0.8);
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.1);
+    filter: brightness(1);
+}
+
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(83, 137, 199, 0.8), rgba(117, 151, 222, 0.8));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-link {
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.project-card:hover .project-link {
+    transform: translateY(0);
+}
+
+.project-link:hover {
+    background: #fff;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.project-content {
+    padding: 30px 25px;
+}
+
+.project-title {
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    background: linear-gradient(45deg, #ffffff, #5389c7);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.project-description {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.project-tag {
+    padding: 6px 14px;
+    background: rgba(83, 137, 199, 0.2);
+    color: #5389c7;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid rgba(83, 137, 199, 0.3);
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.project-tag:hover {
+    background: rgba(83, 137, 199, 0.3);
+    color: #fff;
+    border-color: rgba(83, 137, 199, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
     .projects {
-        margin-bottom: 60px;
-        margin-top: 5%;
+        padding: 60px 0;
+    }
+
+    .section__title {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
     }
 
     .portfolio-content {
-        grid-template-columns: repeat(1, minmax(280px, auto));
-        grid-gap: 1rem;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 0 15px;
     }
 
-    .col img {
-        width: 280px;
-        height: 370px;
+    .project-content {
+        padding: 20px 20px;
     }
 
-    .h3,
-    .col h5 {
-        font-size: small; /* reduce the font size to fit in small screens */
-    }
-}
-
-/* Medium devices (tablets, 768px and up) */
-@media only screen and (min-width: 768px) and (max-width: 992px) {
-    .projects {
-        margin-bottom: 90px;
-        margin-top: 7%;
-    }
-
-    .portfolio-content {
-        grid-template-columns: repeat(2, minmax(320px, auto));
-        grid-gap: 1.5rem;
-    }
-
-    .col img {
-        width: 320px;
-        height: 420px;
-    }
-
-    .h3,
-    .col h5 {
-        font-size: medium; /* adjust the font size for medium screens */
+    .project-title {
+        font-size: 1.3rem;
     }
 }
 
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-    .projects {
-        margin-bottom: 120px;
-        margin-top: 10%;
+@media (max-width: 480px) {
+    .section__title {
+        font-size: 2rem;
     }
 
-    .portfolio-content {
-        display: grid;
-        justify-content: center;
-        text-align: center;
-        grid-template-columns: repeat(3, minmax(360px, auto));
-        grid-gap: 2rem;
-        cursor: pointer;
-        flex-wrap: wrap;
+    .project-image-container {
+        height: 200px;
     }
 
-    .col img {
-        width: 320px;
-        height: 420px;
-        object-fit: cover;
-        border-radius: 12px;
-        opacity: 85%;
-        transition: 0.3s;
-    }
-
-    .col img:hover {
-        opacity: 100%;
-        transform: scale(1.1);
-        transition: 0.3s;
-        margin-bottom: 5%;
-    }
-
-    .layer {
-        height: 88%;
-        text-align: center;
-        border-radius: 12px;
-        transition: 0.4s;
-    }
-
-    .img:hover {
-        opacity: 30%;
-        z-index: -1;
-    }
-
-    .col .hover {
-        background-color: rgb(39, 45, 45);
-        transition: 0.4s;
-        transform: scale(1.1);
-        z-index: 1;
-    }
-
-    .h3 {
-        bottom: 50%;
-        position: relative;
-        color: aliceblue;
-        text-align: center;
-    }
-
-    .layer h3:hover {
-        transition: 1s;
-        z-index: 1;
-    }
-
-    .col h5 {
-        text-align: center;
-        color: rgb(73, 102, 126);
-        z-index: 5;
-        margin-top: 5px;
-        padding-left: 10%;
-        padding-right: 10%;
-        max-width: 300px;
+    .project-content {
+        padding: 20px 15px;
     }
 }

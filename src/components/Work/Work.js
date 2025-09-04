@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import NUSLogo from '../../images/NUSLogo.png';
 import TUMLogo from '../../images/TUMLogo.png';
 import UMLogo from '../../images/UMLogo.png';
@@ -7,6 +7,7 @@ import AveliosLogo from '../../images/AveliosLogo.jpeg';
 import LTALogo from '../../images/LTALogo.jpg';
 import PragmaLogo from '../../images/PragmaLogo.jpeg';
 import TranquilioLogo from '../../images/TranquilioLogo.jpeg';
+import { motion } from 'framer-motion';
 import './Work.css';
 
 const Work = ({ setActiveNav }) => {
@@ -19,6 +20,24 @@ const Work = ({ setActiveNav }) => {
     return (
         <section className="work" id="work">
             <h2 className="section__title">Qualifications</h2>
+
+            {/* Download Resume Button */}
+            <div className="resume-section">
+                <motion.a
+                    href="https://drive.google.com/file/d/1yhNeww5o4k6SrQxDIgLyZ7IUXpPtecRo/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="resume-button button"
+                    whileHover={{
+                        scale: 1.05,
+                        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                >
+                    <i className="uil uil-download-alt resume-icon"></i>
+                    Download Resume
+                </motion.a>
+            </div>
 
             <div className="qualification__container container">
                 <div className="qualification__tabs">
@@ -36,11 +55,11 @@ const Work = ({ setActiveNav }) => {
                 <div className="qualification__sections">
                     <div className={toggleState === 1 ? 'qualification__content qualification__content-active' : 'qualification__content'}>
                         <div className="qualification__data">
-                        <div></div>
+                            <div></div>
 
                             <div>
                                 <span className="qualification__rounder">
-                                    <img src={NUSLogo} alt="NUS Logo" className="qualification__logo"/>
+                                    <img src={NUSLogo} alt="NUS Logo" className="qualification__logo" />
                                 </span>
                                 <span className="qualification__line"></span>
                             </div>
@@ -64,7 +83,7 @@ const Work = ({ setActiveNav }) => {
 
                             <div>
                                 <span className="qualification__rounder">
-                                    <img src={TUMLogo} alt="NUS Logo" className="qualification__logo"/>
+                                    <img src={TUMLogo} alt="NUS Logo" className="qualification__logo" />
                                 </span>
                                 <span className="qualification__line"></span>
                             </div>
@@ -77,7 +96,7 @@ const Work = ({ setActiveNav }) => {
 
                             <div>
                                 <span className="qualification__rounder">
-                                    <img src={UMLogo} alt="NUS Logo" className="qualification__logo"/>
+                                    <img src={UMLogo} alt="NUS Logo" className="qualification__logo" />
                                 </span>
                                 <span className="qualification__line"></span>
                             </div>
@@ -101,7 +120,7 @@ const Work = ({ setActiveNav }) => {
 
                             <div>
                                 <span className="qualification__rounder">
-                                    <img src={GIISLogo} alt="NUS Logo" className="qualification__logo"/>
+                                    <img src={GIISLogo} alt="NUS Logo" className="qualification__logo" />
                                 </span>
                                 <span className="qualification__line"></span>
                             </div>
@@ -122,7 +141,7 @@ const Work = ({ setActiveNav }) => {
 
                             <div>
                                 <span className="qualification__rounder">
-                                    <img src={AveliosLogo} alt="NUS Logo" className="qualification__logo"/>
+                                    <img src={AveliosLogo} alt="NUS Logo" className="qualification__logo" />
                                 </span>
                                 <span className="qualification__line"></span>
                             </div>
@@ -133,7 +152,7 @@ const Work = ({ setActiveNav }) => {
 
                             <div>
                                 <span className="qualification__rounder">
-                                    <img src={LTALogo} alt="NUS Logo" className="qualification__logo"/>
+                                    <img src={LTALogo} alt="NUS Logo" className="qualification__logo" />
                                 </span>
                                 <span className="qualification__line"></span>
                             </div>
@@ -158,7 +177,7 @@ const Work = ({ setActiveNav }) => {
 
                             <div>
                                 <span className="qualification__rounder">
-                                    <img src={TranquilioLogo} alt="NUS Logo" className="qualification__logo"/>
+                                    <img src={TranquilioLogo} alt="NUS Logo" className="qualification__logo" />
                                 </span>
                                 <span className="qualification__line"></span>
                             </div>
@@ -169,7 +188,7 @@ const Work = ({ setActiveNav }) => {
 
                             <div>
                                 <span className="qualification__rounder">
-                                    <img src={PragmaLogo} alt="NUS Logo" className="qualification__logo"/>
+                                    <img src={PragmaLogo} alt="NUS Logo" className="qualification__logo" />
                                 </span>
                                 <span className="qualification__line"></span>
                             </div>
