@@ -7,6 +7,7 @@ import About from './components/About/About';
 import Work from './components/Work/Work';
 import Skills from './components/Skills/Skills';
 import Projects from './components/Projects/Projects';
+import Hobbies from './components/Hobbies/Hobbies';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import AnimCursor from './components/AnimCursor';
@@ -84,6 +85,10 @@ function App() {
 
                     <motion.section id="projects" data-aos="fade-left" data-aos-offset="200" data-aos-delay="150">
                         <Projects setActiveNav={setActiveNav} />
+                    </motion.section>
+
+                    <motion.section id="hobbies" data-aos="fade-up" data-aos-offset="200" data-aos-delay="100">
+                        <Hobbies setActiveNav={setActiveNav} />
                     </motion.section>
 
                     <motion.section id="contact" data-aos="fade-up" data-aos-offset="200" data-aos-delay="200">

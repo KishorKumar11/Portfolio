@@ -97,7 +97,13 @@
 }
 
 .qualification__active {
-    color: white;
+    font-size: var(--h2-font-size);
+    background: linear-gradient(90deg, #5389c7 0%, #7597de 100%);
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(83, 137, 199, 0.25);
+    border-radius: 12px;
+    padding: 0.2em 0.4em;
+    transition: background 0.3s, box-shadow 0.3s;
 }
 
 .qualification__sections {

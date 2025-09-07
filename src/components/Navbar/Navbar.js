@@ -31,6 +31,7 @@ const Navbar = ({ activeNav }) => {
         { href: '#work', label: 'Qualifications' },
         { href: '#skills', label: 'Skills' },
         { href: '#projects', label: 'Projects' },
+        { href: '#hobbies', label: 'Hobbies' },
         { href: '#contact', label: 'Contact' }
     ];
 

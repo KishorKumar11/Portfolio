@@ -39,12 +39,6 @@ const Contact = ({ setActiveNav }) => {
             link: 'mailto:kishorkumar@example.com'
         },
         {
-            icon: <FaPhone />,
-            title: 'Phone',
-            info: '+65 XXXX XXXX',
-            link: 'tel:+65XXXXXXXX'
-        },
-        {
             icon: <FaMapMarkerAlt />,
             title: 'Location',
             info: 'Singapore',

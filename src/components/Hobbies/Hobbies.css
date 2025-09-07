@@ -1,0 +1,404 @@
+.hobbies {
+    position: relative;
+    padding: 100px 0;
+    background: linear-gradient(135deg, #16213e 0%, #1a1a2e 50%, #0f1419 100%);
+    overflow: hidden;
+}
+
+.hobbies::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 25% 30%, rgba(83, 137, 199, 0.1) 0%, transparent 50%), radial-gradient(circle at 75% 70%, rgba(117, 151, 222, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hobbies::after {
+    content: '';
+    position: absolute;
+    top: 15%;
+    right: 5%;
+    width: 250px;
+    height: 250px;
+    background: linear-gradient(45deg, rgba(83, 137, 199, 0.06), rgba(117, 151, 222, 0.06));
+    border-radius: 50%;
+    filter: blur(50px);
+    z-index: 1;
+}
+
+.hobbies-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Carousel Container */
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 3rem;
+}
+
+.carousel-track-container {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 20px;
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    width: fit-content;
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.carousel-slide {
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+/* Carousel Buttons */
+.carousel-button {
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.carousel-button:hover {
+    background: rgba(83, 137, 199, 0.2);
+    border-color: rgba(83, 137, 199, 0.4);
+    box-shadow: 0 8px 25px rgba(83, 137, 199, 0.3);
+}
+
+.carousel-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: scale(0.9);
+}
+
+.carousel-button-prev {
+    margin-right: 1rem;
+}
+
+.carousel-button-next {
+    margin-left: 1rem;
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+
+.carousel-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicator:hover {
+    transform: scale(1.2);
+}
+
+.carousel-indicator.active {
+    background: #5389c7;
+    box-shadow: 0 0 20px rgba(83, 137, 199, 0.5);
+}
+
+/* Progress Bar */
+.carousel-progress {
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    margin-top: 1rem;
+    overflow: hidden;
+}
+
+.carousel-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #5389c7, #7597de);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+}
+
+/* Hobby Cards */
+.hobby-card {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    /* border-radius: 20px; */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.hobby-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent, rgba(83, 137, 199, 0.1), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+}
+
+.hobby-card:hover::before {
+    transform: translateX(100%);
+}
+
+.hobby-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(83, 137, 199, 0.3);
+    box-shadow: 0 20px 40px rgba(83, 137, 199, 0.15);
+    transform: translateY(-5px);
+}
+
+.hobby-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    display: block;
+    filter: drop-shadow(0 4px 8px rgba(83, 137, 199, 0.3));
+}
+
+.hobby-name {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, #ffffff, #5389c7);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hobby-fun-fact {
+    color: #a0a0a0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    font-style: italic;
+    padding: 0.75rem 1rem;
+    background: rgba(83, 137, 199, 0.1);
+    border-radius: 15px;
+    border: 1px solid rgba(83, 137, 199, 0.2);
+    position: relative;
+    margin-top: auto;
+}
+
+.hobby-fun-fact::before {
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(16, 33, 62, 0.9);
+    padding: 0.25rem 0.5rem;
+    border-radius: 10px;
+    font-size: 0.8rem;
+}
+
+.hobby-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.hobby-particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #5389c7;
+    border-radius: 50%;
+}
+
+.hobby-particle:nth-child(1) {
+    top: 20%;
+    left: 15%;
+}
+.hobby-particle:nth-child(2) {
+    top: 30%;
+    right: 20%;
+}
+.hobby-particle:nth-child(3) {
+    bottom: 25%;
+    left: 25%;
+}
+.hobby-particle:nth-child(4) {
+    bottom: 15%;
+    right: 15%;
+}
+.hobby-particle:nth-child(5) {
+    top: 50%;
+    left: 10%;
+}
+
+/* Special hover effects for specific hobbies */
+.hobby-card[data-hobby='chess']:hover {
+    border-color: rgba(255, 215, 0, 0.3);
+    box-shadow: 0 20px 40px rgba(255, 215, 0, 0.15);
+}
+
+.hobby-card[data-hobby='football']:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.15);
+}
+
+.hobby-card[data-hobby='gaming']:hover {
+    border-color: rgba(0, 255, 127, 0.3);
+    box-shadow: 0 20px 40px rgba(0, 255, 127, 0.15);
+}
+
+.hobby-card[data-hobby='keyboard']:hover {
+    border-color: rgba(255, 20, 147, 0.3);
+    box-shadow: 0 20px 40px rgba(255, 20, 147, 0.15);
+}
+
+/* Background decorative elements */
+.hobbies-bg-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floating-hobby-shape {
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(45deg, rgba(83, 137, 199, 0.08), rgba(117, 151, 222, 0.08));
+    border: 2px solid rgba(83, 137, 199, 0.1);
+}
+
+.hobby-shape-1 {
+    width: 80px;
+    height: 80px;
+    top: 20%;
+    left: 5%;
+}
+
+.hobby-shape-2 {
+    width: 120px;
+    height: 120px;
+    bottom: 25%;
+    right: 8%;
+}
+
+.hobby-shape-3 {
+    width: 60px;
+    height: 60px;
+    top: 60%;
+    left: 85%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .hobbies {
+        padding: 60px 0;
+    }
+
+    .carousel-container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .carousel-button {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+    }
+
+    .carousel-button-prev,
+    .carousel-button-next {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 20;
+    }
+
+    .carousel-button-prev {
+        left: -60px;
+    }
+
+    .carousel-button-next {
+        right: -60px;
+    }
+
+    .hobby-card {
+        padding: 1.5rem;
+        min-height: 250px;
+    }
+
+    .hobby-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .hobby-name {
+        font-size: 1.2rem;
+    }
+
+    .hobby-fun-fact {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-button-prev {
+        left: -50px;
+    }
+
+    .carousel-button-next {
+        right: -50px;
+    }
+
+    .carousel-button {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+
+    .hobby-card {
+        padding: 1.25rem;
+        min-height: 220px;
+    }
+}
