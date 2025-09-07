@@ -1,6 +1,6 @@
 .hobbies {
     position: relative;
-    padding: 100px 0;
+    padding: 50px 0px 200px 0px;
     background: linear-gradient(135deg, #16213e 0%, #1a1a2e 50%, #0f1419 100%);
     overflow: hidden;
 }
@@ -17,8 +17,7 @@
     z-index: 1;
 }
 
-.hobbies::after {
-    content: '';
+.hobbies-decoration {
     position: absolute;
     top: 15%;
     right: 5%;
@@ -28,6 +27,22 @@
     border-radius: 50%;
     filter: blur(50px);
     z-index: 1;
+    pointer-events: none;
+}
+
+.hobbies::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(135deg, #0f1419 0%, #1a1a2e 50%, #16213e 100%);
+    clip-path: polygon(0% 100%, 0% 45%, 15% 25%, 25% 40%, 35% 20%, 45% 35%, 55% 10%, 65% 30%, 75% 15%, 85% 35%, 95% 20%, 100% 30%, 100% 100%);
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0.9;
+    filter: drop-shadow(0 -10px 20px rgba(83, 137, 199, 0.1));
 }
 
 .hobbies-container {

@@ -1,5 +1,6 @@
 .projects {
-    padding: 100px 0;
+    /* padding: top right bottom left */
+    padding: 50px 0px 200px 0px;
     background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
     position: relative;
     overflow: hidden;
@@ -14,6 +15,21 @@
     bottom: 0;
     background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.02"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.02"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
     pointer-events: none;
+}
+
+.projects::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(135deg, #16213e 0%, #1a1a2e 50%, #0a0a0a 100%);
+    clip-path: polygon(0% 100%, 0% 55%, 10% 30%, 20% 45%, 30% 20%, 40% 40%, 50% 25%, 60% 50%, 70% 35%, 80% 45%, 90% 25%, 100% 40%, 100% 100%);
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0.9;
+    filter: drop-shadow(0 -10px 20px rgba(83, 137, 199, 0.1));
 }
 
 .section__title {

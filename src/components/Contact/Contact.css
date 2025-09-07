@@ -1,5 +1,5 @@
 .contact {
-    padding: 100px 0;
+    padding: 50px 0px 200px 0px;
     background: linear-gradient(135deg, #0f1419 0%, #1a1a2e 50%, #16213e 100%);
     position: relative;
     overflow: hidden;
@@ -14,6 +14,21 @@
     bottom: 0;
     background: radial-gradient(circle at 20% 30%, rgba(83, 137, 199, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(117, 151, 222, 0.1) 0%, transparent 50%);
     pointer-events: none;
+}
+
+.contact::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(135deg, #16213e 0%, #1a1a2e 50%, #0f1419 100%);
+    clip-path: polygon(0% 100%, 0% 35%, 10% 20%, 20% 45%, 30% 15%, 40% 40%, 50% 10%, 60% 30%, 70% 5%, 80% 35%, 90% 15%, 100% 25%, 100% 100%);
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0.9;
+    filter: drop-shadow(0 -10px 20px rgba(83, 137, 199, 0.1));
 }
 
 .contact__description {

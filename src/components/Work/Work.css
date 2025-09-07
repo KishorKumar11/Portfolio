@@ -1,6 +1,6 @@
 .work {
     position: relative;
-    padding: 100px 0;
+    padding: 50px 0px 200px 0px;
     background: linear-gradient(135deg, #16213e 0%, #1a1a2e 50%, #0f1419 100%);
     overflow: hidden;
 }
@@ -16,8 +16,7 @@
     pointer-events: none;
 }
 
-.work::after {
-    content: '';
+.work-decoration {
     position: absolute;
     top: 20%;
     right: 10%;
@@ -27,6 +26,22 @@
     border-radius: 50%;
     filter: blur(40px);
     z-index: 1;
+    pointer-events: none;
+}
+
+.work::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120px;
+    background: linear-gradient(135deg, #0f1419 0%, #1a1a2e 50%, #16213e 100%);
+    clip-path: polygon(0% 100%, 0% 50%, 8% 35%, 18% 45%, 28% 25%, 38% 40%, 48% 20%, 58% 35%, 68% 15%, 78% 30%, 88% 20%, 98% 40%, 100% 25%, 100% 100%);
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0.9;
+    filter: drop-shadow(0 -10px 20px rgba(83, 137, 199, 0.1));
 }
 
 .resume-section {

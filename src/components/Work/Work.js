@@ -19,6 +19,7 @@ const Work = ({ setActiveNav }) => {
 
     return (
         <section className="work" id="work">
+            <div className="work-decoration"></div>
             <h2 className="section__title">Qualifications</h2>
 
             {/* Download Resume Button */}

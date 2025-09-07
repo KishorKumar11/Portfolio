@@ -124,6 +124,7 @@ const Hobbies = () => {
 
     return (
         <section className="hobbies section" id="hobbies">
+            <div className="hobbies-decoration"></div>
             <motion.h2 className="section__title" initial={{ opacity: 0, y: -50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
                 Hobbies & Interests
             </motion.h2>
