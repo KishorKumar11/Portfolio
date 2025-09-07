@@ -88,7 +88,6 @@ const Hobbies = () => {
         setCurrentSlide(Math.min(index, maxSlides));
     };
 
-    // Auto-play carousel
     useEffect(() => {
         const interval = setInterval(() => {
             nextSlide();
