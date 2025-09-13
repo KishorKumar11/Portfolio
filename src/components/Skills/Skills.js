@@ -18,9 +18,14 @@ const Skills = ({ setActiveNav }) => {
         { name: 'Python', category: 'Languages', icon: 'python' },
         { name: 'Java', category: 'Languages', icon: 'java' },
         { name: 'C++', category: 'Languages', icon: 'cplusplus' },
+        { name: 'C', category: 'Languages', icon: 'c' },
+        { name: 'SQL', category: 'Languages', icon: 'mysql' },
+        { name: 'Dart', category: 'Languages', icon: 'dart' },
+        { name: 'Swift', category: 'Languages', icon: 'swift' },
 
         // Frontend
         { name: 'React', category: 'Frontend', icon: 'react' },
+        { name: 'Vue.js', category: 'Frontend', icon: 'vuejs' },
         { name: 'HTML5', category: 'Frontend', icon: 'html5' },
         { name: 'CSS3', category: 'Frontend', icon: 'css3' },
         { name: 'Tailwind CSS', category: 'Frontend', icon: 'tailwindcss' },
@@ -28,7 +33,11 @@ const Skills = ({ setActiveNav }) => {
         // Backend
         { name: 'Node.js', category: 'Backend', icon: 'nodejs' },
         { name: 'Spring Boot', category: 'Backend', icon: 'spring' },
-        { name: 'MongoDB', category: 'Backend', icon: 'mongodb' },
+        { name: 'Kafka', category: 'Backend', icon: 'apachekafka' },
+
+        // Database
+        { name: 'MySQL', category: 'Database', icon: 'mysql' },
+        { name: 'MongoDB', category: 'Database', icon: 'mongodb' },
 
         // Cloud & DevOps
         { name: 'AWS', category: 'Cloud', icon: 'amazonwebservices' },
@@ -37,10 +46,13 @@ const Skills = ({ setActiveNav }) => {
         // Tools
         { name: 'Git', category: 'Tools', icon: 'git' },
         { name: 'GitHub', category: 'Tools', icon: 'github' },
+        { name: 'GitLab', category: 'Tools', icon: 'gitlab' },
         { name: 'VS Code', category: 'Tools', icon: 'vscode' },
+        { name: 'IntelliJ IDEA', category: 'Tools', icon: 'intellij' },
 
         // Testing
-        { name: 'Jest', category: 'Testing', icon: 'jest' },
+        { name: 'JUnit', category: 'Testing', icon: 'junit' },
+        { name: 'Vitest', category: 'Testing', icon: 'vitest' },
 
         // Game Development
         { name: 'Unity', category: 'Game Dev', icon: 'unity' },
@@ -54,7 +66,7 @@ const Skills = ({ setActiveNav }) => {
         { name: 'Figma', category: 'Design', icon: 'figma' }
     ];
 
-    const categories = ['All', 'Languages', 'Frontend', 'Backend', 'Cloud', 'Tools', 'Testing', 'Game Dev', 'Mobile Dev', 'Design'];
+    const categories = ['All', 'Languages', 'Frontend', 'Backend', 'Database', 'Cloud', 'Tools', 'Testing', 'Game Dev', 'Mobile Dev', 'Design'];
 
     const filteredSkills = activeFilter === 'All' ? skills : skills.filter((skill) => skill.category === activeFilter);
 
@@ -137,10 +149,28 @@ const Skills = ({ setActiveNav }) => {
                                     transition={{ duration: 0.5 }}
                                 >
                                     <img
-                                        src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${skill.icon}/${skill.icon}-original.svg`}
+                                        src={
+                                            skill.name === 'AWS'
+                                                ? 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg'
+                                                : skill.name === 'MySQL'
+                                                ? 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original-wordmark.svg'
+                                                : `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${skill.icon}/${skill.icon}-original.svg`
+                                        }
                                         alt={skill.name}
                                         onError={(e) => {
-                                            e.target.src = `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${skill.icon}/${skill.icon}-plain.svg`;
+                                            if (skill.name === 'AWS') {
+                                                e.target.src = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original.svg';
+                                                e.target.onerror = () => {
+                                                    e.target.src = 'https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg';
+                                                };
+                                            } else if (skill.name === 'MySQL') {
+                                                e.target.src = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-plain.svg';
+                                                e.target.onerror = () => {
+                                                    e.target.src = 'https://www.mysql.com/common/logos/logo-mysql-170x115.png';
+                                                };
+                                            } else {
+                                                e.target.src = `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${skill.icon}/${skill.icon}-plain.svg`;
+                                            }
                                         }}
                                     />
                                 </motion.div>
@@ -149,42 +179,51 @@ const Skills = ({ setActiveNav }) => {
                             <h3 className="skill-name">{skill.name}</h3>
                             <span className="skill-category">{skill.category}</span>
                         </div>
-
-                        {/* Floating particles effect */}
-                        <div className="skill-particles">
-                            {[...Array(8)].map((_, i) => {
-                                const randomX = Math.random() * 100; // 0-100% for full coverage
-                                const randomY = Math.random() * 100; // 0-100% for full coverage
-                                const randomMoveX = (Math.random() - 0.5) * 50;
-                                const randomMoveY = (Math.random() - 0.5) * 50;
-
-                                return (
-                                    <motion.div
-                                        key={i}
-                                        className="particle"
-                                        animate={{
-                                            y: [0, randomMoveY, 0],
-                                            x: [0, randomMoveX, 0],
-                                            opacity: [0.6, 0.2, 0.6],
-                                            scale: [1, 1.3, 1]
-                                        }}
-                                        transition={{
-                                            duration: 3 + Math.random() * 2,
-                                            repeat: Infinity,
-                                            delay: Math.random() * 2,
-                                            ease: 'easeInOut'
-                                        }}
-                                        style={{
-                                            left: `${randomX}%`,
-                                            top: `${randomY}%`
-                                        }}
-                                    />
-                                );
-                            })}
-                        </div>
                     </motion.div>
                 ))}
             </motion.div>
+
+            {/* Background glowing particles effect */}
+            <div className="skills-background-particles">
+                {[...Array(25)].map((_, i) => {
+                    const randomX = Math.random() * 100;
+                    const randomY = Math.random() * 100;
+                    const randomMoveX = (Math.random() - 0.5) * 60;
+                    const randomMoveY = (Math.random() - 0.5) * 60;
+                    const randomSize = 3 + Math.random() * 4; // 3px to 7px
+
+                    return (
+                        <motion.div
+                            key={i}
+                            className="background-particle"
+                            animate={{
+                                y: [0, randomMoveY, 0],
+                                x: [0, randomMoveX, 0],
+                                opacity: [0.3, 0.8, 0.3],
+                                scale: [1, 1.5, 1]
+                            }}
+                            transition={{
+                                duration: 4 + Math.random() * 3,
+                                repeat: Infinity,
+                                delay: Math.random() * 4,
+                                ease: 'easeInOut'
+                            }}
+                            style={{
+                                position: 'absolute',
+                                left: `${randomX}%`,
+                                top: `${randomY}%`,
+                                width: `${randomSize}px`,
+                                height: `${randomSize}px`,
+                                background: 'linear-gradient(45deg, #5389c7, #7597de)',
+                                borderRadius: '50%',
+                                boxShadow: `0 0 ${randomSize * 2}px rgba(83, 137, 199, 0.6)`,
+                                pointerEvents: 'none',
+                                zIndex: 1
+                            }}
+                        />
+                    );
+                })}
+            </div>
 
             {/* Background decorative elements */}
             <div className="skills-bg-decoration">

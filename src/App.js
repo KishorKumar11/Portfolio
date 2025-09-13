@@ -59,8 +59,7 @@ function App() {
     return (
         <AnimatePresence>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
-                {/* Global Glaring Effect */}
-                <div className="glaring-effect"></div>
+                {/* Glare effect removed */}
                 <AnimCursor />
                 <ScrollIndicator />
 

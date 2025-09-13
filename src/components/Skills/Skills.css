@@ -24,61 +24,7 @@
     width: 100%;
     height: 120px;
     background: linear-gradient(135deg, #0f1419 0%, #16213e 50%, #1a1a2e 100%);
-    clip-path: polygon(
-        0% 100%,
-        0% 65%,
-        2% 55%,
-        4% 40%,
-        6% 25%,
-        8% 15%,
-        10% 20%,
-        12% 35%,
-        14% 55%,
-        16% 70%,
-        18% 75%,
-        20% 65%,
-        22% 45%,
-        24% 25%,
-        26% 10%,
-        28% 8%,
-        30% 20%,
-        32% 40%,
-        34% 60%,
-        36% 75%,
-        38% 80%,
-        40% 70%,
-        42% 50%,
-        44% 25%,
-        46% 10%,
-        48% 5%,
-        50% 15%,
-        52% 35%,
-        54% 55%,
-        56% 70%,
-        58% 75%,
-        60% 65%,
-        62% 45%,
-        64% 25%,
-        66% 12%,
-        68% 10%,
-        70% 20%,
-        72% 40%,
-        74% 60%,
-        76% 75%,
-        78% 80%,
-        80% 70%,
-        82% 50%,
-        84% 30%,
-        86% 15%,
-        88% 8%,
-        90% 18%,
-        92% 35%,
-        94% 55%,
-        96% 70%,
-        98% 75%,
-        100% 65%,
-        100% 100%
-    );
+    clip-path: polygon(0% 100%, 0% 70%, 8% 50%, 16% 35%, 25% 25%, 35% 20%, 45% 25%, 55% 35%, 65% 45%, 75% 40%, 85% 35%, 92% 30%, 100% 40%, 100% 100%);
     z-index: 3;
     pointer-events: none;
     opacity: 0.9;
@@ -348,6 +294,21 @@
     background: #5389c7;
     border-radius: 50%;
     /* Remove fixed positioning - now handled by JS */
+}
+
+.skills-background-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.background-particle {
+    filter: blur(1px);
 }
 
 .skills-bg-decoration {
