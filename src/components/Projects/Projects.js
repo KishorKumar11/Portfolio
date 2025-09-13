@@ -2,11 +2,11 @@ import React from 'react';
 import './Projects.css';
 import AlexPic from '../../images/AlexPic.png';
 import mBotPic from '../../images/mBotPic.png';
-import FPGAPic from '../../images/FPGAPic.png';
 import KuramaPic from '../../images/KuramaPic.png';
 import KingsGambitPic from '../../images/KingGambitPic.png';
 import GetJackDPic from '../../images/GetJackDPic.png';
-import DesignPic from '../../images/DesignPic.jpg';
+import DesignPic from '../../images/DesignPic.png';
+import PhysioTechPic from '../../images/PhysioTechPic.jpg';
 import VRPic from '../../images/VRPic.png';
 import ARLaserTagPic from '../../images/ARLaserTagPic.png';
 import { motion } from 'framer-motion';
@@ -40,7 +40,7 @@ const Projects = ({ setActiveNav }) => {
             description: 'A maze detection robot relying on color detection, IR sensors and ultrasound',
             image: mBotPic,
             link: 'https://docs.google.com/document/d/1R1OqPS06sV9wHk_WkpTq40PquCBtBhXgDHLtROBaKuY/view',
-            tags: ['Robotics', 'Arduino', 'Sensors', 'AI']
+            tags: ['Robotics', 'Arduino', 'Sensors']
         },
         {
             title: 'Alex',
@@ -57,11 +57,11 @@ const Projects = ({ setActiveNav }) => {
             tags: ['RTOS', 'Embedded Systems', 'Remote Control']
         },
         {
-            title: 'FPGA Design',
-            description: 'Used an FPGA to create an entertaining game coded in verilog using Vivado',
-            image: FPGAPic,
-            link: 'https://docs.google.com/document/d/1BSP30bwGhRQ4jp_2Q4IT_XzKoD5q-iRPJ9UoeIqqqRM/edit',
-            tags: ['FPGA', 'Verilog', 'Hardware', 'Gaming']
+            title: 'PhysioTech',
+            description: 'Medical Assistive Technology using Machine Learning for facilitating medical practitioner to treat patients undergoing Physiotherapy',
+            image: PhysioTechPic,
+            link: 'https://github.com/KishorKumar11/PhysioTech-Assistive-Technology-for-Physiotheraphy/blob/main/README.md',
+            tags: ['Machine Learning', 'Healthcare', 'Medical Tech', 'AI']
         },
         {
             title: "Get Jack'D",

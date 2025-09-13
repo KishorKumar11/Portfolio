@@ -166,16 +166,18 @@
 }
 
 .about__box {
-    background: rgba(255, 255, 255, 0.05);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
     backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 15px;
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
     padding: 1.5rem 1rem;
     text-align: center;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     color: white;
     position: relative;
     overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(83, 137, 199, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .about__box::before {
@@ -195,9 +197,11 @@
 
 .about__box:hover {
     transform: translateY(-8px) scale(1.02);
-    background: rgba(255, 255, 255, 0.08);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
     border-color: rgba(83, 137, 199, 0.4);
-    box-shadow: 0 15px 40px rgba(83, 137, 199, 0.25);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 4px 16px rgba(83, 137, 199, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .about__box i {
