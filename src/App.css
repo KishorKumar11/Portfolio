@@ -151,32 +151,6 @@ body {
     position: relative;
 }
 
-body::before {
-    content: '';
-    position: fixed;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, transparent 45%, rgba(83, 137, 199, 0.05), rgba(83, 137, 199, 0.1), rgba(83, 137, 199, 0.05), transparent 55%);
-    animation: glare 11s ease-in-out infinite;
-    z-index: 1;
-    pointer-events: none;
-    transform: rotate(45deg);
-}
-
-@keyframes glare {
-    0% {
-        transform: translate(-25%, 25%) rotate(0);
-    }
-    45% {
-        transform: translate(25%, -25%) rotate(0);
-    }
-    100% {
-        transform: translate(25%, -25%) rotate(0);
-    }
-}
-
 h1,
 h2,
 h3 {

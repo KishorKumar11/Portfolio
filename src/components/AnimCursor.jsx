@@ -23,6 +23,12 @@ const AnimCursor = () => {
                 'button',
                 '.link'
             ]}
+            outerStyle={{
+                zIndex: 999999
+            }}
+            innerStyle={{
+                zIndex: 999999
+            }}
         />
     );
 };

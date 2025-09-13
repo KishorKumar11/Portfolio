@@ -64,7 +64,7 @@ const Footer = () => {
                         <motion.h3 className="footer-name" whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
                             Kishor Kumar
                         </motion.h3>
-                        <p className="footer-title">Full Stack Developer & Management</p>
+                        <p className="footer-title">Full Stack Developer & Tech Management</p>
                     </div>
 
                     <motion.div className="footer-message" initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.4 }} viewport={{ once: true }}>

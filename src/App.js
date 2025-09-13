@@ -12,6 +12,7 @@ import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import AnimCursor from './components/AnimCursor';
 import ScrollIndicator from './components/ScrollIndicator';
+import Glare from './components/Glare/Glare';
 import { motion, AnimatePresence } from 'framer-motion';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -59,14 +60,14 @@ function App() {
     return (
         <AnimatePresence>
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
-                {/* Glare effect removed */}
                 <AnimCursor />
                 <ScrollIndicator />
 
                 <div className="App">
-                    <motion.div initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.6, ease: 'easeOut' }}>
+                    <motion.div initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.6, ease: 'easeOut' }} style={{ position: 'fixed', width: '100%', zIndex: 100000 }}>
                         <Navbar activeNav={activeNav} />
                     </motion.div>
+                    <Glare />
 
                     <section id="home">
                         <Home setActiveNav={setActiveNav} />
