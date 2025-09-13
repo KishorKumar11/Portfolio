@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Skills.css';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -9,27 +9,54 @@ const Skills = ({ setActiveNav }) => {
         threshold: 0.1
     });
 
+    const [activeFilter, setActiveFilter] = useState('All');
+
     const skills = [
-        { name: 'React', icon: '⚛️', category: 'Frontend' },
-        { name: 'JavaScript', icon: '🟨', category: 'Programming' },
-        { name: 'TypeScript', icon: '🔷', category: 'Programming' },
-        { name: 'Python', icon: '🐍', category: 'Programming' },
-        { name: 'Java', icon: '☕', category: 'Programming' },
-        { name: 'C++', icon: '💻', category: 'Programming' },
-        { name: 'Node.js', icon: '🟢', category: 'Backend' },
-        { name: 'SpringBoot', icon: '🍃', category: 'Backend' },
-        { name: 'SQL', icon: '💾', category: 'Database' },
-        { name: 'MongoDB', icon: '🍃', category: 'Database' },
-        { name: 'AWS', icon: '☁️', category: 'Cloud' },
-        { name: 'GCP', icon: '🌐', category: 'Cloud' },
-        { name: 'Git', icon: '📚', category: 'Tools' },
-        { name: 'CSS', icon: '🎨', category: 'Frontend' },
-        { name: 'HTML', icon: '🌐', category: 'Frontend' },
-        { name: 'Tailwind CSS', icon: '💨', category: 'Frontend' },
-        { name: 'Unity', icon: '🎮', category: 'Game Dev' },
-        { name: 'Unreal Engine', icon: '🎯', category: 'Game Dev' },
-        { name: 'Figma', icon: '🎨', category: 'Design' }
+        // Languages
+        { name: 'JavaScript', category: 'Languages', icon: 'javascript' },
+        { name: 'TypeScript', category: 'Languages', icon: 'typescript' },
+        { name: 'Python', category: 'Languages', icon: 'python' },
+        { name: 'Java', category: 'Languages', icon: 'java' },
+        { name: 'C++', category: 'Languages', icon: 'cplusplus' },
+
+        // Frontend
+        { name: 'React', category: 'Frontend', icon: 'react' },
+        { name: 'HTML5', category: 'Frontend', icon: 'html5' },
+        { name: 'CSS3', category: 'Frontend', icon: 'css3' },
+        { name: 'Tailwind CSS', category: 'Frontend', icon: 'tailwindcss' },
+
+        // Backend
+        { name: 'Node.js', category: 'Backend', icon: 'nodejs' },
+        { name: 'Spring Boot', category: 'Backend', icon: 'spring' },
+        { name: 'MongoDB', category: 'Backend', icon: 'mongodb' },
+
+        // Cloud & DevOps
+        { name: 'AWS', category: 'Cloud', icon: 'amazonwebservices' },
+        { name: 'Google Cloud', category: 'Cloud', icon: 'googlecloud' },
+
+        // Tools
+        { name: 'Git', category: 'Tools', icon: 'git' },
+        { name: 'GitHub', category: 'Tools', icon: 'github' },
+        { name: 'VS Code', category: 'Tools', icon: 'vscode' },
+
+        // Testing
+        { name: 'Jest', category: 'Testing', icon: 'jest' },
+
+        // Game Development
+        { name: 'Unity', category: 'Game Dev', icon: 'unity' },
+        { name: 'Unreal Engine', category: 'Game Dev', icon: 'unrealengine' },
+
+        // Mobile Development
+        { name: 'React Native', category: 'Mobile Dev', icon: 'react' },
+        { name: 'Flutter', category: 'Mobile Dev', icon: 'flutter' },
+
+        // Design
+        { name: 'Figma', category: 'Design', icon: 'figma' }
     ];
+
+    const categories = ['All', 'Languages', 'Frontend', 'Backend', 'Cloud', 'Tools', 'Testing', 'Game Dev', 'Mobile Dev', 'Design'];
+
+    const filteredSkills = activeFilter === 'All' ? skills : skills.filter((skill) => skill.category === activeFilter);
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -56,18 +83,43 @@ const Skills = ({ setActiveNav }) => {
         }
     };
 
+    const filterVariants = {
+        hidden: { opacity: 0, y: -20 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.5 }
+        }
+    };
+
     return (
         <section className="skills section" id="skills" ref={ref}>
             <motion.h2 className="section__title" initial={{ opacity: 0, y: -50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
                 Skills & Technologies
             </motion.h2>
 
+            {/* Filter Buttons */}
+            <motion.div className="skills-filter" variants={filterVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+                {categories.map((category) => (
+                    <motion.button
+                        key={category}
+                        className={`filter-btn ${activeFilter === category ? 'active' : ''}`}
+                        onClick={() => setActiveFilter(category)}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        {category}
+                    </motion.button>
+                ))}
+            </motion.div>
+
             <motion.div className="skills-container container" variants={containerVariants} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
-                {skills.map((skill, index) => (
+                {filteredSkills.map((skill, index) => (
                     <motion.div
-                        key={skill.name}
+                        key={`${skill.name}-${skill.category}`}
                         className="skill-item"
                         variants={itemVariants}
+                        layout
                         whileHover={{
                             scale: 1.05,
                             y: -10,
@@ -84,7 +136,13 @@ const Skills = ({ setActiveNav }) => {
                                     }}
                                     transition={{ duration: 0.5 }}
                                 >
-                                    {skill.icon}
+                                    <img
+                                        src={`https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${skill.icon}/${skill.icon}-original.svg`}
+                                        alt={skill.name}
+                                        onError={(e) => {
+                                            e.target.src = `https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/${skill.icon}/${skill.icon}-plain.svg`;
+                                        }}
+                                    />
                                 </motion.div>
                             </div>
 
@@ -94,23 +152,35 @@ const Skills = ({ setActiveNav }) => {
 
                         {/* Floating particles effect */}
                         <div className="skill-particles">
-                            {[...Array(5)].map((_, i) => (
-                                <motion.div
-                                    key={i}
-                                    className="particle"
-                                    animate={{
-                                        y: [0, -20, 0],
-                                        opacity: [0.7, 0.3, 0.7],
-                                        scale: [1, 1.2, 1]
-                                    }}
-                                    transition={{
-                                        duration: 2 + i * 0.5,
-                                        repeat: Infinity,
-                                        delay: i * 0.3,
-                                        ease: 'easeInOut'
-                                    }}
-                                />
-                            ))}
+                            {[...Array(8)].map((_, i) => {
+                                const randomX = Math.random() * 100; // 0-100% for full coverage
+                                const randomY = Math.random() * 100; // 0-100% for full coverage
+                                const randomMoveX = (Math.random() - 0.5) * 50;
+                                const randomMoveY = (Math.random() - 0.5) * 50;
+
+                                return (
+                                    <motion.div
+                                        key={i}
+                                        className="particle"
+                                        animate={{
+                                            y: [0, randomMoveY, 0],
+                                            x: [0, randomMoveX, 0],
+                                            opacity: [0.6, 0.2, 0.6],
+                                            scale: [1, 1.3, 1]
+                                        }}
+                                        transition={{
+                                            duration: 3 + Math.random() * 2,
+                                            repeat: Infinity,
+                                            delay: Math.random() * 2,
+                                            ease: 'easeInOut'
+                                        }}
+                                        style={{
+                                            left: `${randomX}%`,
+                                            top: `${randomY}%`
+                                        }}
+                                    />
+                                );
+                            })}
                         </div>
                     </motion.div>
                 ))}

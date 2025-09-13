@@ -37,11 +37,43 @@
     width: 100%;
     height: 120px;
     background: linear-gradient(135deg, #0f1419 0%, #1a1a2e 50%, #16213e 100%);
-    clip-path: polygon(0% 100%, 0% 50%, 8% 35%, 18% 45%, 28% 25%, 38% 40%, 48% 20%, 58% 35%, 68% 15%, 78% 30%, 88% 20%, 98% 40%, 100% 25%, 100% 100%);
+    clip-path: polygon(0% 100%, 0% 55%, 10% 30%, 20% 50%, 30% 25%, 40% 55%, 50% 20%, 60% 50%, 70% 25%, 80% 45%, 90% 30%, 100% 40%, 100% 100%);
     z-index: 3;
     pointer-events: none;
     opacity: 0.9;
     filter: drop-shadow(0 -10px 20px rgba(83, 137, 199, 0.1));
+}
+
+/* Floating particles effect */
+.work-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.work-particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: linear-gradient(45deg, #5389c7, #7597de);
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(83, 137, 199, 0.7);
+}
+
+.work-particle::after {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    width: 11px;
+    height: 11px;
+    background: rgba(83, 137, 199, 0.15);
+    border-radius: 50%;
+    z-index: -1;
 }
 
 .resume-section {

@@ -24,11 +24,43 @@
     width: 100%;
     height: 120px;
     background: linear-gradient(135deg, #16213e 0%, #1a1a2e 50%, #0f1419 100%);
-    clip-path: polygon(0% 100%, 0% 35%, 10% 20%, 20% 45%, 30% 15%, 40% 40%, 50% 10%, 60% 30%, 70% 5%, 80% 35%, 90% 15%, 100% 25%, 100% 100%);
+    clip-path: polygon(0% 100%, 0% 45%, 10% 20%, 20% 40%, 30% 15%, 40% 45%, 50% 10%, 60% 40%, 70% 15%, 80% 35%, 90% 20%, 100% 30%, 100% 100%);
     z-index: 3;
     pointer-events: none;
     opacity: 0.9;
     filter: drop-shadow(0 -10px 20px rgba(83, 137, 199, 0.1));
+}
+
+/* Floating particles effect */
+.contact-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.contact-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: linear-gradient(45deg, #5389c7, #7597de);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(83, 137, 199, 0.6);
+}
+
+.contact-particle::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 8px;
+    height: 8px;
+    background: rgba(83, 137, 199, 0.2);
+    border-radius: 50%;
+    z-index: -1;
 }
 
 .contact__description {

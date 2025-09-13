@@ -2,6 +2,7 @@ import React from 'react';
 import './About.css';
 import Info from './Info';
 import myPic from '../../images/myPic.jpg';
+import { motion } from 'framer-motion';
 
 const About = ({ setActiveNav }) => {
     // const section = document.querySelector('section');
@@ -16,6 +17,40 @@ const About = ({ setActiveNav }) => {
     return (
         <section class="about" id="about">
             <div className="about-decoration"></div>
+
+            {/* Floating particles effect */}
+            <div className="about-particles">
+                {[...Array(12)].map((_, i) => {
+                    const randomX = Math.random() * 100;
+                    const randomY = Math.random() * 100;
+                    const randomMoveX = (Math.random() - 0.5) * 40;
+                    const randomMoveY = (Math.random() - 0.5) * 40;
+
+                    return (
+                        <motion.div
+                            key={i}
+                            className="about-particle"
+                            animate={{
+                                y: [0, randomMoveY, 0],
+                                x: [0, randomMoveX, 0],
+                                opacity: [0.4, 0.8, 0.4],
+                                scale: [1, 1.2, 1]
+                            }}
+                            transition={{
+                                duration: 3 + Math.random() * 2,
+                                repeat: Infinity,
+                                delay: Math.random() * 2,
+                                ease: 'easeInOut'
+                            }}
+                            style={{
+                                left: `${randomX}%`,
+                                top: `${randomY}%`
+                            }}
+                        />
+                    );
+                })}
+            </div>
+
             <h2 className="section__title">About Me</h2>
             <div className="about__container container">
                 <div className="about__content">

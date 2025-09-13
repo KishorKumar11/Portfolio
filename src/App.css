@@ -1,3 +1,42 @@
+/* Global Glaring Effect */
+.glaring-effect {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 999;
+}
+
+.glaring-effect::before {
+    content: '';
+    position: absolute;
+    left: -20vw;
+    bottom: -20vh;
+    width: 120vw;
+    height: 120vh;
+    background: linear-gradient(60deg, rgba(255, 255, 255, 0.12) 0%, rgba(83, 137, 199, 0.18) 40%, rgba(117, 151, 222, 0.1) 80%, rgba(255, 255, 255, 0.05) 100%);
+    filter: blur(32px);
+    opacity: 0.7;
+    pointer-events: none;
+    animation: glareStream 6s linear infinite;
+}
+
+@keyframes glareStream {
+    0% {
+        transform: translate(-10vw, 10vh) scale(1.1);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translate(10vw, -10vh) scale(1.2);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-10vw, 10vh) scale(1.1);
+        opacity: 0.7;
+    }
+}
 .App {
     z-index: -2;
     background: linear-gradient(-45deg, #0a0a0a, #1a1a1a, #0f1419, #162447);

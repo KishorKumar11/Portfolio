@@ -24,11 +24,124 @@
     width: 100%;
     height: 120px;
     background: linear-gradient(135deg, #0f1419 0%, #16213e 50%, #1a1a2e 100%);
-    clip-path: polygon(0% 100%, 0% 40%, 12% 25%, 22% 50%, 32% 30%, 42% 45%, 52% 15%, 62% 35%, 72% 25%, 82% 50%, 92% 30%, 100% 45%, 100% 100%);
+    clip-path: polygon(
+        0% 100%,
+        0% 65%,
+        2% 55%,
+        4% 40%,
+        6% 25%,
+        8% 15%,
+        10% 20%,
+        12% 35%,
+        14% 55%,
+        16% 70%,
+        18% 75%,
+        20% 65%,
+        22% 45%,
+        24% 25%,
+        26% 10%,
+        28% 8%,
+        30% 20%,
+        32% 40%,
+        34% 60%,
+        36% 75%,
+        38% 80%,
+        40% 70%,
+        42% 50%,
+        44% 25%,
+        46% 10%,
+        48% 5%,
+        50% 15%,
+        52% 35%,
+        54% 55%,
+        56% 70%,
+        58% 75%,
+        60% 65%,
+        62% 45%,
+        64% 25%,
+        66% 12%,
+        68% 10%,
+        70% 20%,
+        72% 40%,
+        74% 60%,
+        76% 75%,
+        78% 80%,
+        80% 70%,
+        82% 50%,
+        84% 30%,
+        86% 15%,
+        88% 8%,
+        90% 18%,
+        92% 35%,
+        94% 55%,
+        96% 70%,
+        98% 75%,
+        100% 65%,
+        100% 100%
+    );
     z-index: 3;
     pointer-events: none;
     opacity: 0.9;
     filter: drop-shadow(0 -10px 20px rgba(83, 137, 199, 0.1));
+}
+
+/* Filter Buttons */
+.skills-filter {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 3rem 0;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.filter-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(83, 137, 199, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.filter-btn:hover::before {
+    left: 100%;
+}
+
+.filter-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(83, 137, 199, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(83, 137, 199, 0.2);
+}
+
+.filter-btn.active {
+    background: linear-gradient(45deg, #5389c7, #7597de);
+    border-color: rgba(83, 137, 199, 0.5);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 5px 20px rgba(83, 137, 199, 0.3);
+}
+
+.filter-btn.active:hover {
+    background: linear-gradient(45deg, #4a7bb7, #6587ce);
 }
 
 .skills-container {
@@ -93,11 +206,99 @@
 }
 
 .skill-icon {
-    font-size: 2.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    width: 60px;
+    height: 60px;
+}
+
+.skill-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+    transition: filter 0.3s ease;
+}
+
+.skill-icon:hover img {
+    filter: drop-shadow(0 6px 12px rgba(83, 137, 199, 0.4));
+}
+
+.section__title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+    color: #fff;
+    background: linear-gradient(45deg, #ffffff, #5389c7, #7597de);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    z-index: 2;
+}
+
+/* Skills Filter Styles */
+.skills-filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+}
+
+.filter-btn {
+    background: rgba(83, 137, 199, 0.1);
+    border: 2px solid rgba(83, 137, 199, 0.3);
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.filter-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.filter-btn:hover::before {
+    left: 100%;
+}
+
+.filter-btn:hover {
+    border-color: rgba(83, 137, 199, 0.6);
+    background: rgba(83, 137, 199, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(83, 137, 199, 0.3);
+}
+
+.filter-btn.active {
+    background: linear-gradient(45deg, #5389c7, #7597de);
+    border-color: #5389c7;
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(83, 137, 199, 0.4);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active::before {
+    display: none;
 }
 
 .skill-name {
@@ -146,24 +347,7 @@
     height: 4px;
     background: #5389c7;
     border-radius: 50%;
-    top: 50%;
-    left: 50%;
-}
-
-.particle:nth-child(1) {
-    left: 20%;
-}
-.particle:nth-child(2) {
-    left: 40%;
-}
-.particle:nth-child(3) {
-    left: 60%;
-}
-.particle:nth-child(4) {
-    left: 80%;
-}
-.particle:nth-child(5) {
-    left: 10%;
+    /* Remove fixed positioning - now handled by JS */
 }
 
 .skills-bg-decoration {
@@ -201,6 +385,17 @@
         padding: 60px 0;
     }
 
+    .skills-filter {
+        gap: 0.8rem;
+        margin-bottom: 2.5rem;
+        padding: 0 15px;
+    }
+
+    .filter-btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.85rem;
+    }
+
     .skills-container {
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 2rem;
@@ -227,6 +422,20 @@
 }
 
 @media (max-width: 480px) {
+    .section__title {
+        font-size: 2rem;
+    }
+
+    .skills-filter {
+        gap: 0.6rem;
+        margin-bottom: 2rem;
+    }
+
+    .filter-btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
+
     .skills-container {
         grid-template-columns: 1fr;
     }

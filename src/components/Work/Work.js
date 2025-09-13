@@ -20,6 +20,40 @@ const Work = ({ setActiveNav }) => {
     return (
         <section className="work" id="work">
             <div className="work-decoration"></div>
+
+            {/* Floating particles effect */}
+            <div className="work-particles">
+                {[...Array(15)].map((_, i) => {
+                    const randomX = Math.random() * 100;
+                    const randomY = Math.random() * 100;
+                    const randomMoveX = (Math.random() - 0.5) * 50;
+                    const randomMoveY = (Math.random() - 0.5) * 50;
+
+                    return (
+                        <motion.div
+                            key={i}
+                            className="work-particle"
+                            animate={{
+                                y: [0, randomMoveY, 0],
+                                x: [0, randomMoveX, 0],
+                                opacity: [0.3, 0.7, 0.3],
+                                scale: [1, 1.3, 1]
+                            }}
+                            transition={{
+                                duration: 4 + Math.random() * 2,
+                                repeat: Infinity,
+                                delay: Math.random() * 3,
+                                ease: 'easeInOut'
+                            }}
+                            style={{
+                                left: `${randomX}%`,
+                                top: `${randomY}%`
+                            }}
+                        />
+                    );
+                })}
+            </div>
+
             <h2 className="section__title">Qualifications</h2>
 
             {/* Download Resume Button */}

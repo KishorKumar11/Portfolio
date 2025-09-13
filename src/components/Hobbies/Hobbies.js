@@ -189,23 +189,33 @@ const Hobbies = () => {
 
                                     {/* Floating particles effect */}
                                     <div className="hobby-particles">
-                                        {[...Array(5)].map((_, i) => (
-                                            <motion.div
-                                                key={i}
-                                                className="hobby-particle"
-                                                animate={{
-                                                    y: [0, -15, 0],
-                                                    opacity: [0.5, 1, 0.5],
-                                                    scale: [1, 1.3, 1]
-                                                }}
-                                                transition={{
-                                                    duration: 2 + i * 0.3,
-                                                    repeat: Infinity,
-                                                    delay: i * 0.4,
-                                                    ease: 'easeInOut'
-                                                }}
-                                            />
-                                        ))}
+                                        {[...Array(5)].map((_, i) => {
+                                            const randomX = Math.random() * 80 + 10; // 10-90%
+                                            const randomY = Math.random() * 80 + 10; // 10-90%
+                                            const randomMoveY = (Math.random() - 0.5) * 30;
+
+                                            return (
+                                                <motion.div
+                                                    key={i}
+                                                    className="hobby-particle"
+                                                    animate={{
+                                                        y: [0, randomMoveY, 0],
+                                                        opacity: [0.5, 1, 0.5],
+                                                        scale: [1, 1.3, 1]
+                                                    }}
+                                                    transition={{
+                                                        duration: 2 + Math.random() * 2,
+                                                        repeat: Infinity,
+                                                        delay: Math.random() * 2,
+                                                        ease: 'easeInOut'
+                                                    }}
+                                                    style={{
+                                                        left: `${randomX}%`,
+                                                        top: `${randomY}%`
+                                                    }}
+                                                />
+                                            );
+                                        })}
                                     </div>
                                 </motion.div>
                             ))}

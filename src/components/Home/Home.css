@@ -1,9 +1,12 @@
 .home {
     height: 100vh;
     width: 100%;
-    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
     overflow: hidden;
+    text-align: center;
 }
 
 .animated-bg {
@@ -47,29 +50,174 @@
 }
 
 .intro {
-    padding-left: 15%;
-    padding-top: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
     color: #fff;
     font-weight: 500;
     letter-spacing: 1px;
-    font-size: large;
     position: relative;
     z-index: 2;
+    padding: 0 2rem;
+    text-align: center;
 }
 
-.intro span {
-    background: linear-gradient(45deg, #5389c7, #7597de);
+.intro-content {
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-title {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    margin-bottom: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.greeting {
+    display: block;
+    font-size: 0.6em;
+    font-weight: 400;
+    color: #bbb;
+    margin-bottom: 0.5rem;
+}
+
+.name-highlight {
+    background: linear-gradient(45deg, #5389c7, #7597de, #5389c7);
+    background-size: 200% 200%;
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    display: inline-block;
+    display: block;
+    animation: gradientShift 3s ease infinite;
 }
 
-.intro h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+.title-description {
+    margin: 1.5rem 0;
+}
+
+.title-description h2 {
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
+    font-weight: 500;
+    color: #e0e0e0;
+    margin-bottom: 0.5rem;
+}
+
+.location {
+    font-size: 1.1rem;
+    color: #7597de;
+    font-weight: 400;
+}
+
+.main-description {
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    line-height: 1.6;
+    color: #ccc;
+    margin: 2rem 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.quote-section {
+    margin: 2rem 0;
+}
+
+.quote {
+    font-style: italic;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    color: #7597de;
+    position: relative;
+    padding: 0 1rem;
+}
+
+.quote::before,
+.quote::after {
+    content: '"';
+    font-size: 1.5em;
+    color: #5389c7;
+    font-weight: bold;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2.5rem 0;
+}
+
+.social-links a {
+    display: block;
+    padding: 0.8rem;
+    background: rgba(83, 137, 199, 0.1);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(83, 137, 199, 0.2);
+}
+
+.social-links a:hover {
+    background: rgba(83, 137, 199, 0.2);
+    border-color: rgba(83, 137, 199, 0.4);
+    box-shadow: 0 8px 25px rgba(83, 137, 199, 0.3);
+}
+
+.social-links img {
+    width: 40px;
+    height: 40px;
+    filter: brightness(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .intro {
+        padding: 0 1rem;
+        height: auto;
+    }
+
+    .social-links {
+        gap: 1.5rem;
+    }
+
+    .social-links img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .fun-fact {
+        padding: 1rem 1.5rem;
+        margin: 0 1rem;
+    }
+
+    .main-description {
+        margin: 1.5rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-links {
+        gap: 1rem;
+    }
+
+    .social-links img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .fun-fact {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
 }
 
 .intro p {
@@ -88,7 +236,7 @@
     background: linear-gradient(45deg, #5389c7, #7597de);
     display: inline-flex;
     width: auto;
-    z-index: 10000;
+    z-index: 100;
     box-shadow: 0 15px 35px rgba(83, 137, 199, 0.3);
     transition: all 0.3s ease;
     font-weight: 600;
@@ -144,56 +292,15 @@
 }
 
 .images {
-    width: 45%;
-    height: 90%;
-    position: absolute;
-    bottom: 0;
-    right: 100px;
-    z-index: 2;
-}
-
-.images .me {
-    height: 100%;
-    filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
-    transition: all 0.5s ease;
-}
-
-.images:hover .me {
-    filter: drop-shadow(0 30px 60px rgba(83, 137, 199, 0.2));
-}
-
-.images img {
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translate(-50%);
-    transition: all 0.8s ease;
-}
-
-.annotation-arrow {
-    position: absolute;
-    top: -50px;
-    right: -80px;
-    z-index: 3;
-}
-
-.annotation-text {
-    position: absolute;
-    top: -80px;
-    right: -60px;
-    color: #5389c7;
-    font-family: 'Caveat', cursive;
-    font-size: 1.4rem;
-    font-weight: 600;
-    transform: rotate(-15deg);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    z-index: 3;
+    display: none;
 }
 
 .back-video {
     position: absolute;
     z-index: 0;
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     right: 0;
     bottom: 0;
     opacity: 0.7;
@@ -202,9 +309,12 @@
 
 .scroll-icon {
     color: #fff;
-    margin-top: 5%;
-    text-align: left;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
     opacity: 0.8;
+    position: absolute;
+    bottom: 2rem;
 }
 
 .bounce {
@@ -231,95 +341,44 @@
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .intro {
-        padding-left: 5%;
-        padding-top: 10%;
+        padding: 0 1rem;
         font-size: medium;
     }
 
     .cv {
-        width: 85%;
+        width: auto;
+        padding: 10px 25px;
     }
 
     .icon1,
     .icon2 {
-        width: 10%;
-    }
-
-    .icon2 {
-        padding-left: 3%;
-    }
-
-    .images {
-        opacity: 0;
-        z-index: -2;
-    }
-
-    .back-video {
-        opacity: 0;
+        width: 35px;
+        height: 35px;
     }
 }
 
 /* Small devices (portrait tablets and large phones, 601px and up) */
 @media only screen and (min-width: 601px) {
     .intro {
-        padding-left: 10%;
-        padding-top: 15%;
         font-size: medium;
     }
 
     .cv {
         padding: 10px 20px;
         font-size: 0.8rem;
-        width: 19%;
-    }
-
-    .icon1,
-    .icon2 {
-        width: 5%;
-    }
-
-    .images {
-        width: 70%;
-        position: static;
     }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
     .intro {
-        padding-left: 15%;
-        padding-top: 20%;
         font-size: large;
-    }
-
-    .cv {
-        width: 19%;
-    }
-
-    .icon1,
-    .icon2 {
-        width: 4%;
-    }
-
-    .images {
-        width: 55%;
-        position: static;
     }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-    .home {
-        height: 100vh;
-        width: 100%;
-    }
-
     .intro {
-        padding-left: 15%;
-        padding-top: 20%;
-        color: #fff;
-        font-weight: 500;
-        letter-spacing: 1px;
         font-size: large;
     }
 
@@ -327,18 +386,11 @@
         color: rgb(83, 145, 199);
     }
 
-    .intro p {
-        align-items: left;
-        margin-bottom: 30px;
-    }
-
     .cv {
         padding: 6px 15px;
         border-radius: 5px;
         color: #2b1055;
         background: #fff;
-        display: flex;
-        width: 19%;
         box-shadow: 0 12px 12px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 
@@ -347,77 +399,14 @@
         background: #7597de;
     }
 
-    .icon1 {
-        width: 3%;
-        margin-top: 20px;
-    }
-
     .icon1:hover {
         transition: 0.3s;
         transform: scale(1.2);
     }
 
-    .icon2 {
-        width: 3%;
-        margin-top: 20px;
-        padding-left: 1%;
-    }
-
     .icon2:hover {
         transition: 0.3s;
         transform: scale(1.2);
-    }
-
-    .images {
-        width: 45%;
-        height: 90%;
-        position: absolute;
-        bottom: 0;
-        right: 100px;
-    }
-
-    .images .me {
-        height: 100%;
-    }
-
-    .images .shape {
-        height: 0%;
-    }
-
-    .images img {
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        transform: translate(-50%);
-        transition: bottom 2s, left 2s;
-    }
-
-    .images:hover .shape {
-        bottom: 20px;
-    }
-
-    .images:hover .me {
-        left: 45%;
-    }
-
-    .back-video {
-        position: absolute;
-        z-index: -1;
-        width: 100%;
-        right: 0;
-        bottom: 0;
-    }
-
-    .home__scroll-arrow {
-        font-size: 1.5rem;
-        color: #fff;
-        animation-name: bounce;
-    }
-
-    .scroll-icon {
-        color: #fff;
-        margin-top: 5%;
-        text-align: left;
     }
 
     .button__icon {
@@ -432,17 +421,7 @@
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-    .home {
-        height: 100vh;
-        width: 100%;
-    }
-
     .intro {
-        padding-left: 15%;
-        padding-top: 20%;
-        color: #fff;
-        font-weight: 500;
-        letter-spacing: 1px;
         font-size: large;
     }
 
@@ -450,18 +429,11 @@
         color: rgb(83, 145, 199);
     }
 
-    .intro p {
-        align-items: left;
-        margin-bottom: 30px;
-    }
-
     .cv {
         padding: 6px 15px;
         border-radius: 5px;
         color: #2b1055;
         background: #fff;
-        display: flex;
-        width: 19%;
         box-shadow: 0 12px 12px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 
@@ -470,77 +442,14 @@
         background: rgb(83, 145, 199);
     }
 
-    .icon1 {
-        width: 3%;
-        margin-top: 20px;
-    }
-
     .icon1:hover {
         transition: 0.3s;
         transform: scale(1.2);
     }
 
-    .icon2 {
-        width: 3%;
-        margin-top: 20px;
-        padding-left: 1%;
-    }
-
     .icon2:hover {
         transition: 0.3s;
         transform: scale(1.2);
-    }
-
-    .images {
-        width: 45%;
-        height: 90%;
-        position: absolute;
-        bottom: 0;
-        right: 100px;
-    }
-
-    .images .me {
-        height: 100%;
-    }
-
-    .images .shape {
-        height: 0%;
-    }
-
-    .images img {
-        position: absolute;
-        left: 50%;
-        bottom: 0;
-        transform: translate(-50%);
-        transition: bottom 2s, left 2s;
-    }
-
-    .images:hover .shape {
-        bottom: 20px;
-    }
-
-    .images:hover .me {
-        left: 45%;
-    }
-
-    .back-video {
-        position: absolute;
-        z-index: -1;
-        width: 100%;
-        right: 0;
-        bottom: 0;
-    }
-
-    .home__scroll-arrow {
-        font-size: 1.5rem;
-        color: #fff;
-        animation-name: bounce;
-    }
-
-    .scroll-icon {
-        color: #fff;
-        margin-top: 5%;
-        text-align: left;
     }
 
     .button__icon {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Contact.css';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin, FaGithub, FaPaperPlane } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaLinkedin, FaGithub, FaPaperPlane } from 'react-icons/fa';
 
 const Contact = ({ setActiveNav }) => {
     const [formData, setFormData] = useState({
@@ -33,10 +33,10 @@ const Contact = ({ setActiveNav }) => {
 
     const contactInfo = [
         {
-            icon: <FaEnvelope />,
-            title: 'Email',
-            info: 'kishorkumar@example.com',
-            link: 'mailto:kishorkumar@example.com'
+            icon: <FaLinkedin />,
+            title: 'LinkedIn',
+            info: 'Connect with me on LinkedIn',
+            link: 'https://www.linkedin.com/in/kishorkumar11/'
         },
         {
             icon: <FaMapMarkerAlt />,
@@ -83,6 +83,39 @@ const Contact = ({ setActiveNav }) => {
 
     return (
         <section className="contact section" id="contact">
+            {/* Floating particles effect */}
+            <div className="contact-particles">
+                {[...Array(14)].map((_, i) => {
+                    const randomX = Math.random() * 100;
+                    const randomY = Math.random() * 100;
+                    const randomMoveX = (Math.random() - 0.5) * 45;
+                    const randomMoveY = (Math.random() - 0.5) * 45;
+
+                    return (
+                        <motion.div
+                            key={i}
+                            className="contact-particle"
+                            animate={{
+                                y: [0, randomMoveY, 0],
+                                x: [0, randomMoveX, 0],
+                                opacity: [0.4, 0.8, 0.4],
+                                scale: [1, 1.2, 1]
+                            }}
+                            transition={{
+                                duration: 3.5 + Math.random() * 2,
+                                repeat: Infinity,
+                                delay: Math.random() * 2.5,
+                                ease: 'easeInOut'
+                            }}
+                            style={{
+                                left: `${randomX}%`,
+                                top: `${randomY}%`
+                            }}
+                        />
+                    );
+                })}
+            </div>
+
             <motion.h2 className="section__title" initial={{ opacity: 0, y: -50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
                 Get In Touch
             </motion.h2>

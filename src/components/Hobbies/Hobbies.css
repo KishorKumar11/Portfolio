@@ -38,7 +38,7 @@
     width: 100%;
     height: 120px;
     background: linear-gradient(135deg, #0f1419 0%, #1a1a2e 50%, #16213e 100%);
-    clip-path: polygon(0% 100%, 0% 45%, 15% 25%, 25% 40%, 35% 20%, 45% 35%, 55% 10%, 65% 30%, 75% 15%, 85% 35%, 95% 20%, 100% 30%, 100% 100%);
+    clip-path: polygon(0% 100%, 0% 50%, 12% 20%, 24% 45%, 36% 15%, 48% 50%, 60% 25%, 72% 45%, 84% 20%, 96% 40%, 100% 30%, 100% 100%);
     z-index: 3;
     pointer-events: none;
     opacity: 0.9;
@@ -222,7 +222,7 @@
 }
 
 .hobby-fun-fact {
-    color: #a0a0a0;
+    color: #ffffff;
     font-size: 0.9rem;
     line-height: 1.5;
     font-style: italic;
@@ -261,27 +261,7 @@
     height: 3px;
     background: #5389c7;
     border-radius: 50%;
-}
-
-.hobby-particle:nth-child(1) {
-    top: 20%;
-    left: 15%;
-}
-.hobby-particle:nth-child(2) {
-    top: 30%;
-    right: 20%;
-}
-.hobby-particle:nth-child(3) {
-    bottom: 25%;
-    left: 25%;
-}
-.hobby-particle:nth-child(4) {
-    bottom: 15%;
-    right: 15%;
-}
-.hobby-particle:nth-child(5) {
-    top: 50%;
-    left: 10%;
+    /* Remove fixed positioning - now handled by JS */
 }
 
 /* Special hover effects for specific hobbies */

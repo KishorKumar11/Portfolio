@@ -40,11 +40,43 @@
     width: 100%;
     height: 120px;
     background: linear-gradient(135deg, #16213e 0%, #1a1a2e 50%, #0f1419 100%);
-    clip-path: polygon(0% 100%, 0% 60%, 5% 45%, 15% 35%, 25% 45%, 35% 25%, 45% 35%, 55% 15%, 65% 30%, 75% 20%, 85% 40%, 95% 25%, 100% 35%, 100% 100%);
+    clip-path: polygon(0% 100%, 0% 65%, 10% 45%, 20% 65%, 30% 35%, 40% 60%, 50% 30%, 60% 55%, 70% 25%, 80% 50%, 90% 35%, 100% 45%, 100% 100%);
     z-index: 3;
     pointer-events: none;
     opacity: 0.9;
     filter: drop-shadow(0 -10px 20px rgba(83, 137, 199, 0.1));
+}
+
+/* Floating particles effect */
+.about-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.about-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: linear-gradient(45deg, #5389c7, #7597de);
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(83, 137, 199, 0.6);
+}
+
+.about-particle::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 8px;
+    height: 8px;
+    background: rgba(83, 137, 199, 0.2);
+    border-radius: 50%;
+    z-index: -1;
 }
 
 .about-text {
@@ -140,15 +172,32 @@
     border-radius: 15px;
     padding: 1.5rem 1rem;
     text-align: center;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.about__box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(83, 137, 199, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.about__box:hover::before {
+    left: 100%;
 }
 
 .about__box:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px) scale(1.02);
     background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(83, 137, 199, 0.3);
-    box-shadow: 0 10px 30px rgba(83, 137, 199, 0.2);
+    border-color: rgba(83, 137, 199, 0.4);
+    box-shadow: 0 15px 40px rgba(83, 137, 199, 0.25);
 }
 
 .about__box i {
@@ -156,6 +205,12 @@
     color: #5389c7;
     margin-bottom: 0.5rem;
     display: block;
+    transition: all 0.4s ease;
+}
+
+.about__box:hover i {
+    transform: scale(1.1) rotate(5deg);
+    color: #7597de;
 }
 
 .about__title {

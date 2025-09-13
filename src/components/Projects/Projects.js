@@ -97,11 +97,45 @@ const Projects = ({ setActiveNav }) => {
             transition: { duration: 0.6, ease: 'easeOut' }
         }
     };
+
     return (
-        <section className="projects section" id="projects">
-            <motion.h2 className="section__title" initial={{ opacity: 0, y: -50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
-                Projects
-            </motion.h2>
+        <section className="projects" id="projects">
+            <div className="projects-decoration"></div>
+
+            {/* Floating particles effect */}
+            <div className="projects-particles">
+                {[...Array(18)].map((_, i) => {
+                    const randomX = Math.random() * 100;
+                    const randomY = Math.random() * 100;
+                    const randomMoveX = (Math.random() - 0.5) * 60;
+                    const randomMoveY = (Math.random() - 0.5) * 60;
+
+                    return (
+                        <motion.div
+                            key={i}
+                            className="projects-particle"
+                            animate={{
+                                y: [0, randomMoveY, 0],
+                                x: [0, randomMoveX, 0],
+                                opacity: [0.2, 0.6, 0.2],
+                                scale: [1, 1.4, 1]
+                            }}
+                            transition={{
+                                duration: 5 + Math.random() * 3,
+                                repeat: Infinity,
+                                delay: Math.random() * 4,
+                                ease: 'easeInOut'
+                            }}
+                            style={{
+                                left: `${randomX}%`,
+                                top: `${randomY}%`
+                            }}
+                        />
+                    );
+                })}
+            </div>
+
+            <h2 className="section__title">Projects</h2>
 
             <motion.div className="portfolio-content container" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}>
                 {projectData.map((project, index) => (
