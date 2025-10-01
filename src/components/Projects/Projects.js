@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Projects.css';
 import AlexPic from '../../images/AlexPic.png';
 import mBotPic from '../../images/mBotPic.png';
@@ -11,8 +11,23 @@ import VRPic from '../../images/VRPic.png';
 import ARLaserTagPic from '../../images/ARLaserTagPic.png';
 import { motion } from 'framer-motion';
 import { Tilt } from 'react-tilt';
+import { useInView } from 'react-intersection-observer';
 
 const Projects = ({ setActiveNav }) => {
+    const [ref, inView] = useInView({
+        triggerOnce: true,
+        threshold: 0.1
+    });
+
+    const [hasAnimated, setHasAnimated] = useState(false);
+
+    // Once inView becomes true, keep hasAnimated true
+    useEffect(() => {
+        if (inView && !hasAnimated) {
+            setHasAnimated(true);
+        }
+    }, [inView, hasAnimated]);
+
     const projectData = [
         {
             title: "Murphy's Misadventures",
@@ -99,7 +114,7 @@ const Projects = ({ setActiveNav }) => {
     };
 
     return (
-        <section className="projects" id="projects">
+        <section className="projects" id="projects" ref={ref}>
             <div className="projects-decoration"></div>
 
             {/* Floating particles effect */}
@@ -137,7 +152,7 @@ const Projects = ({ setActiveNav }) => {
 
             <h2 className="section__title">Projects</h2>
 
-            <motion.div className="portfolio-content container" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}>
+            <motion.div className="portfolio-content container" variants={containerVariants} initial="hidden" animate={hasAnimated ? 'visible' : 'hidden'}>
                 {projectData.map((project, index) => (
                     <motion.div
                         key={index}

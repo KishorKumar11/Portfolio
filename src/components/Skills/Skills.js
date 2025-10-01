@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Skills.css';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -10,6 +10,14 @@ const Skills = ({ setActiveNav }) => {
     });
 
     const [activeFilter, setActiveFilter] = useState('All');
+    const [hasAnimated, setHasAnimated] = useState(false);
+
+    // Once inView becomes true, keep hasAnimated true
+    useEffect(() => {
+        if (inView && !hasAnimated) {
+            setHasAnimated(true);
+        }
+    }, [inView, hasAnimated]);
 
     const skills = [
         // Languages
@@ -106,12 +114,12 @@ const Skills = ({ setActiveNav }) => {
 
     return (
         <section className="skills section" id="skills" ref={ref}>
-            <motion.h2 className="section__title" initial={{ opacity: 0, y: -50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
+            <motion.h2 className="section__title" initial={{ opacity: 0, y: -50 }} animate={hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }} transition={{ duration: 0.6 }}>
                 Skills & Technologies
             </motion.h2>
 
             {/* Filter Buttons */}
-            <motion.div className="skills-filter" variants={filterVariants} initial="hidden" whileInView="visible" viewport={{ once: true }}>
+            <motion.div className="skills-filter" variants={filterVariants} initial="hidden" animate={hasAnimated ? 'visible' : 'hidden'}>
                 {categories.map((category) => (
                     <motion.button
                         key={category}
@@ -125,7 +133,7 @@ const Skills = ({ setActiveNav }) => {
                 ))}
             </motion.div>
 
-            <motion.div className="skills-container container" variants={containerVariants} initial="hidden" animate={inView ? 'visible' : 'hidden'}>
+            <motion.div className="skills-container container" variants={containerVariants} initial="hidden" animate={hasAnimated ? 'visible' : 'hidden'}>
                 {filteredSkills.map((skill, index) => (
                     <motion.div
                         key={`${skill.name}-${skill.category}`}

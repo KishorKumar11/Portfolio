@@ -1,10 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import './Hobbies.css';
 
 const Hobbies = () => {
+    const [ref, inView] = useInView({
+        triggerOnce: true,
+        threshold: 0.1
+    });
+
+    const [hasAnimated, setHasAnimated] = useState(false);
     const [currentSlide, setCurrentSlide] = useState(0);
     const [slidesToShow, setSlidesToShow] = useState(3);
+
+    // Once inView becomes true, keep hasAnimated true
+    useEffect(() => {
+        if (inView && !hasAnimated) {
+            setHasAnimated(true);
+        }
+    }, [inView, hasAnimated]);
 
     const hobbies = [
         {
@@ -122,7 +136,7 @@ const Hobbies = () => {
     };
 
     return (
-        <section className="hobbies section" id="hobbies">
+        <section className="hobbies section" id="hobbies" ref={ref}>
             <div className="hobbies-decoration"></div>
 
             {/* Background particles scattered across the section */}
@@ -158,7 +172,7 @@ const Hobbies = () => {
                 })}
             </div>
 
-            <motion.h2 className="section__title" initial={{ opacity: 0, y: -50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
+            <motion.h2 className="section__title" initial={{ opacity: 0, y: -50 }} animate={hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }} transition={{ duration: 0.6 }}>
                 Hobbies & Interests
             </motion.h2>
 
@@ -195,8 +209,7 @@ const Hobbies = () => {
                                     data-hobby={hobby.dataHobby}
                                     variants={cardVariants}
                                     initial="hidden"
-                                    whileInView="visible"
-                                    viewport={{ once: true }}
+                                    animate={hasAnimated ? 'visible' : 'hidden'}
                                     whileHover={{
                                         scale: 1.05,
                                         rotateY: 5,

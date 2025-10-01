@@ -1,9 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Contact.css';
 import { motion } from 'framer-motion';
 import { FaMapMarkerAlt, FaLinkedin, FaGithub, FaPaperPlane } from 'react-icons/fa';
+import { useInView } from 'react-intersection-observer';
 
 const Contact = ({ setActiveNav }) => {
+    const [ref, inView] = useInView({
+        triggerOnce: true,
+        threshold: 0.1
+    });
+
+    const [hasAnimated, setHasAnimated] = useState(false);
+
+    // Once inView becomes true, keep hasAnimated true
+    useEffect(() => {
+        if (inView && !hasAnimated) {
+            setHasAnimated(true);
+        }
+    }, [inView, hasAnimated]);
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -82,7 +97,7 @@ const Contact = ({ setActiveNav }) => {
     };
 
     return (
-        <section className="contact section" id="contact">
+        <section className="contact section" id="contact" ref={ref}>
             {/* Floating particles effect */}
             <div className="contact-particles">
                 {[...Array(14)].map((_, i) => {
@@ -116,15 +131,15 @@ const Contact = ({ setActiveNav }) => {
                 })}
             </div>
 
-            <motion.h2 className="section__title" initial={{ opacity: 0, y: -50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }}>
+            <motion.h2 className="section__title" initial={{ opacity: 0, y: -50 }} animate={hasAnimated ? { opacity: 1, y: 0 } : { opacity: 0, y: -50 }} transition={{ duration: 0.6 }}>
                 Get In Touch
             </motion.h2>
 
-            <motion.p className="contact__description" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.6, delay: 0.2 }} viewport={{ once: true }}>
+            <motion.p className="contact__description" initial={{ opacity: 0 }} animate={hasAnimated ? { opacity: 1 } : { opacity: 0 }} transition={{ duration: 0.6, delay: 0.2 }}>
                 Let's work together! Whether you have a project in mind or just want to connect, I'd love to hear from you.
             </motion.p>
 
-            <motion.div className="contact__container container" variants={containerVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }}>
+            <motion.div className="contact__container container" variants={containerVariants} initial="hidden" animate={hasAnimated ? 'visible' : 'hidden'}>
                 <div className="contact__content">
                     <motion.div className="contact__info" variants={itemVariants}>
                         <h3 className="contact__info-title">Contact Information</h3>
