@@ -5,7 +5,6 @@ import mBotPic from '../../images/mBotPic.png';
 import KuramaPic from '../../images/KuramaPic.png';
 import KingsGambitPic from '../../images/KingGambitPic.png';
 import GetJackDPic from '../../images/GetJackDPic.png';
-import DesignPic from '../../images/DesignPic.png';
 import PhysioTechPic from '../../images/PhysioTechPic.jpg';
 import VRPic from '../../images/VRPic.png';
 import ARLaserTagPic from '../../images/ARLaserTagPic.png';
@@ -93,13 +92,6 @@ const Projects = ({ setActiveNav }) => {
             link: 'https://github.com/KishorKumar11/tp/tree/master/docs',
             tags: ['CLI', 'Java', 'Fitness', 'Productivity']
         },
-        {
-            title: 'Tracken',
-            description: 'A Social Media Tracker App design done on Figma',
-            image: DesignPic,
-            link: 'https://docs.google.com/presentation/d/15jbXckEWw3xQA_B75ksqmbDKp5004nnsGsfRyTYxd2c/edit?usp=share_link',
-            tags: ['UI/UX', 'Figma', 'Mobile Design', 'Social Media']
-        }
     ];
 
     const containerVariants = {
