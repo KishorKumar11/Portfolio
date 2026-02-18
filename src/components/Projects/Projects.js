@@ -9,6 +9,7 @@ import DesignPic from '../../images/DesignPic.png';
 import PhysioTechPic from '../../images/PhysioTechPic.jpg';
 import VRPic from '../../images/VRPic.png';
 import ARLaserTagPic from '../../images/ARLaserTagPic.png';
+import F1PixelSimulatorPic from '../../images/F1PixelSimulatorPic.png';
 import { motion } from 'framer-motion';
 import { Tilt } from 'react-tilt';
 import { useInView } from 'react-intersection-observer';
@@ -29,6 +30,13 @@ const Projects = ({ setActiveNav }) => {
     }, [inView, hasAnimated]);
 
     const projectData = [
+        {
+            title: 'F1 Pixel Simulator',
+            description: 'A Web Application that simulates real races with 3D pixelated F1 cars using FastF1 API',
+            image: F1PixelSimulatorPic,
+            link: 'https://f1-pixel-simulator.vercel.app/',
+            tags: ['Web App', 'Three.js', 'FastF1 API', 'React', 'Racing']
+        },
         {
             title: "Murphy's Misadventures",
             description: 'An educational VR game that focuses on home safety awareness',
