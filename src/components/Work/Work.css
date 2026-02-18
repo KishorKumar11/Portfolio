@@ -76,36 +76,6 @@
     z-index: -1;
 }
 
-.resume-section {
-    text-align: center;
-    margin-bottom: 4rem;
-    position: relative;
-    z-index: 2;
-}
-
-.resume-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: linear-gradient(45deg, #5389c7, #7597de);
-    color: #fff;
-    padding: 1rem 2rem;
-    border-radius: 25px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 25px rgba(83, 137, 199, 0.3);
-}
-
-.resume-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 35px rgba(83, 137, 199, 0.4);
-}
-
-.resume-icon {
-    font-size: 1.2rem;
-}
-
 .qualification__logo {
     position: absolute;
     width: 40px;
