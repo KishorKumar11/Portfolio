@@ -20,7 +20,7 @@ const Footer = () => {
         },
         {
             name: 'Gmail',
-            url: 'https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=h.kishorkumar7@gmail.com',
+            url: 'https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=harisham38@gmail.com',
             icon: '📧',
             color: '#EA4335'
         }

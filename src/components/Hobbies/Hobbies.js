@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import './Hobbies.css';
 
@@ -104,22 +104,11 @@ const Hobbies = () => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            nextSlide();
+            setCurrentSlide((prev) => (prev >= maxSlides ? 0 : prev + 1));
         }, 5000); // Change slide every 5 seconds
 
         return () => clearInterval(interval);
     }, [maxSlides]);
-
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.1,
-                delayChildren: 0.2
-            }
-        }
-    };
 
     const cardVariants = {
         hidden: { y: 50, opacity: 0, scale: 0.9 },

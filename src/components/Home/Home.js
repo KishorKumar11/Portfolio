@@ -1,6 +1,5 @@
 import React from 'react';
 import loginVid from '../../images/mainVid.mp4';
-import ScrollDown from '../ScrollDown';
 import TypewriterEffect from '../TypewriterEffect';
 import { motion } from 'framer-motion';
 import './Home.css';
