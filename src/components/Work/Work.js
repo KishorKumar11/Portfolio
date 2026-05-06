@@ -8,7 +8,7 @@ import LTALogo from '../../images/LTALogo.jpg';
 import PragmaLogo from '../../images/PragmaLogo.jpeg';
 import TranquilioLogo from '../../images/TranquilioLogo.jpeg';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ParticleField, MotionSection, fadeUp, stagger } from '../../motion';
+import { ParticleField, MotionSection, fadeUp } from '../../motion';
 import './Work.css';
 
 const EDU = [

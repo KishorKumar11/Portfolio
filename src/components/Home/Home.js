@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import loginVid from '../../images/mainVid.mp4';
 import TypewriterEffect from '../TypewriterEffect';
 import { motion, useScroll, useTransform, useMotionValue, useSpring, useReducedMotion } from 'framer-motion';
-import { GridBackground, MagneticButton, stagger, fadeUp } from '../../motion';
+import { GridBackground, stagger, fadeUp } from '../../motion';
 import './Home.css';
 
 const Home = () => {
@@ -22,10 +22,6 @@ const Home = () => {
         const cy = window.innerHeight / 2;
         px.set((e.clientX - cx) / 40);
         py.set((e.clientY - cy) / 40);
-    };
-
-    const scrollToAbout = () => {
-        document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
     };
 
     return (

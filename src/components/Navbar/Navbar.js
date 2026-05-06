@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import './Navbar.css';
@@ -27,6 +28,11 @@ const Navbar = ({ activeNav }) => {
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
+    useEffect(() => {
+        document.body.style.overflow = open ? 'hidden' : '';
+        return () => { document.body.style.overflow = ''; };
+    }, [open]);
+
     const onClick = (e, href) => {
         e.preventDefault();
         const el = document.querySelector(href);
@@ -37,56 +43,102 @@ const Navbar = ({ activeNav }) => {
         setOpen(false);
     };
 
-    return (
-        <motion.header
-            className={`header ${scrolled ? 'scrolled' : ''}`}
-            initial={{ y: -100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        >
-            <motion.div className="header__progress" style={{ scaleX: progress }} />
-
-            <a href="#home" className="logo" onClick={(e) => onClick(e, '#home')}>
-                <span className="logo-bracket">&lt;</span>
-                kishor
-                <span className="logo-bracket">/&gt;</span>
-            </a>
-
-            <button className="menu-icon" onClick={() => setOpen((v) => !v)} aria-label="Toggle menu">
-                <AnimatePresence mode="wait">
-                    <motion.span
-                        key={String(open)}
-                        initial={{ rotate: -90, opacity: 0 }}
-                        animate={{ rotate: 0, opacity: 1 }}
-                        exit={{ rotate: 90, opacity: 0 }}
-                        transition={{ duration: 0.25 }}
-                        style={{ display: 'inline-flex' }}
+    const mobileMenu = (
+        <AnimatePresence>
+            {open && (
+                <>
+                    <motion.div
+                        className="nav-overlay"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        onClick={() => setOpen(false)}
+                    />
+                    <motion.ul
+                        className="nav-menu-portal"
+                        initial={{ x: '100%' }}
+                        animate={{ x: 0 }}
+                        exit={{ x: '100%' }}
+                        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                     >
-                        {open ? <FaTimes /> : <FaBars />}
-                    </motion.span>
-                </AnimatePresence>
-            </button>
+                        {NAV.map((item) => {
+                            const isActive = activeNav === item.href;
+                            return (
+                                <li key={item.href}>
+                                    <a href={item.href} onClick={(e) => onClick(e, item.href)} className={`nav__link ${isActive ? 'active-link' : ''}`}>
+                                        {isActive && (
+                                            <motion.span
+                                                className="nav__active-pill"
+                                                layoutId="nav-active-pill-mobile"
+                                                transition={{ type: 'spring', stiffness: 400, damping: 35 }}
+                                            />
+                                        )}
+                                        <span className="nav__link-label">{item.label}</span>
+                                    </a>
+                                </li>
+                            );
+                        })}
+                    </motion.ul>
+                </>
+            )}
+        </AnimatePresence>
+    );
 
-            <ul className={`nav-menu ${open ? 'active' : ''}`}>
-                {NAV.map((item) => {
-                    const isActive = activeNav === item.href;
-                    return (
-                        <li key={item.href}>
-                            <a href={item.href} onClick={(e) => onClick(e, item.href)} className={`nav__link ${isActive ? 'active-link' : ''}`}>
-                                {isActive && (
-                                    <motion.span
-                                        className="nav__active-pill"
-                                        layoutId="nav-active-pill"
-                                        transition={{ type: 'spring', stiffness: 400, damping: 35 }}
-                                    />
-                                )}
-                                <span className="nav__link-label">{item.label}</span>
-                            </a>
-                        </li>
-                    );
-                })}
-            </ul>
-        </motion.header>
+    return (
+        <>
+            <motion.header
+                className={`header ${scrolled ? 'scrolled' : ''}`}
+                initial={{ y: -100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            >
+                <motion.div className="header__progress" style={{ scaleX: progress }} />
+
+                <a href="#home" className="logo" onClick={(e) => onClick(e, '#home')}>
+                    <span className="logo-bracket">&lt;</span>
+                    kishor
+                    <span className="logo-bracket">/&gt;</span>
+                </a>
+
+                <button className="menu-icon" onClick={() => setOpen((v) => !v)} aria-label="Toggle menu">
+                    <AnimatePresence mode="wait">
+                        <motion.span
+                            key={String(open)}
+                            initial={{ rotate: -90, opacity: 0 }}
+                            animate={{ rotate: 0, opacity: 1 }}
+                            exit={{ rotate: 90, opacity: 0 }}
+                            transition={{ duration: 0.25 }}
+                            style={{ display: 'inline-flex' }}
+                        >
+                            {open ? <FaTimes /> : <FaBars />}
+                        </motion.span>
+                    </AnimatePresence>
+                </button>
+
+                <ul className="nav-menu">
+                    {NAV.map((item) => {
+                        const isActive = activeNav === item.href;
+                        return (
+                            <li key={item.href}>
+                                <a href={item.href} onClick={(e) => onClick(e, item.href)} className={`nav__link ${isActive ? 'active-link' : ''}`}>
+                                    {isActive && (
+                                        <motion.span
+                                            className="nav__active-pill"
+                                            layoutId="nav-active-pill"
+                                            transition={{ type: 'spring', stiffness: 400, damping: 35 }}
+                                        />
+                                    )}
+                                    <span className="nav__link-label">{item.label}</span>
+                                </a>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </motion.header>
+
+            {createPortal(mobileMenu, document.body)}
+        </>
     );
 };
 
