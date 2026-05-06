@@ -255,6 +255,29 @@
     display: none;
 }
 
+.filter-btn {
+    position: relative;
+    isolation: isolate;
+}
+
+.filter-btn__pill {
+    position: absolute;
+    inset: 0;
+    border-radius: 50px;
+    background: linear-gradient(45deg, #5389c7, #7597de);
+    box-shadow: 0 6px 20px rgba(83, 137, 199, 0.45), 0 0 18px rgba(93, 212, 255, 0.3);
+    z-index: -1;
+}
+
+.filter-btn.active {
+    background: transparent;
+}
+
+.filter-btn__label {
+    position: relative;
+    z-index: 1;
+}
+
 .skill-name {
     color: #fff;
     font-size: 1.3rem;

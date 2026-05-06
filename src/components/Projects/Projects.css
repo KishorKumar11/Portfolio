@@ -290,6 +290,12 @@
         font-size: 2rem;
     }
 
+    .project-card-inner {
+        max-height: none;
+        min-height: 0;
+        height: auto;
+    }
+
     .project-image-container {
         height: 200px;
     }

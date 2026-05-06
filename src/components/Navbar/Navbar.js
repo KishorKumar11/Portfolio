@@ -1,129 +1,91 @@
 import React, { useState, useEffect } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import './Navbar.css';
 
+const NAV = [
+    { href: '#home', label: 'Home' },
+    { href: '#about', label: 'About' },
+    { href: '#work', label: 'Qualifications' },
+    { href: '#skills', label: 'Skills' },
+    { href: '#projects', label: 'Projects' },
+    { href: '#hobbies', label: 'Hobbies' },
+    { href: '#contact', label: 'Contact' }
+];
+
 const Navbar = ({ activeNav }) => {
-    const [showNav, setShowNav] = useState(false);
+    const [open, setOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
+    const { scrollYProgress } = useScroll();
+    const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 25, mass: 0.3 });
+
     useEffect(() => {
-        const scrollHandler = function () {
-            const header = document.querySelector('.header');
-            const isScrolled = window.scrollY >= 80;
-
-            if (isScrolled) {
-                header?.classList.add('scroll-header');
-                setScrolled(true);
-            } else {
-                header?.classList.remove('scroll-header');
-                setScrolled(false);
-            }
-        };
-
-        window.addEventListener('scroll', scrollHandler);
-        return () => window.removeEventListener('scroll', scrollHandler);
+        const onScroll = () => setScrolled(window.scrollY >= 60);
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
-    const navItems = [
-        { href: '#home', label: 'Home' },
-        { href: '#about', label: 'About' },
-        { href: '#work', label: 'Qualifications' },
-        { href: '#skills', label: 'Skills' },
-        { href: '#projects', label: 'Projects' },
-        { href: '#hobbies', label: 'Hobbies' },
-        { href: '#contact', label: 'Contact' }
-    ];
-
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.1
-            }
-        }
-    };
-
-    const itemVariants = {
-        hidden: { y: -20, opacity: 0 },
-        visible: {
-            y: 0,
-            opacity: 1,
-            transition: { duration: 0.3 }
-        }
-    };
-
-    const handleClick = (e, anchorId) => {
+    const onClick = (e, href) => {
         e.preventDefault();
-        const anchorElement = document.querySelector(anchorId);
-
-        if (anchorElement) {
-            const navbarHeight = document.querySelector('.header').offsetHeight;
-            const scrollTarget = anchorElement.offsetTop - navbarHeight;
-
-            window.scrollTo({
-                top: scrollTarget,
-                behavior: 'smooth'
-            });
+        const el = document.querySelector(href);
+        if (el) {
+            const offset = document.querySelector('.header')?.offsetHeight || 0;
+            window.scrollTo({ top: el.offsetTop - offset, behavior: 'smooth' });
         }
-
-        setShowNav(false);
-    };
-
-    const toggleNav = () => {
-        setShowNav(!showNav);
+        setOpen(false);
     };
 
     return (
-        <motion.header className={`header ${scrolled ? 'scrolled' : ''}`} initial={{ y: -100, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6, ease: 'easeOut' }}>
-            <motion.a
-                href="#home"
-                className="logo"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                animate={{
-                    color: scrolled ? '#5389c7' : '#fff'
-                }}
-            >
+        <motion.header
+            className={`header ${scrolled ? 'scrolled' : ''}`}
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        >
+            <motion.div className="header__progress" style={{ scaleX: progress }} />
+
+            <a href="#home" className="logo" onClick={(e) => onClick(e, '#home')}>
                 <span className="logo-bracket">&lt;</span>
                 kishor
                 <span className="logo-bracket">/&gt;</span>
-            </motion.a>
+            </a>
 
-            <motion.div className="menu-icon" onClick={toggleNav} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+            <button className="menu-icon" onClick={() => setOpen((v) => !v)} aria-label="Toggle menu">
                 <AnimatePresence mode="wait">
-                    <motion.div key={showNav} initial={{ rotate: 0 }} animate={{ rotate: showNav ? 180 : 0 }} exit={{ rotate: 0 }} transition={{ duration: 0.3 }}>
-                        {showNav ? <FaTimes /> : <FaBars />}
-                    </motion.div>
+                    <motion.span
+                        key={String(open)}
+                        initial={{ rotate: -90, opacity: 0 }}
+                        animate={{ rotate: 0, opacity: 1 }}
+                        exit={{ rotate: 90, opacity: 0 }}
+                        transition={{ duration: 0.25 }}
+                        style={{ display: 'inline-flex' }}
+                    >
+                        {open ? <FaTimes /> : <FaBars />}
+                    </motion.span>
                 </AnimatePresence>
-            </motion.div>
+            </button>
 
-            <AnimatePresence>
-                <motion.ul className={showNav ? 'nav-menu active' : 'nav-menu'} variants={containerVariants} initial="hidden" animate="visible">
-                    {navItems.map((item, index) => (
-                        <motion.li key={item.href} variants={itemVariants} whileHover={{ y: -2 }}>
-                            <motion.a
-                                href={item.href}
-                                onClick={(e) => handleClick(e, item.href)}
-                                className={activeNav === item.href ? 'nav__link active-link' : 'nav__link'}
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                            >
-                                {item.label}
-                                <motion.span
-                                    className="nav-indicator"
-                                    layoutId="nav-indicator"
-                                    animate={{
-                                        opacity: activeNav === item.href ? 1 : 0,
-                                        scale: activeNav === item.href ? 1 : 0
-                                    }}
-                                />
-                            </motion.a>
-                        </motion.li>
-                    ))}
-                </motion.ul>
-            </AnimatePresence>
+            <ul className={`nav-menu ${open ? 'active' : ''}`}>
+                {NAV.map((item) => {
+                    const isActive = activeNav === item.href;
+                    return (
+                        <li key={item.href}>
+                            <a href={item.href} onClick={(e) => onClick(e, item.href)} className={`nav__link ${isActive ? 'active-link' : ''}`}>
+                                {isActive && (
+                                    <motion.span
+                                        className="nav__active-pill"
+                                        layoutId="nav-active-pill"
+                                        transition={{ type: 'spring', stiffness: 400, damping: 35 }}
+                                    />
+                                )}
+                                <span className="nav__link-label">{item.label}</span>
+                            </a>
+                        </li>
+                    );
+                })}
+            </ul>
         </motion.header>
     );
 };

@@ -1,0 +1,31 @@
+.grid-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.grid-bg__lines {
+    position: absolute;
+    inset: -10%;
+    background-image: linear-gradient(rgba(83, 137, 199, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(83, 137, 199, 0.08) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 80%);
+}
+
+.grid-bg__radial {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(93, 212, 255, 0.08), transparent 45%), radial-gradient(circle at 80% 80%, rgba(255, 93, 200, 0.06), transparent 45%),
+        radial-gradient(circle at 50% 50%, rgba(83, 137, 199, 0.08), transparent 60%);
+}
+
+.grid-bg__scanlines {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.02) 0 2px, transparent 2px 4px);
+    mix-blend-mode: overlay;
+    opacity: 0.6;
+}

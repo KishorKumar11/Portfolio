@@ -13,93 +13,83 @@ import Footer from './components/Footer/Footer';
 import AnimCursor from './components/AnimCursor';
 import ScrollIndicator from './components/ScrollIndicator';
 import Glare from './components/Glare/Glare';
+import PokemonFollower from './components/SquirtleFollower/SquirtleFollower';
 import { motion, AnimatePresence } from 'framer-motion';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+
+const POKEMON_ZONES = [
+  { name: 'Squirtle', sprite: 'https://img.pokemondb.net/sprites/black-white/anim/normal/squirtle.gif', message: 'Squirtle! 💧',        startSection: 'about',   endSection: 'work'     },
+  { name: 'Piplup',   sprite: 'https://img.pokemondb.net/sprites/black-white/anim/normal/piplup.gif',   message: 'Piplup piplup! 💦', startSection: 'skills',  endSection: 'projects' },
+  { name: 'Mudkip',   sprite: 'https://img.pokemondb.net/sprites/black-white/anim/normal/mudkip.gif',   message: 'Mudkip! 🌊',        startSection: 'hobbies', endSection: 'contact'  },
+];
+
+const SECTIONS = ['home', 'about', 'work', 'skills', 'projects', 'hobbies', 'contact'];
 
 function App() {
     const [activeNav, setActiveNav] = useState('home');
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        AOS.init({
-            duration: 1000,
-            easing: 'ease-in-out',
-            once: true,
-            mirror: false
-        });
-
-        // Simulate loading
-        setTimeout(() => setLoading(false), 2000);
+        const t = setTimeout(() => setLoading(false), 1400);
+        return () => clearTimeout(t);
     }, []);
 
-    if (loading) {
-        return (
-            <motion.div className="loading-screen" exit={{ opacity: 0 }} transition={{ duration: 0.5 }}>
-                <motion.div
-                    className="loading-content"
-                    animate={{
-                        scale: [1, 1.2, 1],
-                        rotate: [0, 360]
-                    }}
-                    transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: 'easeInOut'
-                    }}
-                >
-                    <div className="loading-spinner"></div>
-                    <motion.h2 animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 1.5, repeat: Infinity }}>
-                        Loading Portfolio...
-                    </motion.h2>
-                </motion.div>
-            </motion.div>
-        );
-    }
+    // Scroll-spy: track active section for navbar
+    useEffect(() => {
+        if (loading) return;
+        const observers = [];
+        SECTIONS.forEach((id) => {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const obs = new IntersectionObserver(
+                ([entry]) => {
+                    if (entry.isIntersecting) setActiveNav(`#${id}`);
+                },
+                { threshold: 0.35, rootMargin: '-10% 0px -40% 0px' }
+            );
+            obs.observe(el);
+            observers.push(obs);
+        });
+        return () => observers.forEach((o) => o.disconnect());
+    }, [loading]);
 
     return (
-        <AnimatePresence>
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
-                <AnimCursor />
-                <ScrollIndicator />
-
-                <div className="App">
-                    <motion.div initial={{ y: -100 }} animate={{ y: 0 }} transition={{ duration: 0.6, ease: 'easeOut' }} style={{ position: 'fixed', width: '100%', zIndex: 100000 }}>
-                        <Navbar activeNav={activeNav} />
+        <AnimatePresence mode="wait">
+            {loading ? (
+                <motion.div key="loader" className="loading-screen" exit={{ opacity: 0, scale: 1.05 }} transition={{ duration: 0.6 }}>
+                    <motion.div className="loading-content" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
+                        <motion.div
+                            className="loading-spinner"
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 1.2, repeat: Infinity, ease: 'linear' }}
+                        />
+                        <motion.h2 animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 1.6, repeat: Infinity }}>
+                            <span className="loading-bracket">&lt;</span>
+                            booting kishor
+                            <span className="loading-bracket">/&gt;</span>
+                        </motion.h2>
                     </motion.div>
-                    <Glare />
+                </motion.div>
+            ) : (
+                <motion.div key="app" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}>
+                    <AnimCursor />
+                    <ScrollIndicator />
+                    <PokemonFollower zones={POKEMON_ZONES} />
 
-                    <section id="home">
-                        <Home setActiveNav={setActiveNav} />
-                    </section>
+                    <div className="App">
+                        <Navbar activeNav={activeNav} />
+                        <Glare />
 
-                    <motion.section id="about" data-aos="fade-up" data-aos-offset="200" data-aos-delay="100">
-                        <About setActiveNav={setActiveNav} />
-                    </motion.section>
-
-                    <motion.section id="work" data-aos="fade-right" data-aos-offset="200" data-aos-delay="150">
-                        <Work setActiveNav={setActiveNav} />
-                    </motion.section>
-
-                    <motion.section id="skills" data-aos="zoom-in" data-aos-offset="200" data-aos-delay="100">
-                        <Skills setActiveNav={setActiveNav} />
-                    </motion.section>
-
-                    <motion.section id="projects" data-aos="fade-left" data-aos-offset="200" data-aos-delay="150">
-                        <Projects setActiveNav={setActiveNav} />
-                    </motion.section>
-
-                    <motion.section id="hobbies" data-aos="fade-up" data-aos-offset="200" data-aos-delay="100">
-                        <Hobbies setActiveNav={setActiveNav} />
-                    </motion.section>
-
-                    <motion.section id="contact" data-aos="fade-up" data-aos-offset="200" data-aos-delay="200">
-                        <Contact setActiveNav={setActiveNav} />
-                    </motion.section>
-
-                    <Footer />
-                </div>
-            </motion.div>
+                        <Home />
+                        <About />
+                        <Work />
+                        <Skills />
+                        <Projects />
+                        <Hobbies />
+                        <Contact />
+                        <Footer />
+                    </div>
+                </motion.div>
+            )}
         </AnimatePresence>
     );
 }

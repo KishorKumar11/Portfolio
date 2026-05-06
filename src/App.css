@@ -31,6 +31,15 @@
     font-size: 1.5rem;
     color: #5389c7;
     margin: 0;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 2px;
+}
+
+.loading-bracket {
+    color: var(--neon-cyan);
+    font-weight: 900;
+    margin: 0 4px;
+    text-shadow: 0 0 12px rgba(93, 212, 255, 0.6);
 }
 
 @keyframes spin {
@@ -72,6 +81,12 @@
     --container-color: rgba(255, 255, 255, 0.05);
     --accent-color: #5389c7;
     --accent-color-alt: #7597de;
+    --accent-rgb: 83, 137, 199;
+    --neon-cyan: #5dd4ff;
+    --neon-magenta: #ff5dc8;
+    --neon-glow: 0 0 24px rgba(93, 212, 255, 0.35), 0 0 48px rgba(83, 137, 199, 0.25);
+    --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+    --glass-border: rgba(255, 255, 255, 0.12);
 
     /*========== Font and typography ==========*/
     --body-font: 'Poppins', 'Inter', sans-serif;
@@ -311,6 +326,32 @@ img {
     align-items: center;
 }
 
+/*=============== MOTION / A11Y ===============*/
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/*=============== ARCADE / NEON UTILITIES ===============*/
+.neon-text {
+    background: linear-gradient(135deg, #fff, var(--neon-cyan), var(--accent-color-alt));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 12px rgba(93, 212, 255, 0.35));
+}
+
+.section__title {
+    text-shadow: 0 0 30px rgba(83, 137, 199, 0.25);
+}
+
 /*=============== BREAKPOINTS ===============*/
 /* For large devices */
 @media screen and (max-width: 992px) {
@@ -345,12 +386,44 @@ img {
 }
 
 @media screen and (max-width: 576px) {
+    :root {
+        --big-font-size: 2.75rem;
+        --h1-font-size: 1.75rem;
+        --h2-font-size: 1.25rem;
+        --h3-font-size: 1.1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    :root {
+        --big-font-size: 2.25rem;
+        --h1-font-size: 1.5rem;
+        --h2-font-size: 1.15rem;
+        --h3-font-size: 1rem;
+    }
+
+    .container {
+        margin-left: var(--mb-1);
+        margin-right: var(--mb-1);
+    }
+
+    .section {
+        padding: 1.5rem 0 3rem;
+    }
+}
+
+/* Hide pokemon follower on tiny screens — too cramped */
+@media screen and (max-width: 480px) {
+    .pokemon-follower {
+        display: none;
+    }
 }
 
 /* For small devices */
 @media screen and (max-width: 350px) {
     :root {
-        --big-font-size: 2.25rem;
+        --big-font-size: 1.875rem;
+        --h1-font-size: 1.25rem;
     }
 
     .container {

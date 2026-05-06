@@ -53,7 +53,7 @@
     z-index: 2;
 }
 
-/* Carousel Container */
+/* ── Carousel Container ── */
 .carousel-container {
     position: relative;
     display: flex;
@@ -64,6 +64,7 @@
 
 .carousel-track-container {
     flex: 1;
+    min-width: 0;
     overflow: hidden;
     border-radius: 20px;
     position: relative;
@@ -71,19 +72,19 @@
 
 .carousel-track {
     display: flex;
-    width: fit-content;
-    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* width set via JS as (N/slidesToShow)*100% of track-container */
 }
 
 .carousel-slide {
-    padding: 0 1rem;
+    padding: 0 0.75rem;
     box-sizing: border-box;
+    /* width set via JS as (1/N)*track = (1/slidesToShow)*container */
 }
 
-/* Carousel Buttons */
+/* ── Carousel Buttons ── */
 .carousel-button {
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     border: none;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.1);
@@ -97,6 +98,7 @@
     justify-content: center;
     transition: all 0.3s ease;
     z-index: 10;
+    flex-shrink: 0;
 }
 
 .carousel-button:hover {
@@ -108,48 +110,57 @@
 .carousel-button:disabled {
     opacity: 0.5;
     cursor: not-allowed;
-    transform: scale(0.9);
 }
 
-.carousel-button-prev {
-    margin-right: 1rem;
+/* ── Desktop-only buttons (hidden on mobile) ── */
+.carousel-button--desktop {
+    /* visible by default on desktop */
 }
 
-.carousel-button-next {
-    margin-left: 1rem;
+/* ── Mobile nav row (hidden on desktop) ── */
+.carousel-nav-mobile {
+    display: none;
 }
 
-/* Carousel Indicators */
+/* ── Indicators ── */
 .carousel-indicators {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 0.5rem;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
+}
+
+.carousel-indicators--desktop {
+    display: flex;
 }
 
 .carousel-indicator {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     border: none;
     background: rgba(255, 255, 255, 0.3);
     cursor: pointer;
     transition: all 0.3s ease;
+    padding: 0;
 }
 
 .carousel-indicator:hover {
-    transform: scale(1.2);
+    transform: scale(1.25);
 }
 
 .carousel-indicator.active {
     background: #5389c7;
-    box-shadow: 0 0 20px rgba(83, 137, 199, 0.5);
+    width: 24px;
+    border-radius: 5px;
+    box-shadow: 0 0 12px rgba(83, 137, 199, 0.6);
 }
 
-/* Progress Bar */
+/* ── Progress Bar ── */
 .carousel-progress {
     width: 100%;
-    height: 4px;
+    height: 3px;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 2px;
     margin-top: 1rem;
@@ -160,7 +171,6 @@
     height: 100%;
     background: linear-gradient(90deg, #5389c7, #7597de);
     border-radius: 2px;
-    transition: width 0.3s ease;
 }
 
 /* Hobby Cards */
@@ -328,43 +338,59 @@
     left: 85%;
 }
 
-/* Responsive Design */
+/* ── Responsive ── */
 @media (max-width: 768px) {
     .hobbies {
-        padding: 60px 0;
+        padding: 60px 0 80px;
     }
 
-    .carousel-container {
-        flex-direction: column;
-        gap: 1.5rem;
+    .hobbies-container {
+        padding: 0 16px;
     }
 
-    .carousel-button {
-        width: 45px;
-        height: 45px;
-        font-size: 1.3rem;
+    /* Hide the desktop flanking buttons on mobile */
+    .carousel-button--desktop {
+        display: none;
     }
 
-    .carousel-button-prev,
-    .carousel-button-next {
-        margin: 0;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        z-index: 20;
+    /* Show the mobile nav row below the carousel */
+    .carousel-nav-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: 1.25rem;
     }
 
-    .carousel-button-prev {
-        left: -60px;
+    .carousel-nav-mobile .carousel-button {
+        display: flex;
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
     }
 
-    .carousel-button-next {
-        right: -60px;
+    /* Hide the desktop indicator row */
+    .carousel-indicators--desktop {
+        display: none;
+    }
+
+    .carousel-indicators {
+        flex: 1;
+        justify-content: center;
+        margin-top: 0;
+    }
+
+    .carousel-track-container {
+        border-radius: 16px;
+    }
+
+    .carousel-slide {
+        padding: 0 0.5rem;
     }
 
     .hobby-card {
-        padding: 1.5rem;
-        min-height: 250px;
+        padding: 1.5rem 1.25rem;
+        min-height: 260px;
     }
 
     .hobby-icon {
@@ -382,23 +408,23 @@
 }
 
 @media (max-width: 480px) {
-    .carousel-button-prev {
-        left: -50px;
-    }
-
-    .carousel-button-next {
-        right: -50px;
-    }
-
-    .carousel-button {
-        width: 40px;
-        height: 40px;
-        font-size: 1.1rem;
+    .carousel-nav-mobile .carousel-button {
+        width: 36px;
+        height: 36px;
+        font-size: 1rem;
     }
 
     .hobby-card {
-        padding: 1.25rem;
-        min-height: 220px;
+        padding: 1.25rem 1rem;
+        min-height: 240px;
+    }
+
+    .hobby-name {
+        font-size: 1.1rem;
+    }
+
+    .hobby-fun-fact {
+        font-size: 0.8rem;
     }
 }
 
