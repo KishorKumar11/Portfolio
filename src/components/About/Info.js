@@ -4,8 +4,8 @@ import { stagger, cardPop } from '../../motion';
 
 const items = [
     { icon: 'bx bxs-award', title: 'Scholar', subtitle: 'LTA' },
-    { icon: 'bx bxs-briefcase', title: 'Entreprenuer', subtitle: 'Tranquilio' },
-    { icon: 'bx bxs-graduation', title: 'Student', subtitle: 'NUS' }
+    { icon: 'bx bxs-briefcase', title: 'Entreprenuer', subtitle: '2x Founder' },
+    { icon: 'bx bxs-graduation', title: 'Graduate', subtitle: 'NUS' }
 ];
 
 const Info = () => {

@@ -19,7 +19,7 @@ const Contact = () => {
 
     return (
         <MotionSection className="contact section" id="contact" gap={0.12}>
-            <ParticleField count={14} />
+            <ParticleField count={14} color="radial-gradient(circle, #7dd4e0, #4ab8c8)" glow="rgba(74,184,200,0.55)" />
 
             <motion.h2 className="section__title" variants={fadeUp}>
                 Get In Touch

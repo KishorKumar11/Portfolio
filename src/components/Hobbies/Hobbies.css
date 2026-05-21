@@ -1,7 +1,7 @@
 .hobbies {
     position: relative;
-    padding: 50px 0px 200px 0px;
-    background: linear-gradient(135deg, #16213e 0%, #1a1a2e 50%, #0f1419 100%);
+    padding: 160px 0;
+    background: linear-gradient(160deg, #040810 0%, #060c18 35%, #040a12 65%, #020508 100%);
     overflow: hidden;
     width: 100%;
     box-sizing: border-box;
@@ -14,9 +14,30 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 25% 30%, rgba(83, 137, 199, 0.1) 0%, transparent 50%), radial-gradient(circle at 75% 70%, rgba(117, 151, 222, 0.1) 0%, transparent 50%);
+    background:
+        radial-gradient(ellipse 60% 55% at 25% 30%, rgba(30, 140, 160, 0.20) 0%, transparent 60%),
+        radial-gradient(ellipse 55% 45% at 75% 70%, rgba(50, 165, 185, 0.18) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 30% at 50% 10%, rgba(20, 110, 130, 0.13) 0%, transparent 50%);
     pointer-events: none;
     z-index: 1;
+    will-change: transform;
+    animation: hobbies-glow-float 11s ease-in-out infinite;
+}
+
+@keyframes hobbies-glow-float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+}
+
+@supports (animation-timeline: view()) {
+    .hobbies::before {
+        animation: hobbies-parallax linear both;
+        animation-timeline: view(block);
+        animation-range: cover 0% cover 100%;
+    }
+    @keyframes hobbies-parallax {
+        from { transform: translateY(-35px); }
+        to { transform: translateY(35px); }
+    }
 }
 
 .hobbies-decoration {
@@ -25,26 +46,11 @@
     right: 5%;
     width: 250px;
     height: 250px;
-    background: linear-gradient(45deg, rgba(83, 137, 199, 0.06), rgba(117, 151, 222, 0.06));
+    background: linear-gradient(45deg, rgba(74, 184, 200, 0.06), rgba(125, 212, 224, 0.06));
     border-radius: 50%;
     filter: blur(50px);
     z-index: 1;
     pointer-events: none;
-}
-
-.hobbies::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 120px;
-    background: linear-gradient(135deg, #0f1419 0%, #1a1a2e 50%, #16213e 100%);
-    clip-path: polygon(0% 100%, 0% 55%, 12% 40%, 25% 30%, 38% 35%, 50% 45%, 62% 50%, 75% 45%, 88% 35%, 100% 25%, 100% 100%);
-    z-index: 3;
-    pointer-events: none;
-    opacity: 0.9;
-    filter: drop-shadow(0 -10px 20px rgba(83, 137, 199, 0.1));
 }
 
 .hobbies-container {
@@ -109,9 +115,9 @@
 }
 
 .carousel-button:hover {
-    background: rgba(83, 137, 199, 0.2);
-    border-color: rgba(83, 137, 199, 0.4);
-    box-shadow: 0 8px 25px rgba(83, 137, 199, 0.3);
+    background: rgba(74, 184, 200, 0.2);
+    border-color: rgba(74, 184, 200, 0.4);
+    box-shadow: 0 8px 25px rgba(74, 184, 200, 0.3);
 }
 
 .carousel-button:disabled {
@@ -158,10 +164,10 @@
 }
 
 .carousel-indicator.active {
-    background: #5389c7;
+    background: #4ab8c8;
     width: 24px;
     border-radius: 5px;
-    box-shadow: 0 0 12px rgba(83, 137, 199, 0.6);
+    box-shadow: 0 0 12px rgba(74, 184, 200, 0.6);
 }
 
 /* ── Progress Bar ── */
@@ -176,7 +182,7 @@
 
 .carousel-progress-bar {
     height: 100%;
-    background: linear-gradient(90deg, #5389c7, #7597de);
+    background: linear-gradient(90deg, #4ab8c8, #7dd4e0);
     border-radius: 2px;
 }
 
@@ -196,7 +202,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(83, 137, 199, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(74, 184, 200, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .hobby-card::before {
@@ -206,7 +212,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, transparent, rgba(83, 137, 199, 0.1), transparent);
+    background: linear-gradient(45deg, transparent, rgba(74, 184, 200, 0.1), transparent);
     transform: translateX(-100%);
     transition: transform 0.6s ease;
 }
@@ -219,8 +225,8 @@
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
-    border-color: rgba(83, 137, 199, 0.4);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 4px 16px rgba(83, 137, 199, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+    border-color: rgba(74, 184, 200, 0.4);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 4px 16px rgba(74, 184, 200, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1px 0 rgba(255, 255, 255, 0.08);
     transform: translateY(-5px);
 }
 
@@ -228,7 +234,7 @@
     font-size: 3rem;
     margin-bottom: 1.5rem;
     display: block;
-    filter: drop-shadow(0 4px 8px rgba(83, 137, 199, 0.3));
+    filter: drop-shadow(0 4px 8px rgba(74, 184, 200, 0.3));
 }
 
 .hobby-name {
@@ -236,7 +242,7 @@
     font-weight: 600;
     color: #fff;
     margin-bottom: 1rem;
-    background: linear-gradient(45deg, #ffffff, #5389c7);
+    background: linear-gradient(45deg, #ffffff, #4ab8c8);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -248,9 +254,9 @@
     line-height: 1.5;
     font-style: italic;
     padding: 0.75rem 1rem;
-    background: rgba(83, 137, 199, 0.1);
+    background: rgba(74, 184, 200, 0.1);
     border-radius: 15px;
-    border: 1px solid rgba(83, 137, 199, 0.2);
+    border: 1px solid rgba(74, 184, 200, 0.2);
     position: relative;
     margin-top: auto;
 }
@@ -280,7 +286,7 @@
     position: absolute;
     width: 3px;
     height: 3px;
-    background: #5389c7;
+    background: #4ab8c8;
     border-radius: 50%;
     /* Remove fixed positioning - now handled by JS */
 }
@@ -320,8 +326,8 @@
 .floating-hobby-shape {
     position: absolute;
     border-radius: 50%;
-    background: linear-gradient(45deg, rgba(83, 137, 199, 0.08), rgba(117, 151, 222, 0.08));
-    border: 2px solid rgba(83, 137, 199, 0.1);
+    background: linear-gradient(45deg, rgba(74, 184, 200, 0.08), rgba(125, 212, 224, 0.08));
+    border: 2px solid rgba(74, 184, 200, 0.1);
 }
 
 .hobby-shape-1 {
@@ -463,9 +469,21 @@
     position: absolute;
     width: 6px;
     height: 6px;
-    background: radial-gradient(circle, #5389c7 0%, #3a7bd5 50%, transparent 70%);
+    background: radial-gradient(circle, #4ab8c8 0%, #3a7bd5 50%, transparent 70%);
     border-radius: 50%;
     filter: blur(1px);
     opacity: 0.6;
-    box-shadow: 0 0 10px rgba(83, 137, 199, 0.5), 0 0 20px rgba(83, 137, 199, 0.3), 0 0 30px rgba(83, 137, 199, 0.1);
+    box-shadow: 0 0 10px rgba(74, 184, 200, 0.5), 0 0 20px rgba(74, 184, 200, 0.3), 0 0 30px rgba(74, 184, 200, 0.1);
+}
+
+.hobbies::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent 0%, rgba(2, 5, 8, 0.75) 100%);
+    pointer-events: none;
+    z-index: 2;
 }

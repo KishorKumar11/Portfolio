@@ -8,18 +8,17 @@
     align-items: center;
     padding: 18px 5vw;
     z-index: 100000;
-    transition: padding 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
-    background: rgba(8, 12, 22, 0.35);
-    backdrop-filter: blur(14px) saturate(160%);
-    -webkit-backdrop-filter: blur(14px) saturate(160%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition: padding 0.4s ease, background 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+    background: transparent;
+    border-bottom: 1px solid transparent;
 }
 
 .header.scrolled {
-    background: rgba(8, 12, 22, 0.78);
+    background: rgba(8, 12, 22, 0.82);
     backdrop-filter: blur(22px) saturate(180%);
     -webkit-backdrop-filter: blur(22px) saturate(180%);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     padding: 12px 5vw;
 }
 

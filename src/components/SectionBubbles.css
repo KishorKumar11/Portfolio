@@ -1,0 +1,24 @@
+.section-bubbles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.section-bubble {
+    position: absolute;
+    bottom: -40px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, rgba(125, 212, 224, 0.32), rgba(74, 184, 200, 0.06));
+    border: 1px solid rgba(74, 184, 200, 0.22);
+    animation: section-bubble-rise linear infinite;
+    will-change: transform, opacity;
+}
+
+@keyframes section-bubble-rise {
+    0%   { transform: translateY(0) translateX(0) scale(1);             opacity: 0; }
+    10%  { opacity: 0.65; }
+    80%  { opacity: 0.35; }
+    100% { transform: translateY(-110vh) translateX(var(--bx, 0px)) scale(1.3); opacity: 0; }
+}

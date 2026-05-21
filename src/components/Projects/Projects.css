@@ -1,7 +1,7 @@
 .projects {
     /* padding: top right bottom left */
-    padding: 50px 0px 200px 0px;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+    padding: 160px 0;
+    background: linear-gradient(160deg, #040810 0%, #060c18 35%, #040a12 65%, #020508 100%);
     position: relative;
     overflow: hidden;
 }
@@ -13,23 +13,29 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23ffffff" opacity="0.02"/><circle cx="75" cy="75" r="1" fill="%23ffffff" opacity="0.02"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    background:
+        radial-gradient(ellipse 50% 40% at 15% 30%, rgba(30, 140, 160, 0.18) 0%, transparent 55%),
+        radial-gradient(ellipse 45% 35% at 85% 65%, rgba(50, 160, 180, 0.16) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 25% at 50% 5%, rgba(20, 100, 120, 0.14) 0%, transparent 45%);
     pointer-events: none;
+    will-change: transform;
+    animation: projects-glow-float 8s ease-in-out infinite;
 }
 
-.projects::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 120px;
-    background: linear-gradient(135deg, #16213e 0%, #1a1a2e 50%, #0a0a0a 100%);
-    clip-path: polygon(0% 100%, 0% 65%, 10% 50%, 20% 40%, 30% 35%, 40% 40%, 50% 50%, 60% 55%, 70% 50%, 80% 40%, 90% 30%, 100% 25%, 100% 100%);
-    z-index: 3;
-    pointer-events: none;
-    opacity: 0.9;
-    filter: drop-shadow(0 -10px 20px rgba(83, 137, 199, 0.1));
+@keyframes projects-glow-float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+}
+
+@supports (animation-timeline: view()) {
+    .projects::before {
+        animation: projects-parallax linear both;
+        animation-timeline: view(block);
+        animation-range: cover 0% cover 100%;
+    }
+    @keyframes projects-parallax {
+        from { transform: translateY(-35px); }
+        to { transform: translateY(35px); }
+    }
 }
 
 /* Floating particles effect */
@@ -47,26 +53,14 @@
     position: absolute;
     width: 3px;
     height: 3px;
-    background: linear-gradient(45deg, #5389c7, #7597de);
+    background: linear-gradient(45deg, #4ab8c8, #7dd4e0);
     border-radius: 50%;
-    box-shadow: 0 0 8px rgba(83, 137, 199, 0.5);
-}
-
-.projects-particle::after {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    width: 7px;
-    height: 7px;
-    background: rgba(83, 137, 199, 0.1);
-    border-radius: 50%;
-    z-index: -1;
+    box-shadow: 0 0 8px rgba(74, 184, 200, 0.5);
 }
 
 .section__title {
     font-size: 3rem;
-    background: linear-gradient(45deg, #5389c7, #7597de, #ffffff);
+    background: linear-gradient(45deg, #4ab8c8, #7dd4e0, #ffffff);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -84,7 +78,7 @@
     transform: translateX(-50%);
     width: 100px;
     height: 4px;
-    background: linear-gradient(45deg, #5389c7, #7597de);
+    background: linear-gradient(45deg, #4ab8c8, #7dd4e0);
     border-radius: 2px;
 }
 
@@ -118,15 +112,15 @@
     max-height: 500px;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(83, 137, 199, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(74, 184, 200, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .project-card:hover .project-card-inner {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
-    border-color: rgba(83, 137, 199, 0.4);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 4px 16px rgba(83, 137, 199, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+    border-color: rgba(74, 184, 200, 0.4);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), 0 4px 16px rgba(74, 184, 200, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25), inset 0 -1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .project-image-container {
@@ -154,7 +148,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, rgba(83, 137, 199, 0.8), rgba(117, 151, 222, 0.8));
+    background: linear-gradient(45deg, rgba(74, 184, 200, 0.8), rgba(125, 212, 224, 0.8));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -199,7 +193,7 @@
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 15px;
-    background: linear-gradient(45deg, #ffffff, #5389c7);
+    background: linear-gradient(45deg, #ffffff, #4ab8c8);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -232,20 +226,20 @@
 
 .project-tag {
     padding: 6px 14px;
-    background: rgba(83, 137, 199, 0.2);
-    color: #5389c7;
+    background: rgba(74, 184, 200, 0.2);
+    color: #4ab8c8;
     border-radius: 15px;
     font-size: 0.8rem;
     font-weight: 500;
-    border: 1px solid rgba(83, 137, 199, 0.3);
+    border: 1px solid rgba(74, 184, 200, 0.3);
     transition: all 0.3s ease;
     cursor: default;
 }
 
 .project-tag:hover {
-    background: rgba(83, 137, 199, 0.3);
+    background: rgba(74, 184, 200, 0.3);
     color: #fff;
-    border-color: rgba(83, 137, 199, 0.5);
+    border-color: rgba(74, 184, 200, 0.5);
 }
 
 /* Responsive Design */
@@ -306,4 +300,16 @@
         flex-direction: column;
         flex: 1;
     }
+}
+
+.projects::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent 0%, rgba(2, 5, 8, 0.75) 100%);
+    pointer-events: none;
+    z-index: 2;
 }

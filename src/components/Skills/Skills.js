@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Skills.css';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { ParticleField, MotionSection, fadeUp, stagger, cardPop } from '../../motion';
+import SectionBubbles from '../SectionBubbles';
 
 const SKILLS = [
     { name: 'JavaScript', category: 'Languages', icon: 'javascript' },
@@ -54,7 +55,8 @@ const Skills = () => {
 
     return (
         <MotionSection className="skills section" id="skills" gap={0.04}>
-            <ParticleField count={22} />
+            <ParticleField count={22} color="radial-gradient(circle, #7dd4e0, #4ab8c8)" glow="rgba(74,184,200,0.55)" />
+            <SectionBubbles />
 
             <motion.h2 className="section__title" variants={fadeUp}>
                 Skills & Technologies
@@ -70,7 +72,7 @@ const Skills = () => {
             </motion.div>
 
             <motion.div className="skills-container container" variants={stagger(0.04, 0.1)}>
-                <AnimatePresence mode="popLayout">
+                <AnimatePresence mode="popLayout" initial={false}>
                     {filtered.map((skill) => (
                         <motion.div
                             key={`${skill.name}-${skill.category}`}
@@ -78,11 +80,13 @@ const Skills = () => {
                             variants={cardPop}
                             layout
                             initial="hidden"
-                            animate="visible"
                             exit={{ opacity: 0, scale: 0.7 }}
-                            whileHover={reduce ? {} : { y: -8, scale: 1.06 }}
                         >
-                            <div className="skill-card">
+                            <motion.div
+                                className="skill-card"
+                                whileHover={reduce ? {} : { y: -8, scale: 1.06 }}
+                                transition={{ type: 'spring', stiffness: 280, damping: 22 }}
+                            >
                                 <div className="skill-icon-container">
                                     <motion.div className="skill-icon" whileHover={reduce ? {} : { rotate: [0, -10, 10, 0], scale: 1.1 }} transition={{ duration: 0.5 }}>
                                         <img
@@ -98,7 +102,7 @@ const Skills = () => {
                                 </div>
                                 <h3 className="skill-name">{skill.name}</h3>
                                 <span className="skill-category">{skill.category}</span>
-                            </div>
+                            </motion.div>
                         </motion.div>
                     ))}
                 </AnimatePresence>

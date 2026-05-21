@@ -8,7 +8,7 @@ import Work from './components/Work/Work';
 import Skills from './components/Skills/Skills';
 import Projects from './components/Projects/Projects';
 import Hobbies from './components/Hobbies/Hobbies';
-import Contact from './components/Contact/Contact';
+import Freelance from './components/Freelance/Freelance';
 import Footer from './components/Footer/Footer';
 import AnimCursor from './components/AnimCursor';
 import ScrollIndicator from './components/ScrollIndicator';
@@ -19,10 +19,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 const POKEMON_ZONES = [
   { name: 'Squirtle', sprite: 'https://img.pokemondb.net/sprites/black-white/anim/normal/squirtle.gif', message: 'Squirtle! 💧',        startSection: 'about',   endSection: 'work'     },
   { name: 'Piplup',   sprite: 'https://img.pokemondb.net/sprites/black-white/anim/normal/piplup.gif',   message: 'Piplup piplup! 💦', startSection: 'skills',  endSection: 'projects' },
-  { name: 'Mudkip',   sprite: 'https://img.pokemondb.net/sprites/black-white/anim/normal/mudkip.gif',   message: 'Mudkip! 🌊',        startSection: 'hobbies', endSection: 'contact'  },
+  { name: 'Mudkip',   sprite: 'https://img.pokemondb.net/sprites/black-white/anim/normal/mudkip.gif',   message: 'Mudkip! 🌊',        startSection: 'hobbies', endSection: 'freelance'  },
 ];
 
-const SECTIONS = ['home', 'about', 'work', 'skills', 'projects', 'hobbies', 'contact'];
+const SECTIONS = ['home', 'about', 'work', 'skills', 'projects', 'hobbies', 'freelance'];
 
 function App() {
     const [activeNav, setActiveNav] = useState('home');
@@ -31,6 +31,16 @@ function App() {
     useEffect(() => {
         const t = setTimeout(() => setLoading(false), 1400);
         return () => clearTimeout(t);
+    }, []);
+
+    // Parallax CSS variable for section backgrounds
+    useEffect(() => {
+        const onScroll = () => {
+            document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`);
+        };
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
     // Scroll-spy: track active section for navbar
@@ -85,7 +95,7 @@ function App() {
                         <Skills />
                         <Projects />
                         <Hobbies />
-                        <Contact />
+                        <Freelance />
                         <Footer />
                     </div>
                 </motion.div>

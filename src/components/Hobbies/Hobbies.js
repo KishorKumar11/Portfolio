@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ParticleField, MotionSection, fadeUp } from '../../motion';
+import SectionBubbles from '../SectionBubbles';
 import './Hobbies.css';
 
 const HOBBIES = [
@@ -92,7 +93,8 @@ const Hobbies = () => {
     return (
         <MotionSection className="hobbies section" id="hobbies" gap={0.1}>
             <div className="hobbies-decoration" />
-            <ParticleField count={20} />
+            <ParticleField count={20} color="radial-gradient(circle, #7dd4e0, #4ab8c8)" glow="rgba(74,184,200,0.55)" />
+            <SectionBubbles />
 
             <motion.h2 className="section__title" variants={fadeUp}>
                 Hobbies & Interests
@@ -110,14 +112,17 @@ const Hobbies = () => {
                             animate={{ x: xOffset }}
                             transition={{ type: 'spring', stiffness: 280, damping: 32 }}
                         >
-                            {HOBBIES.map(h => (
+                            {HOBBIES.map((h, i) => (
                                 <motion.div
                                     key={h.name}
                                     className="hobby-card carousel-slide"
                                     data-hobby={h.dataHobby}
                                     style={{ width: slideWidth || `${100 / slidesToShow}%`, flexShrink: 0 }}
+                                    initial={{ opacity: 0, y: 40, scale: 0.92 }}
+                                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                                    viewport={{ once: true, amount: 0.2 }}
+                                    transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1], delay: i * 0.1 }}
                                     whileHover={reduce ? {} : { scale: 1.03, y: -5 }}
-                                    transition={{ type: 'spring', stiffness: 240, damping: 20 }}
                                 >
                                     <motion.div
                                         className="hobby-icon"

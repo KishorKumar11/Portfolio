@@ -1,0 +1,280 @@
+/* ─── Lo-Fi Rain Scene ─────────────────────────────────────── */
+
+.lofi-scene {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+
+/* Room background — deep warm dark */
+.lofi-room-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+            ellipse 120% 80% at 50% 100%,
+            #1a0e06 0%,
+            #100b04 40%,
+            #08070c 70%,
+            #04060e 100%
+        );
+}
+
+/* ─── Window ─────────────────────────────────────────────── */
+.lofi-window-wrap {
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(55vw, 600px);
+    height: min(45vh, 400px);
+    z-index: 2;
+    filter: drop-shadow(0 0 60px rgba(100, 160, 220, 0.18));
+}
+
+.lofi-window {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: 3px solid rgba(180, 150, 100, 0.55);
+    border-radius: 4px;
+    overflow: hidden;
+    background: #020408;
+    box-shadow:
+        0 0 0 8px rgba(100, 75, 40, 0.35),
+        0 0 0 10px rgba(60, 40, 20, 0.25),
+        0 20px 60px rgba(0, 0, 0, 0.6),
+        inset 0 0 40px rgba(80, 120, 180, 0.08);
+}
+
+/* Rainy night sky behind glass */
+.lofi-sky {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        #040b1a 0%,
+        #071428 40%,
+        #060e20 70%,
+        #080f1c 100%
+    );
+    z-index: 0;
+}
+
+/* Rain canvas */
+.lofi-rain-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.lofi-rain-static {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        175deg,
+        transparent 0px,
+        transparent 3px,
+        rgba(160, 200, 230, 0.04) 3px,
+        rgba(160, 200, 230, 0.04) 4px
+    );
+    z-index: 1;
+}
+
+/* Tree silhouettes — bottom of window */
+.lofi-trees {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    z-index: 2;
+    background:
+        /* Left tree */
+        radial-gradient(ellipse 12% 22% at 15% 110%, #020408 70%, transparent 100%),
+        radial-gradient(ellipse 10% 18% at 22% 115%, #020408 70%, transparent 100%),
+        /* Right tree */
+        radial-gradient(ellipse 14% 25% at 78% 112%, #020408 70%, transparent 100%),
+        radial-gradient(ellipse 10% 18% at 85% 118%, #020408 70%, transparent 100%),
+        /* Ground line */
+        linear-gradient(to top, #020408 0%, #020408 18%, transparent 40%);
+    /* SVG clip for actual tree shapes */
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 240'%3E%3Cpolygon points='40,240 80,240 60,180 100,180 70,130 100,130 60,70 80,70 60,20 40,70 60,70 30,130 60,130 20,180 60,180 40,240' fill='black'/%3E%3Cpolygon points='480,240 520,240 500,175 540,175 510,120 540,120 500,60 520,60 500,10 480,60 500,60 470,120 500,120 460,175 500,175 480,240' fill='black'/%3E%3Crect x='0' y='200' width='600' height='40' fill='black'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 240'%3E%3Cpolygon points='40,240 80,240 60,180 100,180 70,130 100,130 60,70 80,70 60,20 40,70 60,70 30,130 60,130 20,180 60,180 40,240' fill='black'/%3E%3Cpolygon points='480,240 520,240 500,175 540,175 510,120 540,120 500,60 520,60 500,10 480,60 500,60 470,120 500,120 460,175 500,175 480,240' fill='black'/%3E%3Crect x='0' y='200' width='600' height='40' fill='black'/%3E%3C/svg%3E");
+    -webkit-mask-size: 100% 100%;
+    mask-size: 100% 100%;
+    background-color: #020408;
+}
+
+/* Window glass glare */
+.lofi-glass-glare {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.03) 0%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.01) 100%
+    );
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* Window pane cross dividers */
+.lofi-pane-h,
+.lofi-pane-v {
+    position: absolute;
+    background: rgba(160, 120, 70, 0.45);
+    z-index: 6;
+    pointer-events: none;
+}
+
+.lofi-pane-h {
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 3px;
+    transform: translateY(-50%);
+    box-shadow: 0 0 6px rgba(160, 120, 70, 0.3);
+}
+
+.lofi-pane-v {
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    transform: translateX(-50%);
+    box-shadow: 0 0 6px rgba(160, 120, 70, 0.3);
+}
+
+/* Window sill */
+.lofi-window-sill {
+    position: absolute;
+    bottom: -12px;
+    left: -12px;
+    right: -12px;
+    height: 16px;
+    background: linear-gradient(to bottom, rgba(140, 100, 55, 0.6), rgba(80, 55, 25, 0.4));
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* ─── Desk ────────────────────────────────────────────────── */
+.lofi-desk {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 28%;
+    background: linear-gradient(
+        180deg,
+        rgba(50, 32, 12, 0.0) 0%,
+        rgba(50, 32, 12, 0.85) 30%,
+        rgba(35, 22, 8, 0.95) 100%
+    );
+    z-index: 3;
+}
+
+/* ─── Lamp Glow ───────────────────────────────────────────── */
+.lofi-lamp-glow {
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 50%;
+    background: radial-gradient(
+        ellipse 80% 60% at 50% 80%,
+        rgba(255, 165, 60, 0.22) 0%,
+        rgba(255, 130, 30, 0.10) 35%,
+        rgba(255, 100, 20, 0.04) 60%,
+        transparent 80%
+    );
+    z-index: 4;
+    pointer-events: none;
+    animation: lamp-flicker 6s ease-in-out infinite;
+}
+
+.lofi-lamp-cone {
+    position: absolute;
+    bottom: 18%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 45%;
+    height: 30%;
+    background: radial-gradient(
+        ellipse 100% 80% at 50% 100%,
+        rgba(255, 200, 100, 0.12) 0%,
+        rgba(255, 160, 60, 0.06) 50%,
+        transparent 80%
+    );
+    z-index: 4;
+    pointer-events: none;
+    animation: lamp-flicker 6s ease-in-out infinite reverse;
+}
+
+@keyframes lamp-flicker {
+    0%, 100% { opacity: 1; }
+    15%       { opacity: 0.88; }
+    25%       { opacity: 0.95; }
+    40%       { opacity: 0.80; }
+    55%       { opacity: 0.92; }
+    70%       { opacity: 0.85; }
+    85%       { opacity: 0.98; }
+}
+
+/* ─── Puddle reflections ──────────────────────────────────── */
+.lofi-puddles {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 12%;
+    background:
+        radial-gradient(ellipse 25% 60% at 30% 80%, rgba(80, 140, 200, 0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 20% 50% at 65% 90%, rgba(80, 140, 200, 0.05) 0%, transparent 60%);
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* ─── Vignette overlay ────────────────────────────────────── */
+.lofi-vignette {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(
+            ellipse 100% 100% at 50% 50%,
+            transparent 30%,
+            rgba(4, 4, 10, 0.55) 70%,
+            rgba(4, 4, 10, 0.92) 100%
+        );
+    z-index: 6;
+    pointer-events: none;
+}
+
+/* ─── Reduced motion ──────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    .lofi-lamp-glow,
+    .lofi-lamp-cone {
+        animation: none;
+    }
+}
+
+/* ─── Responsive ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .lofi-window-wrap {
+        width: 85vw;
+        height: 35vh;
+        top: 12%;
+    }
+}
+
+@media (max-width: 480px) {
+    .lofi-window-wrap {
+        width: 92vw;
+        height: 30vh;
+        top: 10%;
+    }
+}

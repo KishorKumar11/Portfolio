@@ -1,16 +1,18 @@
 import React from 'react';
 import './About.css';
 import Info from './Info';
-import myPic from '../../images/myPic.jpg';
+import myPic from '../../images/KishorSuitPic.png';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ParticleField, MotionSection, MotionItem, fadeUp, slideLeft, slideRight } from '../../motion';
+import SectionBubbles from '../SectionBubbles';
 
 const About = () => {
     const reduce = useReducedMotion();
     return (
         <MotionSection as={motion.section} className="about" id="about" gap={0.15}>
             <div className="about-decoration"></div>
-            <ParticleField count={12} color="linear-gradient(45deg, #5389c7, #7597de)" />
+            <SectionBubbles />
+            <ParticleField count={20} color="radial-gradient(circle, #7dd4e0, #4ab8c8)" glow="rgba(74,184,200,0.55)" />
 
             <motion.h2 className="section__title" variants={fadeUp}>
                 About Me

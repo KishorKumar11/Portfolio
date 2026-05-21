@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import loginVid from '../../images/mainVid.mp4';
 import TypewriterEffect from '../TypewriterEffect';
 import { motion, useScroll, useTransform, useMotionValue, useSpring, useReducedMotion } from 'framer-motion';
-import { GridBackground, stagger, fadeUp } from '../../motion';
+import { stagger, fadeUp } from '../../motion';
 import './Home.css';
 
 const Home = () => {
@@ -31,8 +31,6 @@ const Home = () => {
                 <div className="home__video-veil" />
             </motion.div>
 
-            <GridBackground intensity={0.7} />
-
             <motion.div className="intro" variants={stagger(0.15, 0.2)} initial="hidden" animate="visible">
                 <motion.div className="intro-content" variants={fadeUp}>
                     <motion.h1 className="main-title" variants={fadeUp}>
@@ -53,6 +51,22 @@ const Home = () => {
                         I turn coffee into code and bugs into features <br />
                         (just kidding, I actually fix them)
                     </motion.p>
+
+                    <motion.a
+                        href="#freelance"
+                        className="hero-cta"
+                        variants={fadeUp}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            const el = document.querySelector('#freelance');
+                            const offset = document.querySelector('.header')?.offsetHeight || 0;
+                            if (el) window.scrollTo({ top: el.offsetTop - offset, behavior: 'smooth' });
+                        }}
+                        whileHover={reduce ? {} : { scale: 1.05, y: -3 }}
+                        whileTap={{ scale: 0.97 }}
+                    >
+                        Let's Build Together →
+                    </motion.a>
                 </motion.div>
             </motion.div>
         </section>

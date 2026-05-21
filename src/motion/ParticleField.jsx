@@ -30,7 +30,7 @@ const ParticleField = ({ count = 18, color = 'var(--accent-color)', glow = 'rgba
     if (!n) return null;
 
     return (
-        <div className={className} aria-hidden style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 1, overflow: 'hidden' }}>
+        <div className={className} aria-hidden style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0, overflow: 'hidden' }}>
             {particles.map((p) => (
                 <motion.span
                     key={p.id}

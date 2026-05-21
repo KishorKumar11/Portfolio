@@ -1,7 +1,7 @@
 .work {
     position: relative;
-    padding: 50px 0px 200px 0px;
-    background: linear-gradient(135deg, #16213e 0%, #1a1a2e 50%, #0f1419 100%);
+    padding: 160px 0;
+    background: linear-gradient(160deg, #040810 0%, #060c18 35%, #040a12 65%, #020508 100%);
     overflow: hidden;
 }
 
@@ -12,9 +12,29 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 25% 25%, rgba(83, 137, 199, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 75% 75%, rgba(117, 151, 222, 0.1) 0%, transparent 50%);
+    background:
+        radial-gradient(ellipse 55% 50% at 80% 15%, rgba(30, 140, 160, 0.20) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 45% at 18% 75%, rgba(50, 165, 185, 0.18) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 35% at 48% 50%, rgba(20, 110, 130, 0.12) 0%, transparent 50%);
     pointer-events: none;
+    will-change: transform;
+    animation: work-glow-float 12s ease-in-out infinite;
+}
+
+@keyframes work-glow-float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+}
+
+@supports (animation-timeline: view()) {
+    .work::before {
+        animation: work-parallax linear both;
+        animation-timeline: view(block);
+        animation-range: cover 0% cover 100%;
+    }
+    @keyframes work-parallax {
+        from { transform: translateY(-35px); }
+        to { transform: translateY(35px); }
+    }
 }
 
 .work-decoration {
@@ -23,26 +43,11 @@
     right: 10%;
     width: 200px;
     height: 200px;
-    background: linear-gradient(45deg, rgba(83, 137, 199, 0.05), rgba(117, 151, 222, 0.05));
+    background: linear-gradient(45deg, rgba(74, 184, 200, 0.05), rgba(125, 212, 224, 0.05));
     border-radius: 50%;
     filter: blur(40px);
     z-index: 1;
     pointer-events: none;
-}
-
-.work::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 120px;
-    background: linear-gradient(135deg, #0f1419 0%, #1a1a2e 50%, #16213e 100%);
-    clip-path: polygon(0% 100%, 0% 60%, 10% 45%, 20% 35%, 30% 30%, 40% 35%, 50% 45%, 60% 50%, 70% 45%, 80% 35%, 90% 30%, 100% 35%, 100% 100%);
-    z-index: 3;
-    pointer-events: none;
-    opacity: 0.9;
-    filter: drop-shadow(0 -10px 20px rgba(83, 137, 199, 0.1));
 }
 
 /* ── Tabs ── */
@@ -73,8 +78,8 @@
 
 .qualification__button:hover {
     font-size: var(--h2-font-size);
-    background: rgba(83, 137, 199, 0.1);
-    box-shadow: 0 2px 15px rgba(83, 137, 199, 0.15);
+    background: rgba(74, 184, 200, 0.1);
+    box-shadow: 0 2px 15px rgba(74, 184, 200, 0.15);
     transform: translateY(-1px);
 }
 
@@ -94,7 +99,7 @@
     inset: 0;
     border-radius: 12px;
     background: linear-gradient(90deg, var(--accent-color), var(--accent-color-alt));
-    box-shadow: 0 6px 22px rgba(83, 137, 199, 0.45), 0 0 18px rgba(93, 212, 255, 0.25);
+    box-shadow: 0 6px 22px rgba(74, 184, 200, 0.45), 0 0 18px rgba(93, 212, 255, 0.25);
     z-index: -1;
 }
 
@@ -244,9 +249,9 @@
     position: absolute;
     width: 5px;
     height: 5px;
-    background: linear-gradient(45deg, #5389c7, #7597de);
+    background: linear-gradient(45deg, #4ab8c8, #7dd4e0);
     border-radius: 50%;
-    box-shadow: 0 0 12px rgba(83, 137, 199, 0.7);
+    box-shadow: 0 0 12px rgba(74, 184, 200, 0.7);
 }
 
 /*=============== BREAKPOINTS ===============*/
@@ -345,4 +350,16 @@
     .qual-content__date {
         font-size: 0.58rem;
     }
+}
+
+.work::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent 0%, rgba(2, 5, 8, 0.75) 100%);
+    pointer-events: none;
+    z-index: 2;
 }

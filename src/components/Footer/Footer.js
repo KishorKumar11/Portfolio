@@ -1,13 +1,33 @@
 import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import { ParticleField, fadeUp, stagger } from '../../motion';
+import { FaLinkedinIn, FaGithub, FaEnvelope, FaArrowUp } from 'react-icons/fa';
+import { fadeUp, stagger } from '../../motion';
 import './Footer.css';
 
 const SOCIAL = [
-    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/kishorkumar11/', icon: '💼' },
-    { name: 'GitHub', url: 'https://github.com/KishorKumar11', icon: '💻' },
-    { name: 'Gmail', url: 'https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=harisham38@gmail.com', icon: '📧' }
+    { name: 'LinkedIn', url: 'https://www.linkedin.com/in/kishorkumar11/', icon: <FaLinkedinIn /> },
+    { name: 'GitHub',   url: 'https://github.com/KishorKumar11', icon: <FaGithub /> },
+    { name: 'Email',    url: 'mailto:harisham38@gmail.com', icon: <FaEnvelope /> },
 ];
+
+const NAV_LINKS = [
+    { label: 'About',          href: '#about' },
+    { label: 'Qualifications', href: '#work' },
+    { label: 'Skills',         href: '#skills' },
+    { label: 'Projects',       href: '#projects' },
+    { label: 'Hobbies',        href: '#hobbies' },
+    { label: 'Work With Me',   href: '#freelance' },
+];
+
+
+
+const scrollTo = (href) => {
+    const el = document.querySelector(href);
+    if (el) {
+        const offset = document.querySelector('.header')?.offsetHeight || 0;
+        window.scrollTo({ top: el.offsetTop - offset, behavior: 'smooth' });
+    }
+};
 
 const Footer = () => {
     const reduce = useReducedMotion();
@@ -18,69 +38,95 @@ const Footer = () => {
             className="footer"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={stagger(0.12, 0.1)}
+            viewport={{ once: true, amount: 0.15 }}
+            variants={stagger(0.1, 0.05)}
         >
-            <ParticleField count={14} color="linear-gradient(135deg, #5dd4ff, #5389c7)" />
-
-            <div className="footer-bg-decoration">
-                <motion.div
-                    className="floating-orb orb-1"
-                    animate={reduce ? {} : { y: [0, -25, 0], scale: [1, 1.1, 1], opacity: [0.3, 0.6, 0.3] }}
-                    transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                />
-                <motion.div
-                    className="floating-orb orb-2"
-                    animate={reduce ? {} : { y: [0, 18, 0], scale: [1, 0.9, 1], opacity: [0.4, 0.7, 0.4] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-                />
-            </div>
-
             <div className="footer-container">
-                <motion.div className="footer-content" variants={fadeUp}>
-                    <div className="footer-brand">
-                        <motion.h3 className="footer-name neon-text" whileHover={reduce ? {} : { scale: 1.04 }} transition={{ duration: 0.3 }}>
-                            Kishor Kumar
-                        </motion.h3>
-                        <p className="footer-title">Full Stack Developer & Tech Management</p>
-                    </div>
-
-                    <motion.div className="footer-message" variants={fadeUp}>
-                        <p>
-                            "You've reached the end! Thank you for hanging around. Always remember to love yourself and take care of each other. Feel free to contact me!"
+                {/* Top grid */}
+                <div className="footer-grid">
+                    {/* Brand column */}
+                    <motion.div className="footer-brand-col" variants={fadeUp}>
+                        <a href="#home" className="footer-logo" onClick={(e) => { e.preventDefault(); scrollTo('#home'); }}>
+                            <span className="footer-logo-bracket">&lt;</span>
+                            kishor
+                            <span className="footer-logo-bracket">/&gt;</span>
+                        </a>
+                        <p className="footer-tagline">Full Stack Developer &amp; Tech Management</p>
+                        <p className="footer-bio">
+                            Building clean, fast web experiences. Open to freelance projects — let's make something great.
                         </p>
+                        <div className="footer-social">
+                            {SOCIAL.map((s) => (
+                                <motion.a
+                                    key={s.name}
+                                    href={s.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="footer-social-btn"
+                                    aria-label={s.name}
+                                    whileHover={reduce ? {} : { scale: 1.12, y: -3 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    title={s.name}
+                                >
+                                    {s.icon}
+                                </motion.a>
+                            ))}
+                        </div>
                     </motion.div>
 
-                    <motion.div className="footer-social" variants={fadeUp}>
-                        {SOCIAL.map((s) => (
-                            <motion.a
-                                key={s.name}
-                                href={s.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="social-link"
-                                whileHover={reduce ? {} : { scale: 1.15, y: -4, rotate: [0, -8, 8, 0] }}
-                                whileTap={{ scale: 0.95 }}
-                            >
-                                <span className="social-icon">{s.icon}</span>
-                                <span className="social-name">{s.name}</span>
-                            </motion.a>
-                        ))}
+                    {/* Nav column */}
+                    <motion.div className="footer-nav-col" variants={fadeUp}>
+                        <h4 className="footer-col-heading">Quick Links</h4>
+                        <ul className="footer-nav-list">
+                            {NAV_LINKS.map((link) => (
+                                <li key={link.href}>
+                                    <a
+                                        href={link.href}
+                                        className="footer-nav-link"
+                                        onClick={(e) => { e.preventDefault(); scrollTo(link.href); }}
+                                    >
+                                        {link.label}
+                                    </a>
+                                </li>
+                            ))}
+                        </ul>
                     </motion.div>
-                </motion.div>
 
-                <motion.div className="footer-bottom" variants={fadeUp}>
-                    <div className="footer-divider" />
-                    <p className="footer-copyright">
-                        <span>© {year} Designed & developed by Kishor Kumar.</span>
-                        <motion.span
-                            className="made-with-love"
-                            animate={reduce ? {} : { scale: [1, 1.15, 1] }}
-                            transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 3 }}
+                    {/* Contact column */}
+                    <motion.div className="footer-contact-col" variants={fadeUp}>
+                        <h4 className="footer-col-heading">Get In Touch</h4>
+                        <p className="footer-contact-text">
+                            Have a project in mind or just want to say hi? My inbox is always open.
+                        </p>
+                        <motion.a
+                            href="mailto:harisham38@gmail.com"
+                            className="footer-cta-btn"
+                            whileHover={reduce ? {} : { scale: 1.04 }}
+                            whileTap={{ scale: 0.97 }}
                         >
-                            Made with ❤️ and React
-                        </motion.span>
+                            Send a Message →
+                        </motion.a>
+                        <p className="footer-location">📍 Singapore</p>
+                    </motion.div>
+                </div>
+
+                {/* Divider */}
+                <div className="footer-divider" />
+
+                {/* Bottom bar */}
+                <motion.div className="footer-bottom" variants={fadeUp}>
+                    <p className="footer-copyright">
+                        © {year} Kishor Kumar · Designed &amp; built with React
                     </p>
+                    <motion.button
+                        className="footer-scroll-top"
+                        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                        whileHover={reduce ? {} : { scale: 1.1, y: -3 }}
+                        whileTap={{ scale: 0.95 }}
+                        aria-label="Scroll to top"
+                    >
+                        <FaArrowUp />
+                    </motion.button>
                 </motion.div>
             </div>
         </motion.footer>

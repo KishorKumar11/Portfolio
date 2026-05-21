@@ -23,9 +23,9 @@
     position: absolute;
     width: 4px;
     height: 4px;
-    background: linear-gradient(45deg, #5389c7, #7597de);
+    background: linear-gradient(45deg, #4ab8c8, #7dd4e0);
     border-radius: 50%;
-    box-shadow: 0 0 10px rgba(83, 137, 199, 0.5);
+    box-shadow: 0 0 10px rgba(74, 184, 200, 0.5);
 }
 
 .floating-dot::after {
@@ -35,7 +35,7 @@
     left: -2px;
     width: 8px;
     height: 8px;
-    background: rgba(83, 137, 199, 0.2);
+    background: rgba(74, 184, 200, 0.2);
     border-radius: 50%;
     z-index: -1;
 }
@@ -131,6 +131,32 @@
     margin-right: auto;
 }
 
+.hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.85rem 2.2rem;
+    border-radius: 50px;
+    background: rgba(74, 184, 200, 0.15);
+    border: 1.5px solid rgba(74, 184, 200, 0.55);
+    color: #7dd4e0;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    margin-top: 0.5rem;
+    box-shadow: 0 0 28px rgba(74, 184, 200, 0.18), inset 0 0 20px rgba(74, 184, 200, 0.05);
+    transition: background 0.25s, border-color 0.25s, box-shadow 0.25s, color 0.25s;
+    cursor: pointer;
+}
+
+.hero-cta:hover {
+    background: rgba(74, 184, 200, 0.28);
+    border-color: rgba(74, 184, 200, 0.85);
+    color: #c0eef8;
+    box-shadow: 0 0 40px rgba(74, 184, 200, 0.35), inset 0 0 24px rgba(74, 184, 200, 0.1);
+}
+
 .quote-section {
     margin: 2rem 0;
 }
@@ -138,7 +164,7 @@
 .quote {
     font-style: italic;
     font-size: clamp(1rem, 3vw, 1.2rem);
-    color: #7597de;
+    color: #7dd4e0;
     position: relative;
     padding: 0 1rem;
 }
@@ -147,7 +173,7 @@
 .quote::after {
     content: '"';
     font-size: 1.5em;
-    color: #5389c7;
+    color: #4ab8c8;
     font-weight: bold;
 }
 
@@ -161,16 +187,16 @@
 .social-links a {
     display: block;
     padding: 0.8rem;
-    background: rgba(83, 137, 199, 0.1);
+    background: rgba(74, 184, 200, 0.1);
     border-radius: 12px;
     transition: all 0.3s ease;
-    border: 1px solid rgba(83, 137, 199, 0.2);
+    border: 1px solid rgba(74, 184, 200, 0.2);
 }
 
 .social-links a:hover {
-    background: rgba(83, 137, 199, 0.2);
-    border-color: rgba(83, 137, 199, 0.4);
-    box-shadow: 0 8px 25px rgba(83, 137, 199, 0.3);
+    background: rgba(74, 184, 200, 0.2);
+    border-color: rgba(74, 184, 200, 0.4);
+    box-shadow: 0 8px 25px rgba(74, 184, 200, 0.3);
 }
 
 .social-links img {
@@ -234,11 +260,11 @@
     justify-content: center;
     border-radius: 25px;
     color: #fff;
-    background: linear-gradient(45deg, #5389c7, #7597de);
+    background: linear-gradient(45deg, #4ab8c8, #7dd4e0);
     display: inline-flex;
     width: auto;
     z-index: 100;
-    box-shadow: 0 15px 35px rgba(83, 137, 199, 0.3);
+    box-shadow: 0 15px 35px rgba(74, 184, 200, 0.3);
     transition: all 0.3s ease;
     font-weight: 600;
     text-transform: uppercase;
@@ -266,7 +292,7 @@
 
 .cv:hover {
     transform: translateY(-2px);
-    box-shadow: 0 20px 40px rgba(83, 137, 199, 0.4);
+    box-shadow: 0 20px 40px rgba(74, 184, 200, 0.4);
 }
 
 .social-icons {
@@ -288,8 +314,8 @@
 
 .icon1:hover,
 .icon2:hover {
-    background: rgba(83, 137, 199, 0.2);
-    box-shadow: 0 8px 25px rgba(83, 137, 199, 0.3);
+    background: rgba(74, 184, 200, 0.2);
+    box-shadow: 0 8px 25px rgba(74, 184, 200, 0.3);
 }
 
 .images {
@@ -318,7 +344,9 @@
 .home__video-veil {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at center, transparent 30%, rgba(10, 14, 25, 0.7) 70%, rgba(10, 14, 25, 0.95) 100%);
+    background:
+        radial-gradient(ellipse at center, transparent 25%, rgba(6, 8, 16, 0.55) 65%, rgba(4, 5, 12, 0.88) 100%),
+        linear-gradient(to bottom, rgba(4, 6, 14, 0.1) 0%, rgba(4, 6, 14, 0.65) 100%);
 }
 
 .home__cta-row {
@@ -350,22 +378,22 @@
 .home__cta--primary {
     background: linear-gradient(135deg, var(--accent-color), var(--accent-color-alt));
     color: #fff;
-    box-shadow: 0 10px 30px rgba(83, 137, 199, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(74, 184, 200, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .home__cta--primary:hover {
-    box-shadow: 0 14px 38px rgba(83, 137, 199, 0.5), 0 0 24px rgba(93, 212, 255, 0.35);
+    box-shadow: 0 14px 38px rgba(74, 184, 200, 0.5), 0 0 24px rgba(93, 212, 255, 0.35);
 }
 
 .home__cta--ghost {
     background: rgba(255, 255, 255, 0.04);
     color: #fff;
-    border-color: rgba(83, 137, 199, 0.4);
+    border-color: rgba(74, 184, 200, 0.4);
     backdrop-filter: blur(10px);
 }
 
 .home__cta--ghost:hover {
-    background: rgba(83, 137, 199, 0.18);
+    background: rgba(74, 184, 200, 0.18);
     border-color: var(--neon-cyan);
     box-shadow: 0 0 24px rgba(93, 212, 255, 0.25);
 }
@@ -447,7 +475,7 @@
     }
 
     .intro span {
-        color: rgb(83, 145, 199);
+        color: rgb(74, 184, 200);
     }
 
     .cv {
@@ -460,7 +488,7 @@
 
     .cv:hover {
         color: #fff;
-        background: #7597de;
+        background: #7dd4e0;
     }
 
     .icon1:hover {
@@ -490,7 +518,7 @@
     }
 
     .intro span {
-        color: rgb(83, 145, 199);
+        color: rgb(74, 184, 200);
     }
 
     .cv {
@@ -503,7 +531,7 @@
 
     .cv:hover {
         color: #fff;
-        background: rgb(83, 145, 199);
+        background: rgb(74, 184, 200);
     }
 
     .icon1:hover {
@@ -550,7 +578,7 @@
 
 /* Typewriter effect styles */
 .typewriter-text {
-    color: #7597de;
+    color: #7dd4e0;
     font-weight: 600;
     display: inline-block;
     min-width: 160px;
@@ -559,7 +587,7 @@
 
 .cursor {
     animation: blink 1s infinite;
-    color: #5389c7;
+    color: #4ab8c8;
 }
 
 @keyframes blink {

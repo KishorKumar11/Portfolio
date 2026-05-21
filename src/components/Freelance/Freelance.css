@@ -1,0 +1,204 @@
+.freelance {
+    padding: 160px 0;
+    background: linear-gradient(160deg, #040810 0%, #060c18 35%, #040a12 65%, #020508 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.freelance::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(ellipse 50% 45% at 85% 20%, rgba(30, 140, 160, 0.20) 0%, transparent 55%),
+        radial-gradient(ellipse 55% 40% at 15% 70%, rgba(50, 165, 185, 0.18) 0%, transparent 55%),
+        radial-gradient(ellipse 45% 30% at 50% 95%, rgba(74, 184, 200, 0.14) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+    will-change: transform;
+    animation: freelance-glow-float 10s ease-in-out infinite;
+}
+
+@keyframes freelance-glow-float {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+}
+
+@supports (animation-timeline: view()) {
+    .freelance::before {
+        animation: freelance-parallax linear both;
+        animation-timeline: view(block);
+        animation-range: cover 0% cover 100%;
+    }
+    @keyframes freelance-parallax {
+        from { transform: translateY(-35px); }
+        to { transform: translateY(35px); }
+    }
+}
+
+/* Subtitle */
+.freelance-subtitle {
+    text-align: center;
+    color: rgba(100, 200, 220, 0.8);
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+    letter-spacing: 1px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Cards grid */
+.freelance-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 3rem;
+}
+
+/* Individual card */
+.freelance-card {
+    position: relative;
+    z-index: 2;
+}
+
+.freelance-card-inner {
+    position: relative;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 2rem;
+    transition: all 0.3s ease;
+    height: 100%;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        0 2px 8px rgba(30, 140, 160, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.freelance-card-inner:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.05));
+    border-color: rgba(74, 184, 200, 0.4);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.15),
+        0 4px 16px rgba(74, 184, 200, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+.freelance-card-icon {
+    font-size: 2rem;
+    color: #4ab8c8;
+    margin-bottom: 1rem;
+    display: flex;
+}
+
+.freelance-card-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #e8f4f8;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.5px;
+    background: linear-gradient(45deg, #ffffff, #4ab8c8);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.freelance-card-desc {
+    font-size: 0.95rem;
+    color: rgba(180, 210, 220, 0.75);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+}
+
+.freelance-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.freelance-tag {
+    padding: 6px 14px;
+    background: rgba(74, 184, 200, 0.15);
+    color: #4ab8c8;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border: 1px solid rgba(74, 184, 200, 0.3);
+    cursor: default;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.freelance-tag:hover {
+    background: rgba(74, 184, 200, 0.25);
+    color: #fff;
+    border-color: rgba(74, 184, 200, 0.5);
+}
+
+/* CTA area */
+.freelance-cta-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+    position: relative;
+    z-index: 2;
+    margin-top: 1rem;
+}
+
+.freelance-pricing {
+    color: rgba(160, 200, 215, 0.75);
+    font-size: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.freelance-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.95rem 2.5rem;
+    border-radius: 25px;
+    background: linear-gradient(135deg, rgba(74, 184, 200, 0.2), rgba(30, 140, 160, 0.35));
+    border: 1px solid rgba(74, 184, 200, 0.5);
+    color: #7dd4e0;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 0 2px rgba(74, 184, 200, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.freelance-cta:hover {
+    border-color: rgba(74, 184, 200, 0.9);
+    color: #b0e8f0;
+    box-shadow: 0 8px 30px rgba(74, 184, 200, 0.35);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .freelance-cards {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+.freelance::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(to bottom, transparent 0%, rgba(2, 5, 8, 0.75) 100%);
+    pointer-events: none;
+    z-index: 2;
+}

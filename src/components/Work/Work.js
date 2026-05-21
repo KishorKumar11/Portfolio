@@ -9,6 +9,7 @@ import PragmaLogo from '../../images/PragmaLogo.jpeg';
 import TranquilioLogo from '../../images/TranquilioLogo.jpeg';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ParticleField, MotionSection, fadeUp } from '../../motion';
+import SectionBubbles from '../SectionBubbles';
 import './Work.css';
 
 const EDU = [
@@ -104,7 +105,8 @@ const Work = () => {
     return (
         <MotionSection className="work" id="work" gap={0.12}>
             <div className="work-decoration"></div>
-            <ParticleField count={14} />
+            <ParticleField count={14} color="radial-gradient(circle, #7dd4e0, #4ab8c8)" glow="rgba(74,184,200,0.55)" />
+            <SectionBubbles />
 
             <motion.h2 className="section__title" variants={fadeUp}>
                 Qualifications
