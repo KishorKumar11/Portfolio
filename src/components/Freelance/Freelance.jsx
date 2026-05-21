@@ -27,7 +27,6 @@ const SERVICES = [
 ];
 
 const ServiceCard = ({ service }) => {
-    const reduce = useReducedMotion();
     return (
         <motion.div className="freelance-card" variants={scaleIn}>
             <Tilt3D className="freelance-card-inner" max={8} scale={1.02}>
