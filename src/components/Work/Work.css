@@ -112,11 +112,44 @@
 }
 
 .qualification__sections {
+    position: relative;
+    width: 100%;
+}
+
+/* Single card, two faces — one continuous 0° → 180° flip */
+.qual-flip-scene {
+    width: 100%;
+    perspective: 1400px;
+    perspective-origin: center center;
+}
+
+.qual-flip-card {
     display: grid;
     grid-template-columns: 1fr;
+    width: 100%;
+    transform-style: preserve-3d;
+    transform-origin: center center;
+    will-change: transform;
+}
+
+.qual-flip-face {
+    grid-area: 1 / 1;
+    width: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform-style: preserve-3d;
+}
+
+.qual-flip-face--front {
+    transform: rotateY(0deg);
+}
+
+.qual-flip-face--back {
+    transform: rotateY(180deg);
 }
 
 /* ── Timeline layout ── */
+
 .qual-timeline {
     width: 100%;
 }
@@ -221,8 +254,11 @@
 .qual-badge__img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    padding: 5px;
+    object-fit: cover;
+    object-position: center;
+    padding: 0;
+    display: block;
+    transform: scale(var(--qual-logo-zoom, 1.15));
 }
 
 .qual-connector {
@@ -252,6 +288,12 @@
     background: linear-gradient(45deg, #4ab8c8, #7dd4e0);
     border-radius: 50%;
     box-shadow: 0 0 12px rgba(74, 184, 200, 0.7);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .qual-flip-scene {
+        perspective: none;
+    }
 }
 
 /*=============== BREAKPOINTS ===============*/

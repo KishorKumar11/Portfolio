@@ -85,6 +85,10 @@
     --neon-cyan: #5dd4ff;
     --neon-magenta: #ff5dc8;
     --neon-glow: 0 0 24px rgba(93, 212, 255, 0.35), 0 0 48px rgba(83, 137, 199, 0.25);
+    --scrollbar-track: hsl(var(--hue), var(--sat), 7%);
+    --scrollbar-thumb-top: #4ab8c8;
+    --scrollbar-thumb-mid: var(--accent-color);
+    --scrollbar-thumb-bottom: #6a8fd4;
     --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
     --glass-border: rgba(255, 255, 255, 0.12);
 
@@ -146,6 +150,8 @@ html {
     scroll-behavior: smooth;
     scroll-padding-top: var(--header-height);
     overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-thumb-top) var(--scrollbar-track);
 }
 
 body,
@@ -208,22 +214,38 @@ html.scroll-at-top::-webkit-scrollbar {
     height: 0;
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar — matches neon progress + section accents */
 ::-webkit-scrollbar {
     width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--body-color);
+    background: var(--scrollbar-track);
+    border-left: 1px solid rgba(90, 200, 250, 0.06);
 }
 
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(45deg, var(--accent-color), var(--accent-color-alt));
+    background: linear-gradient(
+        180deg,
+        var(--scrollbar-thumb-top) 0%,
+        var(--scrollbar-thumb-mid) 52%,
+        var(--scrollbar-thumb-bottom) 100%
+    );
     border-radius: 10px;
+    border: 2px solid var(--scrollbar-track);
+    box-shadow: inset 0 0 8px rgba(93, 212, 255, 0.2);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(45deg, var(--accent-color-alt), var(--accent-color));
+    background: linear-gradient(
+        180deg,
+        var(--neon-cyan) 0%,
+        var(--scrollbar-thumb-top) 45%,
+        var(--accent-color-alt) 100%
+    );
+    box-shadow:
+        inset 0 0 10px rgba(93, 212, 255, 0.35),
+        0 0 10px rgba(74, 184, 200, 0.25);
 }
 
 /* Selection */

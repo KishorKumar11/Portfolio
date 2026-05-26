@@ -7,24 +7,24 @@ import AveliosLogo from '../../images/AveliosLogo.jpeg';
 import LTALogo from '../../images/LTALogo.jpg';
 import PragmaLogo from '../../images/PragmaLogo.jpeg';
 import TranquilioLogo from '../../images/TranquilioLogo.jpeg';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { ParticleField, MotionSection, fadeUp } from '../../motion';
 import SectionBubbles from '../SectionBubbles';
 import './Work.css';
 
 const EDU = [
-    { side: 'left', logo: NUSLogo, title: 'Undergraduate', subtitle: 'National University of Singapore', date: 'Aug 2020 - May 2024' },
-    { side: 'right', logo: TUMLogo, title: 'Exchange Student', subtitle: 'Technical University of Munich', date: 'July 2023 - Dec 2023' },
-    { side: 'left', logo: UMLogo, title: 'Exchange Student', subtitle: 'University of Michigan', date: 'Aug 2022 - Dec 2022' },
-    { side: 'right', logo: GIISLogo, title: 'High School', subtitle: 'Global Indian International School', date: 'Jul 2010 - Mar 2018' },
+    { side: 'left', logo: NUSLogo, logoZoom: 0.98, title: 'Undergraduate', subtitle: 'National University of Singapore', date: 'Aug 2020 - May 2024' },
+    { side: 'right', logo: TUMLogo, logoZoom: 0.98, title: 'Exchange Student', subtitle: 'Technical University of Munich', date: 'July 2023 - Dec 2023' },
+    { side: 'left', logo: UMLogo, logoZoom: 0.98, title: 'Exchange Student', subtitle: 'University of Michigan', date: 'Aug 2022 - Dec 2022' },
+    { side: 'right', logo: GIISLogo, logoZoom: 0.98, title: 'High School', subtitle: 'Global Indian International School', date: 'Jul 2010 - Mar 2018' },
 ];
 
 const WORK = [
-    { side: 'left', logo: LTALogo, title: 'Full Stack Developer', subtitle: 'Land Transport Authority, Singapore', date: 'July 2024 - Present' },
-    { side: 'right', logo: AveliosLogo, title: 'Software Engineer Intern', subtitle: 'Avelios Medical GmbH, Germany', date: 'July 2023 - Dec 2023' },
-    { side: 'left', logo: LTALogo, title: 'Software Engineer Intern', subtitle: 'Land Transport Authority, Singapore', date: 'May 2023 - Jun 2023' },
-    { side: 'right', logo: TranquilioLogo, title: 'Software Developer', subtitle: 'Tranquilio, Singapore', date: 'Apr 2022 - Aug 2022' },
-    { side: 'left', logo: PragmaLogo, title: 'Cyber Security Analyst Intern', subtitle: 'Pragma, Singapore', date: 'May 2021 - Jul 2021' },
+    { side: 'left', logo: LTALogo, logoZoom: 1.02, title: 'Full Stack Developer', subtitle: 'Land Transport Authority, Singapore', date: 'July 2024 - Present' },
+    { side: 'right', logo: AveliosLogo, logoZoom: 1.24, title: 'Software Engineer Intern', subtitle: 'Avelios Medical GmbH, Germany', date: 'July 2023 - Dec 2023' },
+    { side: 'left', logo: LTALogo, logoZoom: 1.02, title: 'Software Engineer Intern', subtitle: 'Land Transport Authority, Singapore', date: 'May 2023 - Jun 2023' },
+    { side: 'right', logo: TranquilioLogo, logoZoom: 1.3, title: 'Software Developer', subtitle: 'Tranquilio, Singapore', date: 'Apr 2022 - Aug 2022' },
+    { side: 'left', logo: PragmaLogo, logoZoom: 0.98, title: 'Cyber Security Analyst Intern', subtitle: 'Pragma, Singapore', date: 'May 2021 - Jul 2021' },
 ];
 
 const cardSlideLeft = {
@@ -36,6 +36,8 @@ const cardSlideRight = {
     hidden: { opacity: 0, x: 60 },
     visible: { opacity: 1, x: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] } },
 };
+
+const FLIP_DURATION = 0.75;
 
 const QualContent = ({ item, align }) => (
     <div className={`qual-content qual-content--${align}`}>
@@ -71,7 +73,12 @@ const TimelineRow = ({ item, idx, isLast }) => {
                     transition={{ type: 'spring', stiffness: 240, damping: 18, delay: idx * 0.08 }}
                     whileHover={{ scale: 1.12, rotate: 6, transition: { duration: 0.2 } }}
                 >
-                    <img src={item.logo} alt={item.subtitle} className="qual-badge__img" />
+                    <img
+                        src={item.logo}
+                        alt={item.subtitle}
+                        className="qual-badge__img"
+                        style={{ '--qual-logo-zoom': item.logoZoom ?? 1.15 }}
+                    />
                 </motion.div>
                 {!isLast && (
                     <motion.div
@@ -98,9 +105,22 @@ const TimelineRow = ({ item, idx, isLast }) => {
     );
 };
 
+const TimelineList = ({ items, faceKey }) => (
+    <div className="qual-timeline">
+        {items.map((item, i) => (
+            <TimelineRow
+                key={`${faceKey}-${i}`}
+                item={item}
+                idx={i}
+                isLast={i === items.length - 1}
+            />
+        ))}
+    </div>
+);
+
 const Work = () => {
     const [tab, setTab] = useState(1);
-    const items = tab === 1 ? EDU : WORK;
+    const reduceMotion = useReducedMotion();
 
     return (
         <MotionSection className="work" id="work" gap={0.12}>
@@ -127,7 +147,7 @@ const Work = () => {
                             />
                         )}
                         <span className="qualification__tab-label">
-                            <i className="uil uil-graduation-cap qualification__icon"></i> Education
+                            <i className="uil uil-briefcase-alt qualification__icon"></i> Work Experience
                         </span>
                     </button>
                     <button
@@ -143,31 +163,30 @@ const Work = () => {
                             />
                         )}
                         <span className="qualification__tab-label">
-                            <i className="uil uil-briefcase-alt qualification__icon"></i> Work Experience
+                            <i className="uil uil-graduation-cap qualification__icon"></i> Education
                         </span>
                     </button>
                 </motion.div>
 
                 <div className="qualification__sections">
-                    <AnimatePresence mode="wait">
-                        <motion.div
-                            key={tab}
-                            className="qual-timeline"
-                            initial={{ opacity: 0, y: 16 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -16 }}
-                            transition={{ duration: 0.35 }}
-                        >
-                            {items.map((item, i) => (
-                                <TimelineRow
-                                    key={`${tab}-${i}`}
-                                    item={item}
-                                    idx={i}
-                                    isLast={i === items.length - 1}
-                                />
-                            ))}
-                        </motion.div>
-                    </AnimatePresence>
+                    {reduceMotion ? (
+                        <TimelineList items={tab === 1 ? WORK : EDU} faceKey={tab === 1 ? 'work' : 'edu'} />
+                    ) : (
+                        <div className="qual-flip-scene">
+                            <motion.div
+                                className="qual-flip-card"
+                                animate={{ rotateY: tab === 1 ? 0 : 180 }}
+                                transition={{ duration: FLIP_DURATION, ease: [0.45, 0.05, 0.55, 0.95] }}
+                            >
+                                <div className="qual-flip-face qual-flip-face--front">
+                                    <TimelineList items={WORK} faceKey="work" />
+                                </div>
+                                <div className="qual-flip-face qual-flip-face--back">
+                                    <TimelineList items={EDU} faceKey="edu" />
+                                </div>
+                            </motion.div>
+                        </div>
+                    )}
                 </div>
             </div>
         </MotionSection>
