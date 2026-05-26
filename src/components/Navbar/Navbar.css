@@ -94,19 +94,6 @@
     color: #fff;
 }
 
-.nav__active-pill {
-    position: absolute;
-    inset: 0;
-    border-radius: 999px;
-    background: linear-gradient(135deg, var(--accent-color), var(--accent-color-alt));
-    box-shadow: 0 8px 22px rgba(83, 137, 199, 0.45), 0 0 18px rgba(93, 212, 255, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.25);
-    z-index: 1;
-}
-
-.nav__link.active-link {
-    color: #fff;
-}
-
 .menu-icon {
     display: none;
     color: #fff;

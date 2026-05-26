@@ -22,10 +22,7 @@ const POKEMON_ZONES = [
   { name: 'Mudkip',   sprite: 'https://img.pokemondb.net/sprites/black-white/anim/normal/mudkip.gif',   message: 'Mudkip! 🌊',        startSection: 'hobbies', endSection: 'freelance'  },
 ];
 
-const SECTIONS = ['home', 'about', 'work', 'skills', 'projects', 'hobbies', 'freelance'];
-
 function App() {
-    const [activeNav, setActiveNav] = useState('home');
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -42,25 +39,6 @@ function App() {
         window.addEventListener('scroll', onScroll, { passive: true });
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
-
-    // Scroll-spy: track active section for navbar
-    useEffect(() => {
-        if (loading) return;
-        const observers = [];
-        SECTIONS.forEach((id) => {
-            const el = document.getElementById(id);
-            if (!el) return;
-            const obs = new IntersectionObserver(
-                ([entry]) => {
-                    if (entry.isIntersecting) setActiveNav(`#${id}`);
-                },
-                { threshold: 0.35, rootMargin: '-10% 0px -40% 0px' }
-            );
-            obs.observe(el);
-            observers.push(obs);
-        });
-        return () => observers.forEach((o) => o.disconnect());
-    }, [loading]);
 
     return (
         <AnimatePresence mode="wait">
@@ -85,8 +63,8 @@ function App() {
                     <ScrollIndicator />
                     <PokemonFollower zones={POKEMON_ZONES} />
 
-                    <div className="App">
-                        <Navbar activeNav={activeNav} />
+                    <div className="App" id="main-content">
+                        <Navbar />
                         <Glare />
 
                         <Home />

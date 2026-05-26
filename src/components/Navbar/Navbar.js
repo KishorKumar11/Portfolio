@@ -14,7 +14,7 @@ const NAV = [
     { href: '#freelance', label: 'Work With Me' }
 ];
 
-const Navbar = ({ activeNav }) => {
+const Navbar = () => {
     const [open, setOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
@@ -62,23 +62,13 @@ const Navbar = ({ activeNav }) => {
                         exit={{ x: '100%' }}
                         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                     >
-                        {NAV.map((item) => {
-                            const isActive = activeNav === item.href;
-                            return (
-                                <li key={item.href}>
-                                    <a href={item.href} onClick={(e) => onClick(e, item.href)} className={`nav__link ${isActive ? 'active-link' : ''}`}>
-                                        {isActive && (
-                                            <motion.span
-                                                className="nav__active-pill"
-                                                layoutId="nav-active-pill-mobile"
-                                                transition={{ type: 'spring', stiffness: 400, damping: 35 }}
-                                            />
-                                        )}
-                                        <span className="nav__link-label">{item.label}</span>
-                                    </a>
-                                </li>
-                            );
-                        })}
+                        {NAV.map((item) => (
+                            <li key={item.href}>
+                                <a href={item.href} onClick={(e) => onClick(e, item.href)} className="nav__link">
+                                    <span className="nav__link-label">{item.label}</span>
+                                </a>
+                            </li>
+                        ))}
                     </motion.ul>
                 </>
             )}
@@ -117,23 +107,13 @@ const Navbar = ({ activeNav }) => {
                 </button>
 
                 <ul className="nav-menu">
-                    {NAV.map((item) => {
-                        const isActive = activeNav === item.href;
-                        return (
-                            <li key={item.href}>
-                                <a href={item.href} onClick={(e) => onClick(e, item.href)} className={`nav__link ${isActive ? 'active-link' : ''}`}>
-                                    {isActive && (
-                                        <motion.span
-                                            className="nav__active-pill"
-                                            layoutId="nav-active-pill"
-                                            transition={{ type: 'spring', stiffness: 400, damping: 35 }}
-                                        />
-                                    )}
-                                    <span className="nav__link-label">{item.label}</span>
-                                </a>
-                            </li>
-                        );
-                    })}
+                    {NAV.map((item) => (
+                        <li key={item.href}>
+                            <a href={item.href} onClick={(e) => onClick(e, item.href)} className="nav__link">
+                                <span className="nav__link-label">{item.label}</span>
+                            </a>
+                        </li>
+                    ))}
                 </ul>
             </motion.header>
 

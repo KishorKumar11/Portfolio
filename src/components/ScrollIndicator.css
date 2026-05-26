@@ -1,3 +1,60 @@
+/* Custom scrollbar — always visible (macOS native overlay scrollbars auto-hide) */
+.persistent-scrollbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 100%;
+    height: 100dvh;
+    z-index: 9997;
+    pointer-events: auto;
+}
+
+.persistent-scrollbar__track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: var(--scrollbar-track, hsl(210, 45%, 7%));
+    border-left: 1px solid rgba(90, 200, 250, 0.06);
+    cursor: pointer;
+}
+
+.persistent-scrollbar__thumb {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    min-height: 48px;
+    border-radius: 10px;
+    background: linear-gradient(
+        180deg,
+        var(--scrollbar-thumb-top, #4ab8c8) 0%,
+        var(--scrollbar-thumb-mid, #5389c7) 52%,
+        var(--scrollbar-thumb-bottom, #6a8fd4) 100%
+    );
+    box-shadow:
+        inset 0 0 8px rgba(93, 212, 255, 0.2),
+        0 0 10px rgba(74, 184, 200, 0.2);
+    cursor: grab;
+    touch-action: none;
+}
+
+.persistent-scrollbar__thumb:active {
+    cursor: grabbing;
+}
+
+.persistent-scrollbar__thumb:hover {
+    background: linear-gradient(
+        180deg,
+        var(--neon-cyan, #5dd4ff) 0%,
+        var(--scrollbar-thumb-top, #4ab8c8) 45%,
+        var(--accent-color-alt, #7597de) 100%
+    );
+    box-shadow:
+        inset 0 0 10px rgba(93, 212, 255, 0.35),
+        0 0 12px rgba(74, 184, 200, 0.3);
+}
+
 .scroll-hint {
     position: fixed;
     left: 50%;
