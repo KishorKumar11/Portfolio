@@ -198,6 +198,16 @@ img {
     user-select: none;
 }
 
+/* Hide vertical scrollbar at page top */
+html.scroll-at-top {
+    scrollbar-width: none;
+}
+
+html.scroll-at-top::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
