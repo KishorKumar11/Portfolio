@@ -6,6 +6,7 @@ import VRPic from '../../images/VRPic.png';
 import ARLaserTagPic from '../../images/ARLaserTagPic.png';
 import F1PixelSimulatorPic from '../../images/F1PixelSimulatorPic.png';
 import PlanPalPic from '../../images/planpal.png';
+import FootyVersePic from '../../images/footyverse.png';
 import WedGuruPic from '../../images/wedguru.png';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ParticleField, MotionSection, Tilt3D, fadeUp, stagger, cardPop } from '../../motion';
@@ -26,6 +27,14 @@ const PROJECTS = [
         image: F1PixelSimulatorPic,
         link: 'https://f1-pixel-simulator.vercel.app/',
         tags: ['Web App', 'Three.js', 'FastF1 API', 'React']
+    },
+    {
+        title: 'FootyVerse',
+        description:
+            'A sleek football player stat visualizer that turns complex match data into clean, easy-to-read graphics for comparing your favorite players.',
+        image: FootyVersePic,
+        link: 'https://footy-verse.vercel.app/',
+        tags: ['Next.js', 'API-Football', 'Neon', 'MongoDB']
     },
     {
         title: "Murphy's Misadventures",
