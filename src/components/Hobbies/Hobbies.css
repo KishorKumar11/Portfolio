@@ -1,6 +1,6 @@
 .hobbies {
     position: relative;
-    padding: 160px 0;
+    padding: var(--section-y-pad) 0;
     background: linear-gradient(160deg, #040810 0%, #060c18 35%, #040a12 65%, #020508 100%);
     overflow: hidden;
     width: 100%;
@@ -96,8 +96,8 @@
 
 /* ── Carousel Buttons ── */
 .carousel-button {
-    width: 48px;
-    height: 48px;
+    width: var(--carousel-btn-size);
+    height: var(--carousel-btn-size);
     border: none;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.1);
@@ -191,14 +191,14 @@
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    /* border-radius: 20px; */
+    border-radius: var(--card-radius);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 2rem 2rem;
+    padding: var(--card-pad) var(--card-pad-x);
     text-align: center;
     position: relative;
     overflow: hidden;
     transition: all 0.3s ease;
-    min-height: 280px;
+    min-height: var(--hobby-card-min-h);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -231,7 +231,7 @@
 }
 
 .hobby-icon {
-    font-size: 3rem;
+    font-size: clamp(2rem, 1.25rem + 2.5vw, 3rem);
     margin-bottom: 1.5rem;
     display: block;
     filter: drop-shadow(0 4px 8px rgba(74, 184, 200, 0.3));

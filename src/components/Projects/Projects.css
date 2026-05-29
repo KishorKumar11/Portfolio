@@ -1,6 +1,6 @@
 .projects {
     /* padding: top right bottom left */
-    padding: 160px 0;
+    padding: var(--section-y-pad) 0;
     background: linear-gradient(160deg, #040810 0%, #060c18 35%, #040a12 65%, #020508 100%);
     position: relative;
     overflow: hidden;
@@ -59,7 +59,7 @@
 }
 
 .section__title {
-    font-size: 3rem;
+    font-size: var(--h1-font-size);
     background: linear-gradient(45deg, #4ab8c8, #7dd4e0, #ffffff);
     background-clip: text;
     -webkit-background-clip: text;
@@ -85,7 +85,7 @@
 .portfolio-content {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
+    gap: var(--card-gap);
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 20px;
@@ -102,14 +102,14 @@
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-radius: 20px;
+    border-radius: var(--card-radius);
     border: 1px solid rgba(255, 255, 255, 0.15);
     overflow: hidden;
     transition: all 0.3s ease;
     position: relative;
     height: 100%;
-    min-height: 500px;
-    max-height: 500px;
+    min-height: var(--project-card-h);
+    max-height: var(--project-card-h);
     display: flex;
     flex-direction: column;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(74, 184, 200, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
@@ -125,7 +125,7 @@
 
 .project-image-container {
     position: relative;
-    height: 250px;
+    height: var(--project-img-h);
     overflow: hidden;
 }
 
@@ -181,7 +181,7 @@
 }
 
 .project-content {
-    padding: 30px 25px;
+    padding: var(--project-content-pad-y) var(--project-content-pad-x);
     display: flex;
     flex-direction: column;
     flex: 1;

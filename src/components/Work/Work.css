@@ -1,6 +1,6 @@
 .work {
     position: relative;
-    padding: 160px 0;
+    padding: var(--section-y-pad) 0;
     background: linear-gradient(160deg, #040810 0%, #060c18 35%, #040a12 65%, #020508 100%);
     overflow: hidden;
 }
@@ -156,7 +156,7 @@
 
 .qual-row {
     display: grid;
-    grid-template-columns: 1fr 72px 1fr;
+    grid-template-columns: 1fr var(--qual-col-mid) 1fr;
     gap: 0 8px;
     align-items: flex-start;
     margin-bottom: 0;
@@ -180,11 +180,11 @@
 .qual-content {
     background: rgba(16, 28, 56, 0.55);
     border: 1px solid rgba(90, 200, 250, 0.18);
-    border-radius: 14px;
-    padding: 14px 18px;
+    border-radius: var(--card-radius);
+    padding: var(--qual-content-pad-y) var(--qual-content-pad-x);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.28), 0 0 10px rgba(90, 200, 250, 0.06);
-    max-width: 240px;
+    max-width: var(--qual-content-max-w);
     transition: box-shadow 0.3s, border-color 0.3s, transform 0.2s;
 }
 
@@ -237,8 +237,8 @@
 }
 
 .qual-badge {
-    width: 58px;
-    height: 58px;
+    width: var(--qual-badge-size);
+    height: var(--qual-badge-size);
     border-radius: 50%;
     background: #ffffff;
     border: 2.5px solid rgba(90, 200, 250, 0.55);

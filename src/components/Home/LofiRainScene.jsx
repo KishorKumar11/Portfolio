@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useReducedMotion } from 'framer-motion';
+import { observeResize } from '../../utils/observeResize';
 import './LofiRainScene.css';
 
 const LofiRainScene = () => {
@@ -11,14 +12,6 @@ const LofiRainScene = () => {
         const canvas = canvasRef.current;
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
-
-        const resize = () => {
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
-        };
-        resize();
-        const ro = new ResizeObserver(resize);
-        ro.observe(canvas);
 
         const makeDrops = () =>
             Array.from({ length: 160 }, () => ({
@@ -32,6 +25,18 @@ const LofiRainScene = () => {
 
         let drops = makeDrops();
         let animId;
+
+        const resizeCanvas = () => {
+            const w = canvas.offsetWidth;
+            const h = canvas.offsetHeight;
+            if (w === 0 || h === 0) return;
+            if (canvas.width === w && canvas.height === h) return;
+            canvas.width = w;
+            canvas.height = h;
+            drops = makeDrops();
+        };
+
+        const unobserve = observeResize(canvas, resizeCanvas);
 
         const draw = () => {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -62,7 +67,7 @@ const LofiRainScene = () => {
 
         return () => {
             cancelAnimationFrame(animId);
-            ro.disconnect();
+            unobserve();
         };
     }, [reduce]);
 

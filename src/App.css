@@ -124,6 +124,41 @@
     --z-tooltip: 10;
     --z-fixed: 100;
     --z-modal: 1000;
+
+    /*========== Section layout (overridden on laptop viewports) ==========*/
+    --section-y-pad: 10rem;
+    --contact-pad-top: 3.125rem;
+    --contact-pad-bottom: 12.5rem;
+
+    /*========== Cards & boxes (fluid with viewport) ==========*/
+    --card-radius: clamp(0.875rem, 0.5rem + 0.35vw, 1.25rem);
+    --card-pad: clamp(1.25rem, 0.75rem + 0.65vw, 2.5rem);
+    --card-pad-compact: clamp(0.875rem, 0.5rem + 0.45vw, 1.5rem);
+    --card-pad-x: clamp(1rem, 0.5rem + 0.55vw, 2rem);
+    --chip-pad-y: clamp(0.55rem, 0.35rem + 0.35vw, 0.75rem);
+    --chip-pad-x: clamp(1rem, 0.65rem + 0.6vw, 1.5rem);
+    --card-gap: clamp(1.25rem, 0.75rem + 0.75vw, 2.5rem);
+    --grid-col-min: clamp(12.5rem, 8rem + 8vw, 15.625rem);
+    --grid-col-min-wide: clamp(13.75rem, 9rem + 8.5vw, 17.5rem);
+    --icon-box-lg: clamp(4.25rem, 3rem + 2.5vw, 5rem);
+    --icon-box-md: clamp(3rem, 2.25rem + 1.5vw, 3.75rem);
+    --about-img-w: clamp(12.5rem, 8rem + 8vw, 16.25rem);
+    --about-img-h: clamp(17.8125rem, 11.5rem + 11vw, 23.125rem);
+    --about-content-gap: clamp(2rem, 1rem + 2.5vw, 4rem);
+    --project-card-h: clamp(26.25rem, 18rem + 12vw, 31.25rem);
+    --project-img-h: clamp(13.75rem, 9rem + 6vw, 15.625rem);
+    --project-content-pad-y: clamp(1.25rem, 0.75rem + 0.85vw, 1.875rem);
+    --project-content-pad-x: clamp(1rem, 0.65rem + 0.7vw, 1.5625rem);
+    --hobby-card-min-h: clamp(15rem, 10rem + 10vw, 17.5rem);
+    --qual-badge-size: clamp(3.25rem, 2.5rem + 1.5vw, 3.625rem);
+    --qual-col-mid: clamp(2.75rem, 2rem + 2vw, 4.5rem);
+    --qual-content-max-w: clamp(12.5rem, 8rem + 8vw, 15rem);
+    --qual-content-pad-y: clamp(0.65rem, 0.4rem + 0.35vw, 0.875rem);
+    --qual-content-pad-x: clamp(0.75rem, 0.45rem + 0.45vw, 1.125rem);
+    --contact-card-pad-y: clamp(1.75rem, 1rem + 1.25vw, 3rem);
+    --contact-card-pad-x: clamp(1.25rem, 0.75rem + 1vw, 2.5rem);
+    --contact-icon-box: clamp(2.75rem, 2rem + 1.25vw, 3.125rem);
+    --carousel-btn-size: clamp(2.5rem, 2rem + 1vw, 3rem);
 }
 
 /* Responsive typography */
@@ -147,11 +182,98 @@
 }
 
 html {
+    font-size: 100%;
     scroll-behavior: smooth;
     scroll-padding-top: var(--header-height);
     overflow-x: hidden;
     overflow-y: auto;
     scrollbar-width: none;
+}
+
+/* Laptop / smaller desktop (e.g. 13" MacBook) — monitors 1920px+ stay at 100% */
+@media screen and (min-width: 993px) and (max-width: 1919px) {
+    :root {
+        --section-y-pad: 7.5rem;
+        --contact-pad-top: 2.75rem;
+        --contact-pad-bottom: 9.5rem;
+        --big-font-size: 3.0625rem;
+        --h1-font-size: 2rem;
+        --h2-font-size: 1.35rem;
+        --h3-font-size: 1.125rem;
+        --normal-font-size: 0.9375rem;
+        --small-font-size: 0.8125rem;
+        --smaller-font-size: 0.75rem;
+        --header-height: 2.75rem;
+        --mb-3: 2.5rem;
+    }
+
+    html {
+        font-size: clamp(14px, 7px + 0.46875vw, 16px);
+    }
+
+    #main-content .section {
+        min-height: min(100vh, 52rem);
+        padding: 5rem 0 2rem;
+    }
+
+    #main-content .about,
+    #main-content .work,
+    #main-content .projects,
+    #main-content .skills,
+    #main-content .hobbies,
+    #main-content .freelance {
+        padding-block: var(--section-y-pad);
+    }
+
+    #main-content .contact {
+        padding: var(--contact-pad-top) 0 var(--contact-pad-bottom);
+    }
+
+    #main-content .section__title {
+        font-size: var(--h1-font-size);
+        margin-bottom: 2.5rem;
+    }
+
+    #main-content .home .main-title {
+        font-size: clamp(2.25rem, 5.5vw, 3.75rem);
+    }
+
+    #main-content .home .title-description {
+        font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+    }
+
+    #main-content .home .main-description,
+    #main-content .home .fun-fact {
+        font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+    }
+
+    #main-content .about__title {
+        font-size: 1rem;
+    }
+
+    #main-content .project-title {
+        font-size: 1.25rem;
+    }
+
+    #main-content .freelance-card-title {
+        font-size: 1.15rem;
+    }
+
+    #main-content .contact__info-title {
+        font-size: 1.5rem;
+    }
+
+    #main-content .footer {
+        padding-top: 4.5rem;
+    }
+
+    #main-content .header {
+        padding: 12px 4vw;
+    }
+
+    #main-content .header.scrolled {
+        padding: 10px 4vw;
+    }
 }
 
 html::-webkit-scrollbar {

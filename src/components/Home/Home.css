@@ -135,7 +135,7 @@
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    padding: 0.85rem 2.2rem;
+    padding: var(--chip-pad-y) calc(var(--chip-pad-x) * 1.45);
     border-radius: 50px;
     background: rgba(74, 184, 200, 0.15);
     border: 1.5px solid rgba(74, 184, 200, 0.55);
@@ -359,7 +359,7 @@
 
 .home__cta {
     position: relative;
-    padding: 0.95rem 2rem;
+    padding: var(--chip-pad-y) calc(var(--chip-pad-x) * 1.35);
     border-radius: 999px;
     font-weight: 600;
     letter-spacing: 1.5px;

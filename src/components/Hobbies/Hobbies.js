@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ParticleField, MotionSection, fadeUp } from '../../motion';
 import SectionBubbles from '../SectionBubbles';
+import { observeResize } from '../../utils/observeResize';
 import './Hobbies.css';
 
 const HOBBIES = [
@@ -43,13 +44,13 @@ const Hobbies = () => {
     const [containerPx, setContainerPx] = useState(0);
 
     useEffect(() => {
-        const update = () => {
-            if (containerRef.current) setContainerPx(containerRef.current.offsetWidth);
-        };
-        update();
-        const obs = new ResizeObserver(update);
-        if (containerRef.current) obs.observe(containerRef.current);
-        return () => obs.disconnect();
+        const el = containerRef.current;
+        if (!el) return undefined;
+
+        return observeResize(el, (node) => {
+            const w = node.offsetWidth;
+            setContainerPx((prev) => (prev === w ? prev : w));
+        });
     }, []);
 
     const slideWidth = containerPx > 0 ? containerPx / slidesToShow : 0;

@@ -1,5 +1,5 @@
 .freelance {
-    padding: 160px 0;
+    padding: var(--section-y-pad) 0;
     background: linear-gradient(160deg, #040810 0%, #060c18 35%, #040a12 65%, #020508 100%);
     position: relative;
     overflow: hidden;
@@ -52,8 +52,8 @@
 /* Cards grid */
 .freelance-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(var(--grid-col-min-wide), 1fr));
+    gap: var(--card-gap);
     position: relative;
     z-index: 2;
     margin-bottom: 3rem;
@@ -70,9 +70,9 @@
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border-radius: 20px;
+    border-radius: var(--card-radius);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 2rem;
+    padding: var(--card-pad);
     transition: all 0.3s ease;
     height: 100%;
     box-shadow:
@@ -91,7 +91,7 @@
 }
 
 .freelance-card-icon {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 1rem + 1.25vw, 2rem);
     color: #4ab8c8;
     margin-bottom: 1rem;
     display: flex;

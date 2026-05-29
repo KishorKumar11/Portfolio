@@ -43,13 +43,24 @@ const ScrollIndicator = () => {
     }, []);
 
     useEffect(() => {
+        let resizeRaf = 0;
+
+        const onResize = () => {
+            if (resizeRaf) return;
+            resizeRaf = requestAnimationFrame(() => {
+                resizeRaf = 0;
+                syncScrollState();
+            });
+        };
+
         syncScrollState();
         window.addEventListener('scroll', syncScrollState, { passive: true });
-        window.addEventListener('resize', syncScrollState, { passive: true });
+        window.addEventListener('resize', onResize, { passive: true });
 
         return () => {
             window.removeEventListener('scroll', syncScrollState);
-            window.removeEventListener('resize', syncScrollState);
+            window.removeEventListener('resize', onResize);
+            if (resizeRaf) cancelAnimationFrame(resizeRaf);
         };
     }, [syncScrollState]);
 
