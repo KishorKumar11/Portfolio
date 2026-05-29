@@ -5,16 +5,56 @@ import PhysioTechPic from '../../images/PhysioTechPic.jpg';
 import VRPic from '../../images/VRPic.png';
 import ARLaserTagPic from '../../images/ARLaserTagPic.png';
 import F1PixelSimulatorPic from '../../images/F1PixelSimulatorPic.png';
+import PlanPalPic from '../../images/planpal.png';
+import WedGuruPic from '../../images/wedguru.png';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ParticleField, MotionSection, Tilt3D, fadeUp, stagger, cardPop } from '../../motion';
 import SectionBubbles from '../SectionBubbles';
 
 const PROJECTS = [
-    { title: 'F1 Pixel Simulator', description: 'A Web Application that simulates real races with 3D pixelated F1 cars using FastF1 API', image: F1PixelSimulatorPic, link: 'https://f1-pixel-simulator.vercel.app/', tags: ['Web App', 'Three.js', 'FastF1 API', 'React', 'Racing'] },
-    { title: "Murphy's Misadventures", description: 'An educational VR game that focuses on home safety awareness', image: VRPic, link: 'https://github.com/KishorKumar11/Murphy-s-Misadventure', tags: ['VR', 'Unity', 'Education', 'Game Development'] },
-    { title: 'AR Laser Tag', description: 'A Capstone project that turns real life actions into AR gameplay', image: ARLaserTagPic, link: 'https://docs.google.com/document/d/1qpUl3MwWoYBzuiRY5YaiYElIDhKeKfOO/edit?rtpof=true&sd=true', tags: ['AR', 'Mobile Development', 'Gaming', 'Capstone'] },
-    { title: "King's Gambit", description: 'A 3D chess trainer made using Unreal Engine 4', image: KingsGambitPic, link: 'https://www.youtube.com/watch?v=172zasHyvFQ', tags: ['Unreal Engine', '3D', 'Gaming', 'AI'] },
-    { title: 'PhysioTech', description: 'Medical Assistive Technology using Machine Learning for facilitating medical practitioner to treat patients undergoing Physiotherapy', image: PhysioTechPic, link: 'https://github.com/KishorKumar11/PhysioTech-Assistive-Technology-for-Physiotheraphy/blob/main/README.md', tags: ['Machine Learning', 'Healthcare', 'Medical Tech', 'AI'] },
+    {
+        title: 'PlanPal',
+        description: 'An AI-powered companion that turns boring group chats into instant, customized hangout plans.',
+        image: PlanPalPic,
+        link: 'https://vibe-eight-teal.vercel.app/',
+        tags: ['Next.js', 'Supabase', 'Google OAuth', 'AI']
+    },
+    { title: 'WedGuru', description: 'An All-In-One AI Wedding Planner App', image: WedGuruPic, link: 'https://wedguru.vercel.app/', tags: ['Mobile App', 'React', 'MongoDB', 'AI'] },
+    {
+        title: 'F1 Pixel Simulator',
+        description: 'A Web Application that simulates real races with 3D pixelated F1 cars using FastF1 API',
+        image: F1PixelSimulatorPic,
+        link: 'https://f1-pixel-simulator.vercel.app/',
+        tags: ['Web App', 'Three.js', 'FastF1 API', 'React']
+    },
+    {
+        title: "Murphy's Misadventures",
+        description: 'An educational VR game that focuses on home safety awareness',
+        image: VRPic,
+        link: 'https://github.com/KishorKumar11/Murphy-s-Misadventure',
+        tags: ['VR', 'Unity', 'Education', 'Game Dev']
+    },
+    {
+        title: 'AR Laser Tag',
+        description: 'A Capstone project that turns real life actions into AR gameplay',
+        image: ARLaserTagPic,
+        link: 'https://docs.google.com/document/d/1qpUl3MwWoYBzuiRY5YaiYElIDhKeKfOO/edit?rtpof=true&sd=true',
+        tags: ['VR/AR', 'Mobile Dev', 'Unity', 'AI/ML']
+    },
+    {
+        title: "King's Gambit",
+        description: 'A 3D chess trainer made using Unreal Engine 4',
+        image: KingsGambitPic,
+        link: 'https://www.youtube.com/watch?v=172zasHyvFQ',
+        tags: ['Unreal Engine', '3D', 'Education']
+    },
+    {
+        title: 'PhysioTech',
+        description: 'Medical Assistive Technology using Machine Learning for facilitating medical practitioner to treat patients undergoing Physiotherapy',
+        image: PhysioTechPic,
+        link: 'https://github.com/KishorKumar11/PhysioTech-Assistive-Technology-for-Physiotheraphy/blob/main/README.md',
+        tags: ['AI/ML', 'Medical Tech', 'IoT']
+    }
 ];
 
 const ProjectCard = ({ project }) => {
