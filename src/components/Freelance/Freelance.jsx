@@ -63,7 +63,9 @@ const Freelance = () => {
                     Prices are flexible — reach out and we'll figure it out together.
                 </p>
                 <motion.a
-                    href="mailto:harisham38@gmail.com"
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=harisham38@gmail.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="freelance-cta"
                     whileHover={reduce ? {} : { scale: 1.05 }}
                     whileTap={{ scale: 0.97 }}

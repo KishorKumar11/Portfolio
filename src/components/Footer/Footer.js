@@ -7,7 +7,7 @@ import './Footer.css';
 const SOCIAL = [
     { name: 'LinkedIn', url: 'https://www.linkedin.com/in/kishorkumar11/', icon: <FaLinkedinIn /> },
     { name: 'GitHub',   url: 'https://github.com/KishorKumar11', icon: <FaGithub /> },
-    { name: 'Email',    url: 'mailto:harisham38@gmail.com', icon: <FaEnvelope /> },
+    { name: 'Email',    url: 'https://mail.google.com/mail/?view=cm&fs=1&to=harisham38@gmail.com', icon: <FaEnvelope /> },
 ];
 
 const NAV_LINKS = [
@@ -99,7 +99,9 @@ const Footer = () => {
                             Have a project in mind or just want to say hi? My inbox is always open.
                         </p>
                         <motion.a
-                            href="mailto:harisham38@gmail.com"
+                            href="https://mail.google.com/mail/?view=cm&fs=1&to=harisham38@gmail.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="footer-cta-btn"
                             whileHover={reduce ? {} : { scale: 1.04 }}
                             whileTap={{ scale: 0.97 }}
