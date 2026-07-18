@@ -259,8 +259,22 @@
 
     .about__info {
         grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
+        gap: 0.6rem;
         margin-bottom: 2rem;
+    }
+
+    .about__box {
+        padding-left: 0.4rem;
+        padding-right: 0.4rem;
+    }
+
+    .about__title {
+        font-size: 0.8rem;
+        letter-spacing: 0;
+    }
+
+    .about__subtitle {
+        font-size: 0.72rem;
     }
 
     .about__description {
