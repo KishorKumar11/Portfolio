@@ -9,6 +9,7 @@ import Skills from './components/Skills/Skills';
 import Projects from './components/Projects/Projects';
 import Hobbies from './components/Hobbies/Hobbies';
 import Freelance from './components/Freelance/Freelance';
+import Support from './components/Support/Support';
 import Footer from './components/Footer/Footer';
 import AnimCursor from './components/AnimCursor';
 import ScrollIndicator from './components/ScrollIndicator';
@@ -74,6 +75,7 @@ function App() {
                         <Projects />
                         <Hobbies />
                         <Freelance />
+                        <Support />
                         <Footer />
                     </div>
                 </motion.div>

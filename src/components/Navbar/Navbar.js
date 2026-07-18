@@ -11,7 +11,8 @@ const NAV = [
     { href: '#skills', label: 'Skills' },
     { href: '#projects', label: 'Projects' },
     { href: '#hobbies', label: 'Hobbies' },
-    { href: '#freelance', label: 'Work With Me' }
+    { href: '#freelance', label: 'Work With Me' },
+    { href: '#support', label: 'Support' }
 ];
 
 const Navbar = () => {
