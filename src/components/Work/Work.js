@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import GoogleLogo from '../../images/GoogleLogo.svg';
 import NUSLogo from '../../images/NUSLogo.png';
 import TUMLogo from '../../images/TUMLogo.png';
 import UMLogo from '../../images/UMLogo.png';
@@ -20,11 +21,12 @@ const EDU = [
 ];
 
 const WORK = [
-    { side: 'left', logo: LTALogo, logoZoom: 1.02, title: 'Full Stack Developer', subtitle: 'Land Transport Authority, Singapore', date: 'July 2024 - Present' },
-    { side: 'right', logo: AveliosLogo, logoZoom: 1.24, title: 'Software Engineer Intern', subtitle: 'Avelios Medical GmbH, Germany', date: 'July 2023 - Dec 2023' },
-    { side: 'left', logo: LTALogo, logoZoom: 1.02, title: 'Software Engineer Intern', subtitle: 'Land Transport Authority, Singapore', date: 'May 2023 - Jun 2023' },
-    { side: 'right', logo: TranquilioLogo, logoZoom: 1.3, title: 'Co-Founder & CTO', subtitle: 'Tranquilio, Singapore', date: 'Apr 2022 - Aug 2022' },
-    { side: 'left', logo: PragmaLogo, logoZoom: 0.98, title: 'Cyber Security Analyst Intern', subtitle: 'Pragma, Singapore', date: 'May 2021 - Jul 2021' }
+    { side: 'left', logo: GoogleLogo, logoZoom: 1, title: 'Software Engineer', subtitle: 'Google, Singapore', date: 'Sept 2026 - Present' },
+    { side: 'right', logo: LTALogo, logoZoom: 1.02, title: 'Full Stack Developer', subtitle: 'Land Transport Authority, Singapore', date: 'July 2024 - Aug 2026' },
+    { side: 'left', logo: AveliosLogo, logoZoom: 1.24, title: 'Software Engineer Intern', subtitle: 'Avelios Medical GmbH, Germany', date: 'July 2023 - Dec 2023' },
+    { side: 'right', logo: LTALogo, logoZoom: 1.02, title: 'Software Engineer Intern', subtitle: 'Land Transport Authority, Singapore', date: 'May 2023 - Jun 2023' },
+    { side: 'left', logo: TranquilioLogo, logoZoom: 1.3, title: 'Co-Founder & CTO', subtitle: 'Tranquilio, Singapore', date: 'Apr 2022 - Aug 2022' },
+    { side: 'right', logo: PragmaLogo, logoZoom: 0.98, title: 'Cyber Security Analyst Intern', subtitle: 'Pragma, Singapore', date: 'May 2021 - Jul 2021' }
 ];
 
 const cardSlideLeft = {

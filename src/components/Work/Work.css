@@ -76,11 +76,13 @@
     transition: color 0.3s;
 }
 
-.qualification__button:hover {
-    font-size: var(--h2-font-size);
-    background: rgba(74, 184, 200, 0.1);
-    box-shadow: 0 2px 15px rgba(74, 184, 200, 0.15);
-    transform: translateY(-1px);
+@media (hover: hover) {
+    .qualification__button:hover {
+        font-size: var(--h2-font-size);
+        background: rgba(74, 184, 200, 0.1);
+        box-shadow: 0 2px 15px rgba(74, 184, 200, 0.15);
+        transform: translateY(-1px);
+    }
 }
 
 .qualification__icon {
@@ -305,9 +307,19 @@
 }
 
 @media screen and (max-width: 768px) {
+    /* .container already supplies a 1.5rem gutter via padding; the breakpoint
+       margin doubled it and squeezed the 3-column timeline, wrapping the date
+       line of most entries onto two rows. */
     .qualification__container {
-        margin-left: var(--mb-1-5);
-        margin-right: var(--mb-1-5);
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    /* Grid items default to min-width: auto, so a long unbreakable line can push
+       a 1fr column past its share and shift the badge spine row to row. */
+    .qual-slot,
+    .qual-content {
+        min-width: 0;
     }
 
     .qual-row {
@@ -334,6 +346,27 @@
 }
 
 @media screen and (max-width: 480px) {
+    /* Narrower gutter to keep cards usable once columns get this tight. */
+    .qualification__container {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    /* The per-button margins pushed both tabs past the screen edges. */
+    .qualification__tabs {
+        gap: 8px;
+    }
+
+    .qualification__button {
+        margin: 0;
+        padding: 0.25em 0.55em;
+    }
+
+    .qualification__icon {
+        font-size: 1.15rem;
+        margin-right: 0.2rem;
+    }
+
     .qual-row {
         grid-template-columns: 1fr 44px 1fr;
         gap: 0 4px;
@@ -365,6 +398,12 @@
 }
 
 @media screen and (max-width: 380px) {
+    /* Last few px of gutter buy the date line enough room to stay on one row. */
+    .qualification__container {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
     .qual-row {
         grid-template-columns: 1fr 36px 1fr;
         gap: 0 3px;
